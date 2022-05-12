@@ -14,19 +14,28 @@ NAME = libft.a
 
 SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c
 
-OBJS = ${SRCS:.c=.o}
+OBJS = $(SRCS:.c=.o)
 
-HEAD = libft.h
+#HEAD = libft.h
 
-FLAGS = -Werror -Wextra -Wall -I $(HEAD) -c
+FLAGS = -Werror -Wextra -Wall -c
 
-$(NAME):	gcc $(FLAGS) 
-		ar rc $(NAME) $(OBJS)
+CC = gcc
+
+$(OBJS):
+	$(CC) $(FLAGS) $(SRCS)
+
+$(NAME): $(OBJS)
+	ar -rcs $(NAME) $(OBJS)
 
 all: $(NAME)
 
-clean: rm -f $(OBJS)
+clean:
+	rm -f $(OBJS)
 
-fclean: rm -f $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
