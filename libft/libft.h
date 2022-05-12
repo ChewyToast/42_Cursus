@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/11 11:59:50 by marvin            #+#    #+#             */
-/*   Updated: 2022/05/12 00:46:17 by marvin           ###   ########.fr       */
+/*   Created: 2022/05/11 12:00:45 by marvin            #+#    #+#             */
+/*   Updated: 2022/05/12 00:30:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_isalpha(int c)
-{
-	if ((c > 96 && c < 123) || (c > 64 && c < 91))
-		return (1);
-	else
-		return (0);
-}
+
+#ifndef LIBFT_H
+# define LIBFT_H
+
+int	ft_isalpha(int c);
+int	ft_isdigit(int c);
+int	ft_isalnum(int c);
+int	ft_isascii(int c);
+int	ft_isprint(int c);
+
+#endif

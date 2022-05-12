@@ -1,0 +1,44 @@
+FUNCIONES INCLUIDAS:
+
+- isalpha: Recibe un caracter y devuelve 1 si es una letra (mayus y minus), o de lo contrario devuelve 0;
+
+- isdigit: Recibe un caracter y devuelve 1 si es un digito (del 0 al 9), o de lo contrario devuelve un 0;
+
+- isalnum: Recibe un caracter y devuelve 1 si es un digito o letra, o de lo contrario devuelve un 0;
+
+- isascii: Recibe un caracter y devuelve 1 si es un caracter de la tabla ascii, de lo contrario devuelve un 0;
+
+- isprint:
+
+- strlen
+
+- memset
+
+- bzero
+
+- memcpy
+
+- memmove
+
+- strlcpy
+
+- strlcat
+
+- toupper
+
+- tolower
+
+- strchr
+
+- strrchr
+
+- strncmp
+
+- memchr
+
+- memcmp
+
+- strnstr
+
+- atoi
+
