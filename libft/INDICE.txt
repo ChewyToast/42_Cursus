@@ -8,19 +8,19 @@ FUNCIONES INCLUIDAS:
 
 - isascii: Recibe un caracter y devuelve 1 si es un caracter de la tabla ascii, de lo contrario devuelve un 0;
 
-- isprint:
+- isprint: Recibe un caracter y devuelve 1 si es printable, de lo contrario devuelve un 0;
 
-- strlen
+- strlen: Recibe un string, y devuelve el numero de caracteres del que esta compuesto;
 
-- memset
+- memset: Recibe un puntero de memoria, un caracter en forma de int (c) y un indice (size_t), y llena con "c" las "n" posiciones del string;
 
-- bzero
+- bzero: Recibe un puntero de memoria y un indice (size_t), y vacia las n posiciones con un '\0';
 
-- memcpy
+- memcpy: Recibe un puntero de destino, otro origen, y un indice (size_t), y va a copiar a partir del puntero destino "n" bytes del origen, no gestiona overlap de memoria
 
-- memmove
+- memmove: Recibe un puntero de destino, otro origen, y un indice (size_t), y va a copiar a partir del puntero destino "n" bytes del origen, si gestiona overlap de memoria
 
-- strlcpy
+- strlcpy: Recibe un string destino, uno origen, y un indice (size_t), y va a copiar "n" - 1 (añade \0) caracteres del str origen al destino.
 
 - strlcat
 

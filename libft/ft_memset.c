@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 00:19:53 by marvin            #+#    #+#             */
-/*   Updated: 2022/05/12 01:27:14 by marvin           ###   ########.fr       */
+/*   Created: 2022/05/11 11:59:35 by marvin            #+#    #+#             */
+/*   Updated: 2022/05/12 00:16:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_isprint(int c)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	if (c > 31 && c < 127)
-		return(1);
-	return(0);
+	unsigned char	*ptr;
+
+	ptr = s;
+	while (0 < n)
+	{
+		*ptr = c;
+		ptr++;
+		n--;
+	}
+	return(s);
 }

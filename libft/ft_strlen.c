@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 12:44:48 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/11 12:00:32 by marvin           ###   ########.fr       */
+/*   Created: 2022/05/11 12:00:45 by marvin            #+#    #+#             */
+/*   Updated: 2022/05/12 00:30:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
-int	ft_str_is_alpha(char *str)
+int	ft_strlen(const char *s)
 {
-	int		i;
-	int		j;
+	int	i;
 
 	i = 0;
-	j = 0;
-	while (str[i] != '\0')
-	{
-		if (('a' <= str[i]) && (str[i] <= 'z'))
-			j++;
-		if (('A' <= str[i]) && (str[i] <= 'Z'))
-			j++;
+	while (s[i] != '\0')
 		i++;
-	}
-	if (i < 1 || i == j)
-		return (1);
-	else
-		return (0);
+	return(i);
 }
