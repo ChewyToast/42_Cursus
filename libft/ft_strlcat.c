@@ -11,16 +11,23 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t n)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned char	*ptr;
+	int	i;
 
-	ptr = s;
-	while (n > 0)
+	i = 0;
+	while (size > 0 || *src == '\0')
 	{
-		*ptr = '\0';
-		ptr++;
-		n--;
+		if (dst[i] != '\0')
+			size--;
+		else
+		{
+			dst[i] = *src;
+			size--;
+			src++;
+		}
+		i++;
 	}
-	return (s);
+	dst[i] = '\0';
+	return (i);
 }

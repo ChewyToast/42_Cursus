@@ -18,7 +18,6 @@ void	*ft_memcpy(void *restrict dest, const void *restrict src, size_t n)
 
 	str_dest = dest;
 	str_ori = src;
-
 	while (n > 0)
 	{
 		*str_dest = *str_ori;
@@ -26,5 +25,5 @@ void	*ft_memcpy(void *restrict dest, const void *restrict src, size_t n)
 		str_ori--;
 		n--;
 	}
-	return(dest);
+	return (dest);
 }
