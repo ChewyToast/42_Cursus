@@ -16,18 +16,17 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	int	i;
 
 	i = 0;
-	while (size > 0 || *src == '\0')
+	while ((size - 1) > 0 && src[i] != '\0')
 	{
 		if (dst[i] != '\0')
 			size--;
 		else
 		{
-			dst[i] = *src;
+			dst[i] = src[i];
 			size--;
-			src++;
 		}
 		i++;
 	}
 	dst[i] = '\0';
-	return (i);
+	return ((ft_strlen(dst) + ft_strlen(src) + 1));
 }
