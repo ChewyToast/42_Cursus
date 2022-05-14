@@ -22,11 +22,11 @@ FUNCIONES INCLUIDAS:
 
 - strlcpy: Recibe un string destino, uno origen, y un indice (size_t), y va a copiar "n" - 1 (añade \0) caracteres del str origen al destino.
 
-- strlcat
+- strlcat: Recibe un string destino, uno origen y un indice (size_t), y va a concatenar el string destino seguido del origen y el string total de destino sera el size, si el size es 0 devuelve el valor size_src,
+		si el valor de size es mayor que el size_dst va a devolver size_src + size_dst, en cambio si el size es menor que el size_dst va a devolver size_src + size;
+- toupper: Recibe un char, y si es una letra minus la convierte en mayus;
 
-- toupper
-
-- tolower
+- tolower: Recibe un char, y si es una letra mayus la convierte en minus;
 
 - strchr
 
