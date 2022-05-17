@@ -28,11 +28,11 @@ FUNCIONES INCLUIDAS:
 
 - tolower: Recibe un char, y si es una letra mayus la convierte en minus;
 
-- strchr
+- strchr: Recibe un puntero char y un int, y debe encontrar la primera coincidencia a partir del puntero, devuelve la posicion si lo encuentra el char en el string o 0 si no;
 
-- strrchr
+- strrchr: Recibe un puntero char y un int, y debe encontrar la ultima coincidencia a partir del puntero, devuelve la posicion si lo encuentra el char en el string o 0 si no;
 
-- strncmp
+- strncmp: Recibe dos strings y un size_t, debe comparar los strings hasta size_t, devuelve un valor diferente de 0 si no son iguales;
 
 - memchr
 
