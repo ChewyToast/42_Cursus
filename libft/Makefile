@@ -27,10 +27,12 @@ FLAGS = -Werror -Wextra -Wall -c
 
 CC = gcc
 
+LIBR = libft.h
+
 $(OBJS):
 	$(CC) $(FLAGS) $(SRCS)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LIBR)
 	ar -rcs $(NAME) $(OBJS)
 
 .PHONY: all clean fclean re
