@@ -11,13 +11,20 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
-	size_t	i;
+	char			*str;
+	unsigned int	i;
 
-	i = ft_strlen(s) + 1;
-	str = (char *)ft_calloc(sizeof(char *), i);
-	ft_memcpy(str, s, i - 1);
+	i = ft_strlen(s);
+	if (i > len)
+		i = len;
+	str = (char *)ft_calloc(sizeof(char *), i + 1);
+	i = ft_strlen(s);
+	if ((i < start && start > 1) || (len == 0 && i != 0))
+		return (str);
+	if (i > len)
+		i = len;
+	ft_memcpy(str, s + start, i);
 	return (str);
 }
