@@ -38,7 +38,7 @@ FUNCIONES INCLUIDAS:
 
 - memcmp: Recibe dos punteros y un size_t, y hace lo mismo que strncmp;
 
-- strnstr: 
+- strnstr: Recibe dos strigs y un size_t, y debe encontrar el segundo string dentro el primero sin buscar del primero mas de n bytes;
 
-- atoi
+- atoi: Recibe un string de chars, y si cumple con las condiciones transforma el numero en string a int;
 
