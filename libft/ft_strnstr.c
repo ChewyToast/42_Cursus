@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/11 11:59:50 by marvin            #+#    #+#             */
-/*   Updated: 2022/05/12 00:46:17 by marvin           ###   ########.fr       */
+/*   Created: 2022/05/11 11:59:35 by marvin            #+#    #+#             */
+/*   Updated: 2022/05/12 00:16:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	const void	*init;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
-	init = s;
-	s += ft_strlen(s);
-	while (s != init && *s != (char)c)
-		s--;
-	if (*s == (char)c)
-		return ((char *)s);
-	else
-		return (0);
+	j = ft_strlen(little);
+	if (!*little || big == little)
+		return ((char *)big);
+	k = 0;
+	while (*big || len > k)
+	{
+		i = 0;
+		while ((big[i] == little[i])
+			&& (len > i + k)
+			&& (big[i] && little[i]))
+			i++;
+		if (i == j)
+			return ((char *)big);
+		big++;
+		k++;
+	}
+	return (0);
 }

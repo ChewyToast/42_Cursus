@@ -34,11 +34,11 @@ FUNCIONES INCLUIDAS:
 
 - strncmp: Recibe dos strings y un size_t, debe comparar los strings hasta size_t, devuelve un valor diferente de 0 si no son iguales;
 
-- memchr
+- memchr: Recibe un puntero un int y un size_t, y hace lo mismo que strchr;
 
-- memcmp
+- memcmp: Recibe dos punteros y un size_t, y hace lo mismo que strncmp;
 
-- strnstr
+- strnstr: 
 
 - atoi
 

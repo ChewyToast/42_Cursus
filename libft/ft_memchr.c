@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/11 11:59:50 by marvin            #+#    #+#             */
-/*   Updated: 2022/05/12 00:46:17 by marvin           ###   ########.fr       */
+/*   Created: 2022/05/11 12:00:09 by marvin            #+#    #+#             */
+/*   Updated: 2022/05/12 00:16:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const void	*init;
-
-	init = s;
-	s += ft_strlen(s);
-	while (s != init && *s != (char)c)
-		s--;
-	if (*s == (char)c)
-		return ((char *)s);
-	else
+	if (!n)
 		return (0);
+	while ((--n > 0) && *(unsigned char *)s != (unsigned char)c)
+		s++;
+	if (*(unsigned char *)s == (unsigned char)c)
+		return ((unsigned char *)s);
+	return (0);
 }
