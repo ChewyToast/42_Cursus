@@ -31,54 +31,61 @@ static size_t	words_counter(char const *s, char c)
 	return (words);
 }
 
-static size_t	chars_counter(char const *s, char c)
+static size_t	chars_counter(char const *s, char c, size_t *indx)
 {
 	size_t	letras;
-	while (*(s++) == c && *s)
-		;
-	while (*s != c && *s != '\0')
+
+	letras = 0;
+	while (s[*indx] == c && s[*indx])
+		*indx += 1;
+	while (s[*indx] != c && s[*indx])
 	{
-		s++;
+		*indx += 1;
 		letras++;
 	}
-	printf("\nRETURN DE CHARS_COUNTER: %ld\n", letras);
 	return (letras);
 }
 
 static void	fill(char **str, char const *s, char c)
 {
-	size_t	tmp;
+	size_t	charss;
+	size_t	wordss;
 
-	tmp = 0;
-	while (*(s++))
+	charss = 0;
+	wordss = 0;
+	while (*s)
 	{
-		while (*s == c)
+		charss = 0;
+		while (*s == c && *s)
 			s++;
-		while (*s != c)
-			*str[tmp] = *s;
-		tmp++;
+		while (*s != c && *s)
+			str[wordss][charss++] = *(s++);
+		wordss++;
 	}
 }
 
 char	**ft_split(char const *s, char c)
 {
 	size_t	words;
-	size_t	chars;
-	size_t	indx;
+	size_t	*indx;
+	size_t	i;
+	size_t	long_indx;
 	char	**str;
 
+	i = 0;
+	long_indx = 0;
+	indx = &long_indx;
 	words = words_counter(s, c);
-	printf("\nNUMERO DE PALABRAS: %ld\n", words);
 	str = (char **)ft_calloc(sizeof(char *), words);
-	printf("\nMEMORIA PARA %ld PALABRAS\n", words);
-	chars = 0;
-	indx = 0;
-	while (words--)
+	if (str == NULL)
+		return (0);
+	while (i < words)
 	{
-		chars = chars_counter(s + indx, c);
-		printf("\nVUELTA %ld: , numero de letras: %ld", words, chars);
-		indx += chars;
-		str[words] = (char *)ft_calloc(sizeof(char), chars);
+		str[i] = (char *)ft_calloc(sizeof(char),
+				(chars_counter(s, c, indx) + 1));
+		if (str[i] == NULL)
+			return (0);
+		i++;
 	}
 	fill(str, s, c);
 	return (str);

@@ -61,6 +61,11 @@ char	*ft_itoa(int n)
 	long int		size;
 
 	size = sizeofint((long int)n);
-	str = (char *)ft_calloc(sizeof(char *), size);
+	if (n < 0)
+		str = (char *)ft_calloc(sizeof(char), size + 1);
+	else
+		str = (char *)ft_calloc(sizeof(char), size);
+	if (!str)
+		return (0);
 	return (itoa_extract((long int)n, str, size));
 }
