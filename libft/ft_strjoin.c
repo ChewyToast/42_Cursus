@@ -16,9 +16,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*str;
 	size_t	size;
 
-	size = ft_strlen(s1) + ft_strlen(s2);
-	str = (char *)calloc(sizeof(char *), size + 1);
-	ft_strlcat(str, s1, ft_strlen(s1) + 1);
-	ft_strlcat(str, s2, size + 1);
+	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	str = (char *)ft_calloc(sizeof(char), size);
+	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
+	ft_strlcat(str, s2, size);
 	return (str);
 }

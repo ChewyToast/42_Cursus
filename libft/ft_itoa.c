@@ -11,20 +11,56 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+int	sizeofint(long int n)
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
+	long int	indx;
+	int			size;
 
-	i = ft_strlen(s) + 1;
-	str = (char *)ft_calloc(sizeof(char *), i);
-	if (str == NULL)
-		return (0);
-	j = 0;
-	while (i - 1)
+	indx = 1;
+	size = 0;
+	if (n <= 0)
 	{
-		str[j] = s[j];
+		indx *= 10;
+		size++;
+		n *= -1;
+	}
+	while (n >= indx)
+	{
+		indx *= 10;
+		size++;
+	}
+	size++;
+	return (size);
+}
+
+char	*itoa_extract(long int n, char *str, size_t size)
+{
+	int	i;
+
+	i = size - 2;
+	size--;
+	if (n < 0)
+	{
+		n *= -1;
+		*str = '-';
+		i++;
+	}
+	while (size)
+	{
+		str[i] = (n % 10) + 48;
+		n /= 10;
+		size--;
+		i--;
 	}
 	return (str);
+}
+
+char	*ft_itoa(int n)
+{
+	char			*str;
+	long int		size;
+
+	size = sizeofint((long int)n);
+	str = (char *)ft_calloc(sizeof(char *), size);
+	return (itoa_extract((long int)n, str, size));
 }
