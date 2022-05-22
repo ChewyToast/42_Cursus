@@ -13,6 +13,14 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	(void)*s;
-	(void)*f;
+	char	*str;
+	size_t	i;
+
+	i = ft_strlen(s);
+	str = ft_calloc(sizeof(char),  i + 1);
+	if (!str)
+		return (NULL);
+	while (i--)
+		str[i] = f(i, s[i]);
+	return (str);
 }
