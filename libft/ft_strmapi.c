@@ -11,12 +11,8 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*str;
-
-	if (s1)
-		str = ft_substr(s1, ft_strspn(s1, set),
-				ft_strrspn(s1, set) - ft_strspn(s1, set));
-	return (str);
+	(void)*s;
+	(void)*f;
 }
