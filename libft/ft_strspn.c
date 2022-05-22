@@ -11,21 +11,22 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+size_t	ft_strspn(const char *s, const char *accept)
 {
-	char	*str;
 	size_t	size;
+	size_t	tmp;
 
-	size = ft_strlen(s);
-	if (!(start + len <= size) && size > 0)
-		len = size;
-	else
-		len++;
-	str = malloc(sizeof(char) * len);
-	if ((!str) || (!s && len))
-		return (0);
-	if (!*s)
-		return ("");
-	ft_strlcpy(str, s + start, len);
-	return (str);
+	size = 0;
+	tmp = 0;
+	while (s[size])
+	{
+		tmp = 0;
+		while (s[size] != accept[tmp] && accept[tmp])
+			tmp++;
+		if (s[size] == accept[tmp])
+			size++;
+		else
+			break ;
+	}
+	return (size);
 }

@@ -46,8 +46,14 @@ FUNCIONES INCLUIDAS:
 
 - strdup: Recibe un *s, y debe crear un string null-terminated malloc igual que el s;
 
+- strspn: Calculate the length of the starting segment in the strin s that consists entirely of bytes in accept;
+
+- strspn: Calculate the length of the ending segment in the strin s that consists entirely of bytes in regect;
+
 - ft_substr: Reserva con malloc(3) memoria para devolver una string nueva basada en la string ’s’. La nueva string empieza en el índice ’start’ y tiene una longitud máxima ’len’;
 
 - ft_strjoin: Reserva con malloc(3) una nueva string, basada en la unión de las dos strings dadas como parámetros;
 
 - ft_strtrim: Reserva con malloc(3) y devuelve una copia de ’s1’ con los caracteres dados en ’set’ eliminados tanto del principio como del final;
+
+- ft_strmapi: Aplica la función ’f’ a cada caracter de la string ’s’ para crear la nueva string, resultado de aplicar sucesivas veces ’f’ (utilizando malloc(3)). A esta función se le pasará el índice del caracter iterado.

@@ -16,6 +16,9 @@
 # include <strings.h>
 # include <stddef.h>
 # include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <string.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -39,7 +42,7 @@ char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 
 void	*ft_memset(void *s, int c, size_t n);
-void	*ft_bzero(void *s, size_t n);
+void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -48,5 +51,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *s);
+size_t	ft_strspn(const char *s, const char *accept);
+size_t  ft_strrspn(const char *s, const char *accept);
 
 #endif

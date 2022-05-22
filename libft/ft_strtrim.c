@@ -15,7 +15,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 
-	(void)set;
-	str = ft_strdup(s1);
+	if (s1)
+		str = ft_substr(s1, ft_strspn(s1, set),
+			ft_strrspn(s1, set) - ft_strspn(s1, set));
 	return (str);
 }

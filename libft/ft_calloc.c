@@ -13,13 +13,15 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*mall;
+	unsigned char	*mall;
 
 	if (!nmemb || !size || (nmemb * size) > 0xffffffff)
 		return (NULL);
-	mall = (void *)malloc (size * nmemb);
+	mall = malloc (size * nmemb);
 	if (mall == NULL)
 		return (NULL);
-	ft_bzero(mall, size * nmemb);
+	size *= nmemb;
+	while (size--)
+		mall[size] = 0;
 	return (mall);
 }
