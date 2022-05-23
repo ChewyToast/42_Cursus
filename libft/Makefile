@@ -6,7 +6,7 @@
 #    By: marvin <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 09:32:53 by marvin            #+#    #+#              #
-#    Updated: 2022/05/12 10:08:20 by marvin           ###   ########.fr        #
+#    Updated: 2022/05/23 10:55:19 by bmoll-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ SRCS =	ft_isalpha.c	ft_isdigit.c	\
 	ft_strjoin.c	ft_strtrim.c	\
 	ft_itoa.c	ft_split.c	\
 	ft_strspn.c	ft_strrspn.c	\
-	ft_strmapi.c	ft_striteri.c
+	ft_strmapi.c	ft_striteri.c	\
+	ft_putchar_fd.c		ft_putstr_fd.c	\
+	ft_putendl_fd.c	ft_putnbr_fd.c
 
 OBJS = $(SRCS:.c=.o)
 
