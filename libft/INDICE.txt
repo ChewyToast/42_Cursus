@@ -59,3 +59,11 @@ FUNCIONES INCLUIDAS:
 - ft_strmapi: Aplica la función ’f’ a cada caracter de la string ’s’ para crear la nueva string, resultado de aplicar sucesivas veces ’f’ (utilizando malloc(3)). A esta función se le pasará el índice del caracter iterado;
 
 - ft_striteri: Aplica la función ’f’ a cada caracter de la string dada como argumento, pasando su índice como primer argumento. Cada caracter se pasa como una dirección a ’f’, por si hace falta modificarlo;
+
+- ft_putchar_fd: Envía el caracter ’c’ al file descriptor dado.
+
+- ft_putstr_fd: Escribe la string ’s’ en el file descriptor indicado.
+
+- ft_putendl_fd: Escribe la string ’s’ en el file descriptor indicado, seguido de un salto de línea.
+
+- ft_putnbr_fd: Escribe el número ’n’ al file descriptor dado.
