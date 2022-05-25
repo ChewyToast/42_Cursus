@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 12:00:09 by marvin            #+#    #+#             */
-/*   Updated: 2022/05/12 00:16:17 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/25 01:58:14 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -19,7 +19,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	str_dest = dest;
 	str_src = src;
-	if (!dest || !src)
+	if (!dest && !src)
 		return (0);
 	if (dest < src)
 		ft_memcpy(dest, src, n);
