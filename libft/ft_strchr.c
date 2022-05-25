@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:59:50 by marvin            #+#    #+#             */
-/*   Updated: 2022/05/12 00:46:17 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/25 02:06:05 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 
 char	*ft_strchr(const char *s, int c)
 {
-	if (!s)
-		return (0);
 	while (*s != (char)c && *s != '\0')
 		s++;
 	if (*s == (char)c || (*s == '\0' && (char)c == '\0'))
@@ -24,9 +20,3 @@ char	*ft_strchr(const char *s, int c)
 	else
 		return (0);
 }
-/*
-int	main(int av, char **argv)
-{
-	printf("EXPECTED: %s\n", strchr(argv[1], argv[2][0]));
-	printf("My: %s\n", ft_strchr(argv[1], argv[2][0]));
-}*/

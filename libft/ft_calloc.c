@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:59:35 by marvin            #+#    #+#             */
-/*   Updated: 2022/05/12 00:16:00 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/25 02:03:34 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -15,7 +15,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	unsigned char	*mall;
 
-	if (!nmemb || !size || (nmemb * size) > 0xffffffff)
+	if ((nmemb * size) > 0xffffffff)
 		return (NULL);
 	mall = malloc (size * nmemb);
 	if (mall == NULL)
