@@ -6,12 +6,12 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 22:25:32 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/24 01:24:45 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/05/26 21:45:18 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	words_counter(char const *s, char c)
+static size_t	words_counter(char const *s, char c)
 {
 	size_t	words;
 
@@ -25,7 +25,7 @@ size_t	words_counter(char const *s, char c)
 	return (words);
 }
 
-char	**ft_freedom(char **str, size_t indx)
+static char	**ft_freedom(char **str, size_t indx)
 {
 	while (indx-- > 0)
 		free(str[indx]);
@@ -33,7 +33,7 @@ char	**ft_freedom(char **str, size_t indx)
 	return (0);
 }
 
-char	**fill(char **str, char const *s, char c)
+static char	**fill(char **str, char const *s, char c)
 {
 	size_t	i;
 	size_t	start;

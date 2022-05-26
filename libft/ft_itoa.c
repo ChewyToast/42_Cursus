@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:59:35 by marvin            #+#    #+#             */
-/*   Updated: 2022/05/12 00:16:00 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/26 21:42:45 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	sizeofint(long int n)
+static int	sizeofint(long int n)
 {
 	long int	indx;
 	int			size;
@@ -33,7 +33,7 @@ int	sizeofint(long int n)
 	return (size);
 }
 
-char	*itoa_extract(long int n, char *str, size_t size)
+static char	*itoa_extract(long int n, char *str, size_t size)
 {
 	int	i;
 
