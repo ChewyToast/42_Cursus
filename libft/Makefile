@@ -6,7 +6,7 @@
 #    By: marvin <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 09:32:53 by marvin            #+#    #+#              #
-#    Updated: 2022/05/25 01:50:28 by bmoll-pe         ###   ########.fr        #
+#    Updated: 2022/05/26 02:35:04 by bmoll-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,10 @@ SRCS =		ft_atoi.c		ft_memmove.c	ft_strlcpy.c	\
 			ft_memcmp.c		ft_strjoin.c	ft_tolower.c	\
 			ft_memcpy.c		ft_strlcat.c	ft_toupper.c
 
-BNS_SRCS =	ft_lstnew_bonus.c	ft_lstadd_front_bonus.c		\
-			ft_lstsize_bonus.c	ft_lstlast_bonus.c
+BNS_SRCS =	ft_lstnew_bonus.c		ft_lstadd_front_bonus.c		\
+			ft_lstsize_bonus.c		ft_lstlast_bonus.c			\
+			ft_lstadd_back_bonus.c	ft_lstdelone_bonus.c		\
+			ft_lstclear_bonus.c		ft_lstiter_bonus.c
 
 OBJS =		$(SRCS:.c=.o)
 

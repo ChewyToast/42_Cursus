@@ -1,69 +1,148 @@
 FUNCIONES INCLUIDAS:
 
-- isalpha: Recibe un caracter y devuelve 1 si es una letra (mayus y minus), o de lo contrario devuelve 0;
+- isalpha:		int|	 |ft_isalpha(int c)
+			Devuelve 1 si es una letra (mayus y minus), o de lo contrario devuelve 0;
 
-- isdigit: Recibe un caracter y devuelve 1 si es un digito (del 0 al 9), o de lo contrario devuelve un 0;
+- isdigit:		int|   |ft_isdigit(int c)
+			Devuelve 1 si es un digito (del 0 al 9), o de lo contrario devuelve un 0;
 
-- isalnum: Recibe un caracter y devuelve 1 si es un digito o letra, o de lo contrario devuelve un 0;
+- isalnum:		int|   |ft_isalnum(int c)
+			Devuelve 1 si es un digito o letra, o de lo contrario devuelve un 0;
 
-- isascii: Recibe un caracter y devuelve 1 si es un caracter de la tabla ascii, de lo contrario devuelve un 0;
+- isascii:		int|   |ft_isascii(int c)
+			Devuelve 1 si es un caracter de la tabla ascii, de lo contrario devuelve un 0;
 
-- isprint: Recibe un caracter y devuelve 1 si es printable, de lo contrario devuelve un 0;
+- isprint:		int|   |ft_isprint(int c)
+			Devuelve 1 si es printable, de lo contrario devuelve un 0;
 
-- strlen: Recibe un string, y devuelve el numero de caracteres del que esta compuesto;
+- strlen:		size_t |ft_strlen(const char *s)
+			Devuelve el numero de caracteres del que esta compuesto;
 
-- memset: Recibe un puntero de memoria, un caracter en forma de int (c) y un indice (size_t), y llena con "c" las "n" posiciones del string;
+- memset:		void   |*ft_memset(void *s, int c, size_t n)
+			Llena con "c" las "n" posiciones del string;
 
-- bzero: Recibe un puntero de memoria y un indice (size_t), y vacia las n posiciones con un '\0';
+- bzero:		void   |ft_bzero(void *s, size_t n)
+			Vacia las n posiciones con un '\0';
 
-- memcpy: Recibe un puntero de destino, otro origen, y un indice (size_t), y va a copiar a partir del puntero destino "n" bytes del origen, no gestiona overlap de memoria
+- memcpy:		void   |*ft_memcpy(void *dest, const void *src, size_t n)
+			Va a copiar a partir del puntero destino "n" bytes del origen, no gestiona overlap de memoria
 
-- memmove: Recibe un puntero de destino, otro origen, y un indice (size_t), y va a copiar a partir del puntero destino "n" bytes del origen, si gestiona overlap de memoria
+- memmove:		void   |*ft_memmove(void *dest, const void *src, size_t n)
+			Va a copiar a partir del puntero destino "n" bytes del origen, si gestiona overlap de memoria
 
-- strlcpy: Recibe un string destino, uno origen, y un indice (size_t), y va a copiar "n" - 1 (añade \0) caracteres del str origen al destino.
+- strlcpy:		size_t |ft_strlcpy(char *dst, const char *src, size_t size)
+			Va a copiar "n" - 1 (añade \0) caracteres del str origen al destino.
 
-- strlcat: Recibe un string destino, uno origen y un indice (size_t), y va a concatenar el string destino seguido del origen y el string total de destino sera el size, si el size es 0 devuelve el valor size_src,
-		si el valor de size es mayor que el size_dst va a devolver size_src + size_dst, en cambio si el size es menor que el size_dst va a devolver size_src + size;
-- toupper: Recibe un char, y si es una letra minus la convierte en mayus;
+- strlcat:		size_t |ft_strlcat(char *dst, const char *src, size_t size)
+			Va a concatenar el string destino seguido del origen y el string total de destino sera el size, 
+			si el size es 0 devuelve el valor size_src, si el valor de size es mayor que el size_dst va a
+			devolver size_src + size_dst, en cambio si el size es menor que el size_dst va a devolver size_src + size;
 
-- tolower: Recibe un char, y si es una letra mayus la convierte en minus;
+- toupper:		int|   |ft_toupper(int c)
+			Si es una letra minus la convierte en mayus;
 
-- strchr: Recibe un puntero char y un int, y debe encontrar la primera coincidencia a partir del puntero, devuelve la posicion si lo encuentra el char en el string o 0 si no;
+- tolower:		int|   |ft_tolower(int c)
+			Si es una letra mayus la convierte en minus;
 
-- strrchr: Recibe un puntero char y un int, y debe encontrar la ultima coincidencia a partir del puntero, devuelve la posicion si lo encuentra el char en el string o 0 si no;
+- strchr:		char   |*ft_strchr(const char *s, int c)
+			Encuentra la primera coincidencia a partir del puntero, devuelve la posicion si lo encuentra el
+			char en el string o 0 si no;
 
-- strncmp: Recibe dos strings y un size_t, debe comparar los strings hasta size_t, devuelve un valor diferente de 0 si no son iguales;
+- strrchr:		char   |*ft_strrchr(const char *s, int c)
+			Encuentra la ultima coincidencia a partir del puntero, devuelve la posicion si lo encuentra el
+			char en el string o 0 si no;
 
-- memchr: Recibe un puntero un int y un size_t, y hace lo mismo que strchr;
+- strncmp:		int|   |ft_strncmp(const char *s1, const char *s2, size_t n)
+			Compara los strings hasta size_t, devuelve un valor diferente de 0 si no son iguales;
 
-- memcmp: Recibe dos punteros y un size_t, y hace lo mismo que strncmp;
+- memchr:		void   |*ft_memchr(const void *s, int c, size_t n)
+			Hace lo mismo que strchr pero con punteros de memoria;
 
-- strnstr: Recibe dos strigs y un size_t, y debe encontrar el segundo string dentro el primero sin buscar del primero mas de n bytes;
+- memcmp:		int|   |ft_memcmp(const void *s1, const void *s2, size_t n)
+			Hace lo mismo que strncmp con punteros de memoria;
 
-- atoi: Recibe un string de chars, y si cumple con las condiciones transforma el numero en string a int;
+- strnstr:		char   |*ft_strnstr(const char *big, const char *little, size_t len)
+			Encuentra el segundo string dentro el primero sin buscar del primero mas de n bytes;
 
-- calloc: Recibe un size_t como tamaño de almacenamiento y otro stize_t como cantidad a almacenar, y crea un malloc de esos tamaños lleno de '\0';
+- atoi:		int|   |ft_atoi(const char *nptr)
+			Si cumple con las condiciones transforma el numero en string a int;
 
-- strdup: Recibe un *s, y debe crear un string null-terminated malloc igual que el s;
+- calloc:		void   |*ft_calloc(size_t nmemb, size_t size)
+			Crea un malloc de esos tamaños lleno de '\0';
 
-- strspn: Calculate the length of the starting segment in the strin s that consists entirely of bytes in accept;
+- strdup:		char   |*ft_strdup(const char *s)
+			Crear un string null-terminated malloc igual que el s;
 
-- strrspn: Calculate the length of the ending segment in the strin s that consists entirely of bytes in regect;
+- strspn:		size_t |ft_strspn(const char *s, const char *accept)
+			Calculate the length of the starting segment in the strin s that consists entirely of bytes in accept;
 
-- ft_substr: Reserva con malloc(3) memoria para devolver una string nueva basada en la string ’s’. La nueva string empieza en el índice ’start’ y tiene una longitud máxima ’len’;
+- strrspn:		size_t |ft_strrspn(const char *s, const char *accept)
+			Calculate the length of the ending segment in the strin s that consists entirely of bytes in regect;
 
-- ft_strjoin: Reserva con malloc(3) una nueva string, basada en la unión de las dos strings dadas como parámetros;
+- ft_substr: 	char   |*ft_substr(char const *s, unsigned int start, size_t len)
+			Reserva con malloc(3) memoria para devolver una string nueva basada en la string ’s’. La nueva
+			string empieza en el índice ’start’ y tiene una longitud máxima ’len’;
 
-- ft_strtrim: Reserva con malloc(3) y devuelve una copia de ’s1’ con los caracteres dados en ’set’ eliminados tanto del principio como del final;
+- ft_strjoin:	char   |*ft_strjoin(char const *s1, char const *s2)
+			Reserva con malloc(3) una nueva string, basada en la unión de las dos strings dadas como parámetros;
 
-- ft_strmapi: Aplica la función ’f’ a cada caracter de la string ’s’ para crear la nueva string, resultado de aplicar sucesivas veces ’f’ (utilizando malloc(3)). A esta función se le pasará el índice del caracter iterado;
+- ft_strtrim:	char   |*ft_strtrim(char const *s1, char const *set)
+		 	Reserva con malloc(3) y devuelve una copia de ’s1’ con los caracteres dados en ’set’ eliminados
+			tanto del principio como del final;
 
-- ft_striteri: Aplica la función ’f’ a cada caracter de la string dada como argumento, pasando su índice como primer argumento. Cada caracter se pasa como una dirección a ’f’, por si hace falta modificarlo;
+- ft_split:		char   |**ft_split(char const *s, char c)
+			Reserva con malloc(3) y devuelve un array de strings obtenido al separar ’s’ con el caracter ’c’ como
+			delimitador. El array debe terminar en NULL.
 
-- ft_putchar_fd: Envía el caracter ’c’ al file descriptor dado.
+- ft_strmapi:	char   |*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+			Aplica la función ’f’ a cada caracter de la string ’s’ para crear la nueva string, resultado de
+			aplicar sucesivas veces ’f’ (utilizando malloc(3)). A esta función se le pasará el índice del caracter iterado;
 
-- ft_putstr_fd: Escribe la string ’s’ en el file descriptor indicado.
+- ft_striteri:	void   |ft_striteri(char *s, void (*f)(unsigned int, char*)
+			Aplica la función ’f’ a cada caracter de la string dada como argumento, pasando su índice como
+			primer argumento. Cada caracter se pasa como una dirección a ’f’, por si hace falta modificarlo;
 
-- ft_putendl_fd: Escribe la string ’s’ en el file descriptor indicado, seguido de un salto de línea.
+- ft_putchar_fd:	void   |ft_putchar_fd(char c, int fd)
+			Envía el caracter ’c’ al file descriptor dado.
 
-- ft_putnbr_fd: Escribe el número ’n’ al file descriptor dado.
+- ft_putstr_fd:	void   |ft_putstr_fd(char *s, int fd)
+			Escribe la string ’s’ en el file descriptor indicado.
+
+- ft_putendl_fd:	void   |ft_putendl_fd(char *s, int fd)
+			Escribe la string ’s’ en el file descriptor indicado, seguido de un salto de línea.
+
+- ft_putnbr_fd:	void   |ft_putnbr_fd(int n, int fd)
+			Escribe el número ’n’ al file descriptor dado.
+
+- ft_lstnew:		t_list *ft_lstnew(void *content)
+				Reserva con malloc(3) y devuelve un elemento nuevo. La variable ’content’ se inicializa con el valor
+				del parámetro ’content’. La variable ’next’ se inicializa a NULL.
+
+- ft_lstadd_front:	void ft_lstadd_front(t_list **lst, t_list *new)
+				Añade el elemento ’new’ al principio de la lista.
+
+- ft_lstsize:		int ft_lstsize(t_list *lst)
+				Cuenta el número de elemento de una lista.
+
+- ft_lstlast:		t_list *ft_lstlast(t_list *lst)
+				Devuelve el último elemento de una lista.
+
+- ft_lstadd_back:		void ft_lstadd_back(t_list **lst, t_list *nlst)
+				Añade el elemento ’new’ al final de una lista.
+
+- ft_lstdelone:		void ft_lstdelone(t_list *lst, void (*del)(void*))
+				Toma como parámetro un elemento y libera la memoria del contenido del elemento utilizando la función
+				’del’ dada como parámetro, por último libera el elemento. La memoria de ’next’ no debe liberarse.
+
+- ft_lstclear:		void ft_lstclear(t_list **lst, void (*del)(void*))
+				Elimina y libera cada uno de los elementos de la lista dada, utilizando la función ’del’ y free(3).
+				Por último, el puntero a la lista debe ponerse a NULL.
+
+- ft_lstiter:		void ft_lstiter(t_list *lst, void (*f)(void *))
+				Itera la lista ’lst’ y aplica la función ’f’ al contenido de cada elemento.
+				
+
+- ft_lstmap:		t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+				Itera la lista ’lst’ y aplica la función ’f’ al contenido de cada elemento. La aplicación correcta
+				de la función ’f’ sobre cada elemento genera una nueva lista con estos. La función ’del’ se
+				utilizará para eliminar el contenido de un elemento en caso de necesitarse.
