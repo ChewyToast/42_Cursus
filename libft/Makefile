@@ -6,7 +6,7 @@
 #    By: marvin <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/12 09:32:53 by marvin            #+#    #+#              #
-#    Updated: 2022/05/26 10:09:11 by bmoll-pe         ###   ########.fr        #
+#    Updated: 2022/05/27 22:37:09 by bmoll-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,16 +41,19 @@ CC = 		gcc
 
 LIBR = 		libft.h
 
-$(OBJS):
-			$(CC) $(FLAGS) $(SRCS)
+all:		$(NAME)
 
-$(BNS_OBJS):
-			$(CC) $(FLAGS) $(BNS_SRCS)
+%.o: %.c $(LIBR)
+	$(CC) $(FLAGS) $< -o $@
+
+# $(OBJS):		$(LIBR) $(SRCS)
+#			$(CC) $(FLAGS) $(SRCS)
+
+# $(BNS_OBJS):	$(LIBR) $(BNS_SRCS)
+#			$(CC) $(FLAGS) $(BNS_SRCS)
 
 $(NAME):	$(OBJS) $(LIBR)
 			@ar -rcs $(NAME) $^
-
-all:		$(NAME)
 
 bonus:		$(OBJS) $(BNS_OBJS) $(LIBR)
 			@ar -rcs	$(NAME) $^
