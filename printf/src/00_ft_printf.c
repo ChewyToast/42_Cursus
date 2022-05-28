@@ -13,16 +13,20 @@
 
 int	ft_printf(const char *str, ...)
 {
+    size_t  print_length;
     va_list args;
-    
+
     va_start(args, str);
-    read_input(str, args);
+    print_length = read_input(str, args, 0);
     va_end(args);
+    return (print_length);
 }
 
 int main(void)
 {
-    ft_printf("Caracter c: %c, string HW: %s\n", 'c', "Hello World");
-    ft_printf("Esto es el numero 456: %d, y esto tambien: %i\n", 456, 456);
+    int rslt;
+
+    rslt = ft_printf("%s\n%d\n%i\n%u\n%%\n", "123456789", 123456789, 123456789, 123456789);
+    ft_printf("NUMBER OF CHARS: %d\n", rslt);
     return 0;
 }
