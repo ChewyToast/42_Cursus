@@ -10,14 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF
-# define FT_PRINTF
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
+# include <stdarg.h>
 # include <strings.h>
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <string.h>
+
+int     read_input(const char *str, va_list args);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(const char *str, int fd);
+int     ft_strlen(const char *s);
+char	*ft_itoa(int n);
+void	*ft_calloc(size_t nmemb, size_t size);
+void    ft_int(int n);
 
 #endif
