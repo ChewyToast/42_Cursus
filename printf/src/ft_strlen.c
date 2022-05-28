@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 11:24:56 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/27 11:26:00 by bmoll-pe         ###   ########.fr       */
+/*   Created: 2022/05/11 12:00:45 by marvin            #+#    #+#             */
+/*   Updated: 2022/05/12 00:30:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
-
-int	ft_printf(const char *str, ...)
+#include "../ft_printf.h"
+int	ft_strlen(const char *s)
 {
-	(void)str;
-	return 0;
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

@@ -15,7 +15,7 @@ char	*get_next_line(const int fd)
 {
 	char	*line;
 	char	*tmp;
-	char	buff[0];
+	char	buff[1];
 	int		fr;
 
 	tmp = "";
