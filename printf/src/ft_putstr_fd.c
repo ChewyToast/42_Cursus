@@ -11,7 +11,11 @@
 /* ************************************************************************** */
 #include "../ft_printf.h"
 
-void	ft_putstr_fd(const char *str, int fd)
+size_t	ft_putstr_fd(const char *str, int fd)
 {
-	write(fd, str, ft_strlen(str));
+	size_t	size;
+
+	size = ft_strlen(str);
+	write(fd, str, size);
+	return (size);
 }

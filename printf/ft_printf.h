@@ -21,12 +21,13 @@
 # include <stdio.h>
 # include <string.h>
 
-int     read_input(const char *str, va_list args);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(const char *str, int fd);
+size_t     read_input(const char *str, va_list args, size_t print_length);
+size_t  ft_putchar_fd(char c, int fd);
+size_t 	ft_putstr_fd(const char *str, int fd);
 int     ft_strlen(const char *s);
 char	*ft_itoa(int n);
 void	*ft_calloc(size_t nmemb, size_t size);
-void    ft_int(int n);
+size_t   ft_int(int n, unsigned int n2, int method);
+char	*ft_itoa_unsigned(unsigned int n);
 
 #endif
