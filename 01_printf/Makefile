@@ -13,9 +13,9 @@
 NAME =		libftprintf.a
 
 SRCS =		00_ft_printf.c		01_ft_read_input.c	\
-			02_ft_int.c			ft_calloc.c			\
+			02_ft_int.c			03_ft_print_atoh.c	\
 			ft_itoa_unsigned.c	ft_itoa.c			\
-			ft_putchar_fd.c		ft_puthexa.c		\
+			ft_putchar_fd.c		ft_calloc.c			\
 			ft_putstr_fd.c		ft_strlen.c
 
 OBJS =		$(SRCS:.c=.o)
