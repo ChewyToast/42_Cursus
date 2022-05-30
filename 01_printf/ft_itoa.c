@@ -9,7 +9,7 @@
 /*   Updated: 2022/05/26 21:42:45 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 static int	sizeofint(long int n)
 {

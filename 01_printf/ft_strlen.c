@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 00:20:18 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/23 00:21:48 by bmoll-pe         ###   ########.fr       */
+/*   Created: 2022/05/11 12:00:45 by marvin            #+#    #+#             */
+/*   Updated: 2022/05/12 00:30:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../ft_printf.h"
-
-size_t	ft_putchar_fd(char c, int fd)
+#include "ft_printf.h"
+int	ft_strlen(const char *s)
 {
-	write(fd, &c, 1);
-	return (1);
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
