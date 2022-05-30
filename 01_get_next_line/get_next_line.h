@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 10:03:28 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/27 12:15:51 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/05/31 00:19:37 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,11 @@ char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_strlen(const char *s);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
+
+#endif
+
+#ifndef BUFFER_SIZE
+
+# define BUFFER_SIZE 10
 
 #endif
