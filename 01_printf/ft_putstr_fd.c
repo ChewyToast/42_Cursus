@@ -9,7 +9,7 @@
 /*   Updated: 2022/05/23 10:36:43 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 size_t	ft_putstr_fd(const char *str, int fd)
 {
