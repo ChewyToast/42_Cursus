@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 11:26:12 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/30 02:44:41 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/05/30 22:02:48 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_PRINTF_H
@@ -19,6 +19,10 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <string.h>
+
+// --FT PRINTF--
+
+int			ft_printf(const char *str, ...);
 
 // --READ INPUT--
 int			read_input(const char *str, va_list args, size_t *print_length);

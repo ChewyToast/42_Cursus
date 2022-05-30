@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 02:55:37 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/30 10:56:01 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/05/30 22:25:20 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	extra_read_input(const char *str, va_list args, size_t *print_length)
 
 	rslt = 0;
 	if (*str == 'u')
-		rslt = ft_int(0, va_arg(args, long int), 2, print_length);
+		rslt = ft_int(0, va_arg(args, unsigned int), 2, print_length);
 //    else if (*str == 'x')
 //    else if (*str == 'X')
 	else if (*str == '%')
