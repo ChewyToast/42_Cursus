@@ -16,7 +16,7 @@ int	read_input(const char *str, va_list args, size_t *print_length)
 {
 	int	rslt;
 
-	slt = 0;
+	rslt = 0;
 	while (*str)
 	{
 		if (*str == '%')
