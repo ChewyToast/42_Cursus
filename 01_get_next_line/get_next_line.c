@@ -25,33 +25,6 @@ int	main()
 	close(fd);
 }
 
-char	*get_next_line(const int fd)
-{
-	static char	*str;
-	char		*rdstr;
-	char		*rtstr;
-	int			mode;
-
-	mode = ft_check_str(str);
-	if (mode < 1)
-	{
-		if (mode == -1)
-			str = "";
-		rdstr = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // Create a read string
-		if (!rdstr || !read(fd, rdstr, BUFFER_SIZE)) // Read into read string
-			return ((char *)ft_clean(rdstr));
-		rdstr[BUFFER_SIZE] = '\0';
-		str = f_strjoin(str, rdstr); // Create a total str and free rdstr
-	}
-	rtstr = str;
-	mode =get_line(rtstr, str); // Take only the line to return string
-	if (!mode)
-		return ((char *)ft_clean(rtstr));
-	if (!trim_str(str))
-		return(0);
-	return (rtstr);
-}
-
 int	ft_clean(char *str)
 {
 	free(str);
@@ -89,4 +62,31 @@ int	trim_str(char *str)
 	ft_strlcpy(str, tmp, 0xffffffff);
 	free(tmp);
 	return (1);
+}
+
+char	*get_next_line(const int fd)
+{
+	static char	*str;
+	char		*rdstr;
+	char		*rtstr;
+	int			mode;
+
+	mode = ft_check_str(str);
+	if (mode < 1)
+	{
+		if (mode == -1)
+			str = "";
+		rdstr = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // Create a read string
+		if (!rdstr || !read(fd, rdstr, BUFFER_SIZE)) // Read into read string
+			return ((char *)ft_clean(rdstr));
+		rdstr[BUFFER_SIZE] = '\0';
+		str = f_strjoin(str, rdstr); // Create a total str and free rdstr
+	}
+	rtstr = str;
+	mode =get_line(rtstr, str); // Take only the line to return string
+	if (!mode)
+		return ((char *)ft_clean(rtstr));
+	if (!trim_str(str))
+		return(0);
+	return (rtstr);
 }
