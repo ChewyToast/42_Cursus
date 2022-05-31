@@ -24,18 +24,16 @@
 // --GNL--
 
 char	*get_next_line(const int fd);
-int		ft_clean(char *str);
-char	ft_check_str(char *str);
-char	*trim_str(char *str);
+char	ft_check_str(char *str, size_t *szie);
+char	*ft_read(char *rdstr, int fd, size_t *size);
 
 // --GNLU--
 
-char	*f_strjoin(char *s1, char *s2);
-char	*get_line(char *line, char *str);
+char	*ft_substr(char *s, unsigned int start, size_t len);
+char	*ft_strjoin(char *s1, char *s2, int mode);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
-
 
 #endif
 

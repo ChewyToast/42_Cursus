@@ -11,6 +11,40 @@
 /* ************************************************************************** */
 #include "get_next_line.h"
 
+char	*ft_substr(char *s, unsigned int start, size_t len)
+{
+	char	*str;
+	size_t	size;
+
+	size = ft_strlen(s);
+	if (!*s || size < start)
+		return (ft_calloc(sizeof(char), 1));
+	if ((len + start) > size)
+		len = size - start;
+	str = malloc(sizeof(char) * (len + 1));
+	if ((!str) || (!s && len))
+		return (0);
+	ft_strlcpy(str, s + start, (len + 1));
+	return (str);
+}
+
+char	*ft_strjoin(char *s1, char *s2, int mode)
+{
+	char	*str;
+	size_t	size;
+
+	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	str = (char *)ft_calloc(sizeof(char), size);
+	if (str == NULL)
+		return (0);
+	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
+	ft_strlcat(str, s2, size);
+	if (mode)
+		free(s1);
+	free(s2);
+	return (str);
+}
+
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	src_counter;
@@ -65,46 +99,4 @@ size_t	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
-}
-
-char	*f_strjoin(char *s1, char *s2)
-{
-	char	*str;
-	size_t	size;
-
-	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	str = malloc(sizeof(char) * size);
-	if (str == NULL)
-		return (0);
-	str[size] = '\0';
-	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
-	ft_strlcat(str, s2, size);
-	free(s2);
-	return (str);
-}
-
-char	*get_line(char *line, char *str)
-{
-	size_t	size;
-	size_t	i;
-
-	size = 0;
-	i = 0;
-	line = NULL;
-	while (str[size] != '\n' && str[size])
-		size++;
-	printf("\nSIZE: %ld\n", size);
-	line = malloc(sizeof(char) * (size + 1));
-	if (!line)
-		return (0);
-	line[size + 1] = '\0';
-	while (line[i])
-	{
-		line[i] = str[i];
-		i++;
-	}
-	printf("\n*****\n");
-	printf("LINE DE GET LINE: %s", line);
-	printf("\n*****\n");
-	return (line);
 }
