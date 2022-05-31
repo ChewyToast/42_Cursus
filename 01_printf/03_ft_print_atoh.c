@@ -13,11 +13,16 @@
 
 size_t	ft_print_atoh(char *str)
 {
+	int	chr;
+
 	while (*str)
 	{
-		ft_putchar_fd(98, 1);
-		ft_putchar_fd("0123456789abcdef"[*str++ % 16], 1);
-		ft_putchar_fd("0123456789abcdef"[*str++ / 16], 1);
+		chr = 0;
+		ft_putchar_fd('\\', 1);
+		chr += 10 *("0123456789abcdef"[*str / 16], 1);
+		chr += ("0123456789abcdef"[*str % 16], 1);
+		ft_putchar_fd(chr, 1);
+		str++;
 	}
 	return (0);
 }

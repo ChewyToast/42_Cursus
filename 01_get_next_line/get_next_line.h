@@ -21,12 +21,21 @@
 # include <string.h>
 # include <fcntl.h>
 
+// --GNL--
+
 char	*get_next_line(const int fd);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
-void	*ft_calloc(size_t nmemb, size_t size);
-int		ft_strlen(const char *s);
+int		ft_clean(char *str);
+char	ft_check_str(char *str);
+int		trim_str(char *str);
+
+// --GNLU--
+
+char	*f_strjoin(char *s1, char *s2);
+int     get_line(char *line, char *str);
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
+
 
 #endif
 

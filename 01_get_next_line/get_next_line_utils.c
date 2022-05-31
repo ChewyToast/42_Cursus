@@ -11,15 +11,35 @@
 /* ************************************************************************** */
 #include "get_next_line.h"
 
-int	ft_strlen(const char *s)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	i;
+	size_t	src_counter;
+	size_t	dst_counter;
+	size_t	return_value;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	src_counter = 0;
+	dst_counter = ft_strlen(dst);
+	return_value = ft_strlen(src);
+	if (size == 0)
+		return (return_value);
+	else if (size < ft_strlen(dst))
+		return_value += size;
+	else
+	{
+		return_value += ft_strlen(dst);
+		size -= dst_counter;
+		while (size > 1 && src[src_counter] != '\0')
+		{
+			dst[dst_counter] = src[src_counter];
+			src_counter++;
+			dst_counter++;
+			size--;
+		}
+	dst[dst_counter] = '\0';
+	}
+	return (return_value);
 }
+
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
@@ -38,48 +58,51 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	return (ft_strlen(src));
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*str;
-	size_t	size;
 
-	size = ft_strlen(s);
-	if (!*s || size < start)
-		return (ft_calloc(sizeof(char), 1));
-	if ((len + start) > size)
-		len = size - start;
-	str = malloc(sizeof(char) * (len + 1));
-	if ((!str) || (!s && len))
-		return (0);
-	ft_strlcpy(str, s + start, (len + 1));
-	return (str);
+size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*f_strjoin(char *s1, char *s2)
 {
 	char	*str;
 	size_t	size;
 
 	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	str = (char *)ft_calloc(sizeof(char), size);
+	str = malloc(sizeof(char) * size);
 	if (str == NULL)
 		return (0);
+	str[size] = '\0';
 	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
 	ft_strlcat(str, s2, size);
+	free(s1);
+//	free(s2);
 	return (str);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	get_line(char *line, char *str)
 {
-	unsigned char	*mall;
+	size_t	size;
 
-	if ((nmemb * size) > 0xffffffff)
-		return (NULL);
-	mall = malloc (size * nmemb);
-	if (mall == NULL)
-		return (NULL);
-	size *= nmemb;
-	while (size--)
-		mall[size] = 0;
-	return (mall);
+	size = 0;
+	line = NULL;
+	while (str[size] != '\n' && str[size])
+		size++;
+	if (!str[size])
+		return (0);
+	line = malloc(sizeof(char) * size + 1);
+	if (!line)
+		return (0);
+	line[size + 1] = '\0';
+	while (*line)
+	{
+		*line++ = *str++;
+	}
+	return (size);
 }
