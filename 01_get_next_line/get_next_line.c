@@ -29,90 +29,83 @@ int	main(void)
 	close(fd);
 }
 
-int	ft_clean(char *str)
-{
-	free(str);
-	return (0);
-}
-
-char	ft_check_str(char *str)
-{
-	if (!str)
-		return (-1);
-	while (*str && *str != '\n')
-		str++;
-	if (*str == '\n')
-		return (1);
-	return (0);
-}
-
-char	*trim_str(char *str)
-{
-	char		*tmp;
-	size_t		i;
-
-	i = 0;
-	tmp = malloc(sizeof(char) * ft_strlen(str));
-	while (str[i - 1] != '\n' && str[i])
-	{
-		tmp[i] = str[i];
-		i++;
-	}
-	tmp[i] = '\0';
-	free(str);
-	str = malloc(sizeof(char) * (ft_strlen(tmp) + 1));
-	if (!str)
-	{
-		free(tmp);
-		return (0);
-	}
-	ft_strlcpy(str, tmp, 0xffffffff);
-	free(tmp);
-	return (str);
-}
-
 char	*get_next_line(const int fd)
 {
 	static char	*str;
 	char		*rdstr;
 	char		*rtstr;
 	int			mode;
+	size_t		*size;
 
-	mode = ft_check_str(str);
-	rtstr = "";
+	*size = 0;
+	mode = ft_check_str(str, *size); //Vemos que tenemos en str, y si tenemos string con \n devolvemos con el pointer
 	if (mode < 1)
 	{
 		if (mode == -1)
 			str = "";
-		rdstr = malloc(sizeof(char)
-				* (BUFFER_SIZE + 1));
-		if (!rdstr || !read(fd, rdstr, BUFFER_SIZE))
-		{
-			ft_clean(rdstr);
+		rdstr = ft_read("", fd, size); //Iteramos el read creando y destruyendo mallocs hasta encontrar el \n o el EOF
+		if (!rdstr)
 			return (0);
-		}
-		rdstr[BUFFER_SIZE] = '\0';
-		printf("\n-----------------");
-		printf("\n0Str: %s\n", str);
-		printf("0RdStr: %s\n", rdstr);
-		printf("0RtStr: %s\n", rtstr);
-		str = f_strjoin(str, rdstr);
 	}
-	rtstr = get_line(rtstr, str);
-	printf("\n1Str: %s\n", str);
-	printf("1RdStr: %s\n", rdstr);
-	printf("1RtStr: %s\n", rtstr);
-	if (!rtstr)
-	{
-		free(rtstr);
-		return (0);
-	}
-	str = trim_str(str);
+	if (mode == -1) //No hay string, por lo que hacemos sub del read
+		rtstr = ft_substr(rdstr, 0, *size);
+	else if (mode == 0) //Hay string pero no hasta \n
+		rtstr = ft_strjoin(rdstr, ft_substr(rdstr, 0, *size), 1);
+	else if (mode = 1) //Hay string y hay \n
+		rtstr = ft_substr(str, 0, *size);
+	// FALTA PONER EN CADA CASO EL STR, GUARDAR O BIEN EL READ - EL RTSTR, O BIEN STR - RTSTR
+}
+
+int	ft_check_str(char *str, size_t *size) //Vemos que tenemos en str, y si tenemos string con \n devolvemos con el pointer
+{
+	size_t	i;
+
+	i = 0;
 	if (!str)
 		return (0);
-	printf("\n2Str: %s\n", str);
-	printf("2RdStr: %s\n", rdstr);
-	printf("2RtStr: %s\n", rtstr);
-	printf("\n-----------------");
-	return (rtstr);
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (str[i] == '\n')
+	{
+		*size = i;
+		return (1);
+	}
+	return (0);
+}
+
+char	*ft_read(char *rdstr, int fd, size_t *size) //Iteramos el read creando y destruyendo mallocs hasta encontrar el \n o el EOF
+{
+	size_t		i;
+	int			check;
+	char		*tmp;
+
+	check = 0;
+	while (check == 0)
+	{
+		i = 0;
+		tmp = malloc(sizeof(char) * BUFFER_SIZE);
+		if (!tmp)
+		{
+			free(rdstr);
+			return (0);
+		}
+		i = read(fd, tmp, BUFFER_SIZE);
+		if (i == -1)
+		{
+			free(rdstr);
+			free(tmp);
+			return (0);
+		}
+		else if (i == 0)
+			break ;
+		i = 0;
+		while (rdstr[i] != '\n' && rdstr[i])
+			i++;
+		if (rdstr[i] != '\n')
+			check = 1;
+		else
+			rdstr = ft_strjoin(rdstr, tmp, 0);
+	}
+	*size = i;
+	return (rdstr);
 }
