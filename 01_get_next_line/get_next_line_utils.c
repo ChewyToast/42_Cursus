@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 10:02:56 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/27 12:11:04 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/05/31 23:28:28 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -40,7 +40,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	return (return_value);
 }
 
-
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	int	i;
@@ -57,7 +56,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	dst[i] = '\0';
 	return (ft_strlen(src));
 }
-
 
 size_t	ft_strlen(const char *s)
 {
@@ -81,28 +79,32 @@ char	*f_strjoin(char *s1, char *s2)
 	str[size] = '\0';
 	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
 	ft_strlcat(str, s2, size);
-	free(s1);
-//	free(s2);
+	free(s2);
 	return (str);
 }
 
-int	get_line(char *line, char *str)
+char	*get_line(char *line, char *str)
 {
 	size_t	size;
+	size_t	i;
 
 	size = 0;
+	i = 0;
 	line = NULL;
 	while (str[size] != '\n' && str[size])
 		size++;
-	if (!str[size])
-		return (0);
-	line = malloc(sizeof(char) * size + 1);
+	printf("\nSIZE: %ld\n", size);
+	line = malloc(sizeof(char) * (size + 1));
 	if (!line)
 		return (0);
 	line[size + 1] = '\0';
-	while (*line)
+	while (line[i])
 	{
-		*line++ = *str++;
+		line[i] = str[i];
+		i++;
 	}
-	return (size);
+	printf("\n*****\n");
+	printf("LINE DE GET LINE: %s", line);
+	printf("\n*****\n");
+	return (line);
 }

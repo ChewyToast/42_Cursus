@@ -6,21 +6,25 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:19:58 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/27 12:13:53 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/05/31 23:27:32 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
 
-int	main()
+int	main(void)
 {
-	int	fd;
+	int		fd;
 	char	*st;
-	
+	int		cnt;
+
+	cnt = 2;
+	st = "";
 	fd = open("prueba.txt", O_RDONLY);
-	while (st)
+	while (cnt >= 0)
 	{
 		st = get_next_line(fd);
-		printf("\n%s", st);
+		printf("\n%s\n", st);
+		cnt--;
 	}
 	close(fd);
 }
@@ -42,7 +46,7 @@ char	ft_check_str(char *str)
 	return (0);
 }
 
-int	trim_str(char *str)
+char	*trim_str(char *str)
 {
 	char		*tmp;
 	size_t		i;
@@ -58,10 +62,13 @@ int	trim_str(char *str)
 	free(str);
 	str = malloc(sizeof(char) * (ft_strlen(tmp) + 1));
 	if (!str)
-		return (ft_clean(tmp));
+	{
+		free(tmp);
+		return (0);
+	}
 	ft_strlcpy(str, tmp, 0xffffffff);
 	free(tmp);
-	return (1);
+	return (str);
 }
 
 char	*get_next_line(const int fd)
@@ -72,21 +79,40 @@ char	*get_next_line(const int fd)
 	int			mode;
 
 	mode = ft_check_str(str);
+	rtstr = "";
 	if (mode < 1)
 	{
 		if (mode == -1)
 			str = "";
-		rdstr = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // Create a read string
-		if (!rdstr || !read(fd, rdstr, BUFFER_SIZE)) // Read into read string
-			return ((char *)ft_clean(rdstr));
+		rdstr = malloc(sizeof(char)
+				* (BUFFER_SIZE + 1));
+		if (!rdstr || !read(fd, rdstr, BUFFER_SIZE))
+		{
+			ft_clean(rdstr);
+			return (0);
+		}
 		rdstr[BUFFER_SIZE] = '\0';
-		str = f_strjoin(str, rdstr); // Create a total str and free rdstr
+		printf("\n-----------------");
+		printf("\n0Str: %s\n", str);
+		printf("0RdStr: %s\n", rdstr);
+		printf("0RtStr: %s\n", rtstr);
+		str = f_strjoin(str, rdstr);
 	}
-	rtstr = str;
-	mode =get_line(rtstr, str); // Take only the line to return string
-	if (!mode)
-		return ((char *)ft_clean(rtstr));
-	if (!trim_str(str))
-		return(0);
+	rtstr = get_line(rtstr, str);
+	printf("\n1Str: %s\n", str);
+	printf("1RdStr: %s\n", rdstr);
+	printf("1RtStr: %s\n", rtstr);
+	if (!rtstr)
+	{
+		free(rtstr);
+		return (0);
+	}
+	str = trim_str(str);
+	if (!str)
+		return (0);
+	printf("\n2Str: %s\n", str);
+	printf("2RdStr: %s\n", rdstr);
+	printf("2RtStr: %s\n", rtstr);
+	printf("\n-----------------");
 	return (rtstr);
 }
