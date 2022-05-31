@@ -11,58 +11,82 @@
 /* ************************************************************************** */
 #include "get_next_line.h"
 
-char	*get_next_line(const int fd)
+int	main()
 {
-	char	*line;
-	char	*tmp;
-	char	buff[1];
-	int		fr;
-
-	tmp = "";
-	fr = read(fd, buff, 1);
-	while (fr > 0 && buff[0] != '\n')
+	int	fd;
+	char	*st;
+	
+	fd = open("prueba.txt", O_RDONLY);
+	while (st)
 	{
-		line = ft_strjoin(tmp, buff);
-		free(tmp);
-		tmp = ft_substr(line, 0, 0xFFFFFFFF);
-		free(line);
-		fr = read(fd, buff, 1);
+		st = get_next_line(fd);
+		printf("\n%s", st);
 	}
-	if (buff[0] == '\n')
-	{
-		line = ft_strjoin(tmp, buff);
-		free(tmp);
-	}
-	if (fr < 0)
-		return (0);
-	return (line);
+	close(fd);
 }
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+char	*get_next_line(const int fd)
 {
-	size_t	src_counter;
-	size_t	dst_counter;
-	size_t	return_value;
+	static char	*str;
+	char		*rdstr;
+	char		*rtstr;
+	int			mode;
 
-	src_counter = 0;
-	dst_counter = ft_strlen(dst);
-	return_value = ft_strlen(src);
-	if (size == 0)
-		return (return_value);
-	else if (size < (size_t)ft_strlen(dst))
-		return_value += size;
-	else
+	mode = ft_check_str(str);
+	if (mode < 1)
 	{
-		return_value += ft_strlen(dst);
-		size -= dst_counter;
-		while (size > 1 && src[src_counter] != '\0')
-		{
-			dst[dst_counter] = src[src_counter];
-			src_counter++;
-			dst_counter++;
-			size--;
-		}
-	dst[dst_counter] = '\0';
+		if (mode == -1)
+			str = "";
+		rdstr = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // Create a read string
+		if (!rdstr || !read(fd, rdstr, BUFFER_SIZE)) // Read into read string
+			return ((char *)ft_clean(rdstr));
+		rdstr[BUFFER_SIZE] = '\0';
+		str = f_strjoin(str, rdstr); // Create a total str and free rdstr
 	}
-	return (return_value);
+	rtstr = str;
+	mode =get_line(rtstr, str); // Take only the line to return string
+	if (!mode)
+		return ((char *)ft_clean(rtstr));
+	if (!trim_str(str))
+		return(0);
+	return (rtstr);
+}
+
+int	ft_clean(char *str)
+{
+	free(str);
+	return (0);
+}
+
+char	ft_check_str(char *str)
+{
+	if (!str)
+		return (-1);
+	while (*str && *str != '\n')
+		str++;
+	if (*str == '\n')
+		return (1);
+	return (0);
+}
+
+int	trim_str(char *str)
+{
+	char		*tmp;
+	size_t		i;
+
+	i = 0;
+	tmp = malloc(sizeof(char) * ft_strlen(str));
+	while (str[i - 1] != '\n' && str[i])
+	{
+		tmp[i] = str[i];
+		i++;
+	}
+	tmp[i] = '\0';
+	free(str);
+	str = malloc(sizeof(char) * (ft_strlen(tmp) + 1));
+	if (!str)
+		return (ft_clean(tmp));
+	ft_strlcpy(str, tmp, 0xffffffff);
+	free(tmp);
+	return (1);
 }

@@ -25,7 +25,7 @@ int	ft_printf(const char *str, ...)
 		return (-1);
 	return (print_length);
 }
-/*
+
 int	main(void)
 {
 	int	rslt;
@@ -35,4 +35,4 @@ int	main(void)
 	printf("ORIGINAL RESULT: %p\n", "HELLO");
 	ft_printf("MY OWN RESULT: %p\n", "HELLO");
 	return 0;
-}*/
+}
