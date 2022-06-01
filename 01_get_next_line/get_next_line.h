@@ -24,7 +24,7 @@
 // --GNL--
 
 char	*get_next_line(const int fd);
-char	ft_check_str(char *str, size_t *szie);
+int 	ft_check_str(char *str, size_t *szie);
 char	*ft_read(char *rdstr, int fd, size_t *size);
 
 // --GNLU--

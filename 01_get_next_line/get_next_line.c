@@ -36,9 +36,11 @@ char	*get_next_line(const int fd)
 	char		*rtstr;
 	int			mode;
 	size_t		*size;
+	size_t		siize;
 
-	*size = 0;
-	mode = ft_check_str(str, *size); //Vemos que tenemos en str, y si tenemos string con \n devolvemos con el pointer
+	siize = 0;
+	size = &siize;
+	mode = ft_check_str(str, size); //Vemos que tenemos en str, y si tenemos string con \n devolvemos con el pointer
 	if (mode < 1)
 	{
 		if (mode == -1)
@@ -48,11 +50,23 @@ char	*get_next_line(const int fd)
 			return (0);
 	}
 	if (mode == -1) //No hay string, por lo que hacemos sub del read
+	{
 		rtstr = ft_substr(rdstr, 0, *size);
+		str = ft_substr(rdstr, *size, 0xffffffff);
+		free(rdstr);
+	}
 	else if (mode == 0) //Hay string pero no hasta \n
-		rtstr = ft_strjoin(rdstr, ft_substr(rdstr, 0, *size), 1);
-	else if (mode = 1) //Hay string y hay \n
+	{
+		rtstr = ft_strjoin(str, ft_substr(rdstr, 0, *size), 1);
+		str = ft_substr(rdstr, *size, 0xffffffff);
+		free(rdstr);
+	}
+	else if (mode == 1) //Hay string y hay \n
+	{
 		rtstr = ft_substr(str, 0, *size);
+		str = ft_substr(str, *size, 0xffffffff);
+	}
+	return (rtstr);
 	// FALTA PONER EN CADA CASO EL STR, GUARDAR O BIEN EL READ - EL RTSTR, O BIEN STR - RTSTR
 }
 
@@ -67,7 +81,7 @@ int	ft_check_str(char *str, size_t *size) //Vemos que tenemos en str, y si tenem
 		i++;
 	if (str[i] == '\n')
 	{
-		*size = i;
+		*size = i + 1;
 		return (1);
 	}
 	return (0);
@@ -75,7 +89,7 @@ int	ft_check_str(char *str, size_t *size) //Vemos que tenemos en str, y si tenem
 
 char	*ft_read(char *rdstr, int fd, size_t *size) //Iteramos el read creando y destruyendo mallocs hasta encontrar el \n o el EOF
 {
-	size_t		i;
+	int		i;
 	int			check;
 	char		*tmp;
 
@@ -106,6 +120,6 @@ char	*ft_read(char *rdstr, int fd, size_t *size) //Iteramos el read creando y de
 		else
 			rdstr = ft_strjoin(rdstr, tmp, 0);
 	}
-	*size = i;
+	*size = (size_t)i + 1;
 	return (rdstr);
 }
