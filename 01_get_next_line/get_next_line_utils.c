@@ -18,7 +18,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 
 	size = ft_strlen(s);
 	if (!*s || size < start)
-		return (ft_calloc(sizeof(char), 1));
+		return (malloc(sizeof(char)* 1));
 	if ((len + start) > size)
 		len = size - start;
 	str = malloc(sizeof(char) * (len + 1));
@@ -34,7 +34,7 @@ char	*ft_strjoin(char *s1, char *s2, int mode)
 	size_t	size;
 
 	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	str = (char *)ft_calloc(sizeof(char), size);
+	str = malloc(sizeof(char) * size);
 	if (str == NULL)
 		return (0);
 	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
