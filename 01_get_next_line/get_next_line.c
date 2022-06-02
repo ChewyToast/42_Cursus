@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:19:58 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/02 23:07:28 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/02 23:38:23 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -15,7 +15,7 @@
 	printf("\n-1 Str: %s", str);
 	printf("\n-1 RDstr: %s", rdstr);
 	printf("\n-1 RTstr: %s", rtstr);
-*/
+
 int	main(void)
 {
 	int		fd;
@@ -36,6 +36,7 @@ int	main(void)
 	close(fd);
 }
 
+*/
 char	*get_next_line(const int fd)
 {
 	static char	*str;
