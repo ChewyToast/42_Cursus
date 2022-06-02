@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:19:58 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/02 01:13:30 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/02 11:24:41 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -41,40 +41,38 @@ char	*get_next_line(const int fd)
 	char		*rdstr;
 	char		*rtstr;
 	int			mode;
-	size_t		*size;
-	size_t		siize;
+	size_t		size;
 
-	siize = 0;
-	size = &siize;
+	size = 0;
 	rtstr = "";
 	rdstr = "";
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (0);
-	mode = ft_check_str(str, size);
+	mode = ft_check_str(str, &size);
 	if (mode < 1)
 	{
 		if (mode == -1)
 			str = "";
-		rdstr = ft_read("", fd, size);
+		rdstr = ft_read("", fd, &size);
 		if (!rdstr)
 			return (0);
 	}
 	if (mode == -1)
 	{
-		rtstr = ft_substr(rdstr, 0, *size);
-		str = ft_substr(rdstr, *size, 0xffffffff);
+		rtstr = ft_substr(rdstr, 0, size);
+		str = ft_substr(rdstr, size, 0xffffffff);
 		free_str(rdstr);
 	}
 	else if (mode == 0)
 	{
-		rtstr = ft_strjoin(str, ft_substr(rdstr, 0, *size), 1);
-		str = ft_substr(rdstr, *size, 0xffffffff);
+		rtstr = ft_strjoin(str, ft_substr(rdstr, 0, size), 1);
+		str = ft_substr(rdstr, size, 0xffffffff);
 		free_str(rdstr);
 	}
 	else if (mode == 1)
 	{
-		rtstr = ft_substr(str, 0, *size);
-		str = ft_substr(str, *size, 0xffffffff);
+		rtstr = ft_substr(str, 0, size);
+		str = ft_substr(str, size, 0xffffffff);
 	}
 	return (rtstr);
 }
