@@ -9,7 +9,6 @@
 /*   Updated: 2022/05/30 11:08:11 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_printf.h"
 
 static int	sizeofint(unsigned int n)

@@ -31,7 +31,7 @@ int			extra_read_input(const char *str,
 
 // --FT INT--
 size_t		ft_int(int n, unsigned int n2, int method, size_t *print_length);
-size_t		ft_print_atoh(char *str);
+size_t		ft_ptoa(unsigned long long int n, size_t *print_length);
 
 // --LIBFT FUNCTIONS
 size_t		ft_putchar_fd(char c, int fd);

@@ -29,10 +29,11 @@ int	ft_printf(const char *str, ...)
 int	main(void)
 {
 	int	rslt;
+	char *pst = "HOLA";
 
 	rslt = ft_printf("%s\n%d\n%i\n%u\n%%\n", "123456789", 123456789, 123456789, 123456789);
 	ft_printf("NUMBER OF CHARS: %d\n", rslt);
-	printf("ORIGINAL RESULT: %p\n", "HELLO");
-	ft_printf("MY OWN RESULT: %p\n", "HELLO");
+	printf("ORIGINAL RESULT: %p\n", pst);
+	ft_printf("MY OWN RESULT: %p\n", pst);
 	return 0;
 }
