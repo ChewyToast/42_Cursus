@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 10:03:28 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/31 23:25:55 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/02 00:51:58 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 char	*get_next_line(const int fd);
 int 	ft_check_str(char *str, size_t *szie);
 char	*ft_read(char *rdstr, int fd, size_t *size);
+char	*free_str(char *str);
 
 // --GNLU--
 

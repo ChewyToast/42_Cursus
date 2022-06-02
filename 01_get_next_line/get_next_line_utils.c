@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 10:02:56 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/31 23:28:28 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/02 00:45:12 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -40,8 +40,8 @@ char	*ft_strjoin(char *s1, char *s2, int mode)
 	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
 	ft_strlcat(str, s2, size);
 	if (mode)
-		free(s1);
-	free(s2);
+		free_str(s1);
+	free_str(s2);
 	return (str);
 }
 
