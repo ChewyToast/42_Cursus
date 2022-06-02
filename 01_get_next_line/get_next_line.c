@@ -6,11 +6,15 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:19:58 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/31 23:27:32 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/02 01:13:30 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
-
+/*
+	printf("\n   MODE: %d", mode);
+	printf("\n-1 Str: %s", str);
+	printf("\n-1 RDstr: %s", rdstr);
+	printf("\n-1 RTstr: %s", rtstr);
 int	main(void)
 {
 	int		fd;
@@ -23,11 +27,13 @@ int	main(void)
 	while (cnt >= 0)
 	{
 		st = get_next_line(fd);
-		printf("\n%s\n", st);
+		printf("%s", st);
+		free(st);
 		cnt--;
 	}
 	close(fd);
 }
+*/
 
 char	*get_next_line(const int fd)
 {
@@ -40,43 +46,46 @@ char	*get_next_line(const int fd)
 
 	siize = 0;
 	size = &siize;
-	mode = ft_check_str(str, size); //Vemos que tenemos en str, y si tenemos string con \n devolvemos con el pointer
+	rtstr = "";
+	rdstr = "";
+	if (BUFFER_SIZE <= 0 || fd < 0)
+		return (0);
+	mode = ft_check_str(str, size);
 	if (mode < 1)
 	{
 		if (mode == -1)
 			str = "";
-		rdstr = ft_read("", fd, size); //Iteramos el read creando y destruyendo mallocs hasta encontrar el \n o el EOF
+		rdstr = ft_read("", fd, size);
 		if (!rdstr)
 			return (0);
 	}
-	if (mode == -1) //No hay string, por lo que hacemos sub del read
+	if (mode == -1)
 	{
 		rtstr = ft_substr(rdstr, 0, *size);
 		str = ft_substr(rdstr, *size, 0xffffffff);
-		free(rdstr);
+		free_str(rdstr);
 	}
-	else if (mode == 0) //Hay string pero no hasta \n
+	else if (mode == 0)
 	{
 		rtstr = ft_strjoin(str, ft_substr(rdstr, 0, *size), 1);
 		str = ft_substr(rdstr, *size, 0xffffffff);
-		free(rdstr);
+		free_str(rdstr);
 	}
-	else if (mode == 1) //Hay string y hay \n
+	else if (mode == 1)
 	{
 		rtstr = ft_substr(str, 0, *size);
 		str = ft_substr(str, *size, 0xffffffff);
 	}
 	return (rtstr);
-	// FALTA PONER EN CADA CASO EL STR, GUARDAR O BIEN EL READ - EL RTSTR, O BIEN STR - RTSTR
 }
 
-int	ft_check_str(char *str, size_t *size) //Vemos que tenemos en str, y si tenemos string con \n devolvemos con el pointer
+int	ft_check_str(char *str, size_t *size)
 {
 	size_t	i;
 
 	i = 0;
 	if (!str)
-		return (0);
+		return (-1);
 	while (str[i] && str[i] != '\n')
 		i++;
 	if (str[i] == '\n')
@@ -87,9 +96,9 @@ int	ft_check_str(char *str, size_t *size) //Vemos que tenemos en str, y si tenem
 	return (0);
 }
 
-char	*ft_read(char *rdstr, int fd, size_t *size) //Iteramos el read creando y destruyendo mallocs hasta encontrar el \n o el EOF
+char	*ft_read(char *rdstr, int fd, size_t *size)
 {
-	int		i;
+	int			i;
 	int			check;
 	char		*tmp;
 
@@ -97,29 +106,33 @@ char	*ft_read(char *rdstr, int fd, size_t *size) //Iteramos el read creando y de
 	while (check == 0)
 	{
 		i = 0;
-		tmp = malloc(sizeof(char) * BUFFER_SIZE);
+		tmp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		tmp[BUFFER_SIZE] = '\0';
 		if (!tmp)
-		{
-			free(rdstr);
-			return (0);
-		}
+			return ((char *)free_str(rdstr));
 		i = read(fd, tmp, BUFFER_SIZE);
 		if (i == -1)
 		{
-			free(rdstr);
-			free(tmp);
-			return (0);
+			free_str(rdstr);
+			return (free_str(tmp));
 		}
 		else if (i == 0)
 			break ;
 		i = 0;
-		while (rdstr[i] != '\n' && rdstr[i])
+		while (tmp[i] != '\n' && tmp[i])
 			i++;
-		if (rdstr[i] != '\n')
+		if (tmp[i] == '\n')
 			check = 1;
-		else
-			rdstr = ft_strjoin(rdstr, tmp, 0);
+		rdstr = ft_strjoin(rdstr, tmp, 0);
 	}
 	*size = (size_t)i + 1;
 	return (rdstr);
+}
+
+char	*free_str(char *str)
+{
+	if (!str || !*str)
+		return (0);
+	free(str);
+	return (0);
 }
