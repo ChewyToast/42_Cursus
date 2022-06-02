@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 10:02:56 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/02 11:26:05 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/02 23:09:13 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -23,8 +23,9 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		len = size - start;
 	str = malloc(sizeof(char) * (len + 1));
 	if ((!str) || (!s && len))
-		return (0);
+		return (free_str(str));
 	ft_strlcpy(str, s + start, (len + 1));
+	free_str(s);
 	return (str);
 }
 

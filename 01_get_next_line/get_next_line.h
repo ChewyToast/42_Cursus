@@ -6,12 +6,12 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 10:03:28 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/02 11:33:12 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/02 22:42:59 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE
+# define GET_NEXT_LINE_H
 
 # include <strings.h>
 # include <stddef.h>
@@ -30,6 +30,7 @@
 char	*get_next_line(const int fd);
 int		ft_check_str(char *str, size_t *szie);
 char	*ft_read(char *rdstr, int fd, size_t *size);
+size_t	ft_strchrpos(const char *s, int c);
 char	*free_str(char *str);
 
 // --GNLU--
