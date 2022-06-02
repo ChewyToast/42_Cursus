@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:19:58 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/02 11:24:41 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/02 23:07:28 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -15,25 +15,26 @@
 	printf("\n-1 Str: %s", str);
 	printf("\n-1 RDstr: %s", rdstr);
 	printf("\n-1 RTstr: %s", rtstr);
+*/
 int	main(void)
 {
 	int		fd;
 	char	*st;
 	int		cnt;
 
-	cnt = 2;
+	cnt = 7;
 	st = "";
 	fd = open("prueba.txt", O_RDONLY);
 	while (cnt >= 0)
 	{
 		st = get_next_line(fd);
+		printf("\nRESULT\n");
 		printf("%s", st);
 		free(st);
 		cnt--;
 	}
 	close(fd);
 }
-*/
 
 char	*get_next_line(const int fd)
 {
@@ -114,17 +115,31 @@ char	*ft_read(char *rdstr, int fd, size_t *size)
 			free_str(rdstr);
 			return (free_str(tmp));
 		}
-		else if (i == 0)
-			break ;
-		i = 0;
-		while (tmp[i] != '\n' && tmp[i])
-			i++;
-		if (tmp[i] == '\n')
-			check = 1;
 		rdstr = ft_strjoin(rdstr, tmp, 0);
+		if (!rdstr)
+		{
+			free_str(tmp);
+			return (free_str(rdstr));
+		}
+		if (i == 0 || ft_strchrpos(rdstr, '\n'))
+			break ;
 	}
-	*size = (size_t)i + 1;
+	free_str(tmp);
+	*size = ft_strchrpos(rdstr, '\n') + 1;
 	return (rdstr);
+}
+
+size_t	ft_strchrpos(const char *s, int c)
+{
+	size_t	size;
+
+	size = 0;
+	while (s[size] != (char)c && s[size] != '\0')
+		size++;
+	if (s[size] == (char)c || (s[size] == '\0' && (char)c == '\0'))
+		return (size);
+	else
+		return (0);
 }
 
 char	*free_str(char *str)
