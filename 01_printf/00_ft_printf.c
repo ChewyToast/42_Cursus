@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 11:24:56 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/30 02:46:54 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/03 01:22:02 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -28,12 +28,24 @@ int	ft_printf(const char *str, ...)
 
 int	main(void)
 {
-	int	rslt;
-	char *pst = "HOLA";
+	int		rslt;
+	int		ori_rslt;
+	char	*pst = "HELLO";
 
-	rslt = ft_printf("%s\n%d\n%i\n%u\n%%\n", "123456789", 123456789, 123456789, 123456789);
+	printf("\n*MY FT_PRINTF*\n\n");
+	rslt = ft_printf(("%s\n%d\n%i\n%u\n%%\n"), ("123456789"),
+			(123456789),
+			(123456789),
+			(123456789));
+	rslt += ft_printf("MY OWN RESULT: %p\n", pst);
 	ft_printf("NUMBER OF CHARS: %d\n", rslt);
-	printf("ORIGINAL RESULT: %p\n", pst);
-	ft_printf("MY OWN RESULT: %p\n", pst);
-	return 0;
+	printf("\n-----------------\n");
+	printf("\n*ORIGINAL PRINTF*\n\n");
+	ori_rslt = ft_printf(("%s\n%d\n%i\n%u\n%%\n"), ("123456789"),
+			(123456789),
+			(123456789),
+			(123456789));
+	ori_rslt += printf("ORIGINAL RESULT: %p\n", pst);
+	printf("NUMBER OF CHARS: %d\n", rslt);
+	return (0);
 }
