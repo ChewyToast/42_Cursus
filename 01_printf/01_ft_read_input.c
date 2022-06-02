@@ -27,7 +27,7 @@ int	read_input(const char *str, va_list args, size_t *print_length)
 			else if (*str == 's')
 				*print_length += ft_putstr_fd(va_arg(args, char *), 1);
 			else if (*str == 'p')
-				*print_length += ft_print_atoh(va_arg(args, char *));
+				rslt = ft_ptoa(va_arg(args, unsigned long long int), print_length);
 			else if (*str == 'd' || *str == 'i')
 				rslt = ft_int(va_arg(args, int), 0, 1, print_length);
 			else
