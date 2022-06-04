@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 01:00:34 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/03 01:12:49 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/03 22:23:24 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	sizeofint(unsigned long long int n)
 	return (size);
 }
 
-static char	*itoa_extract(unsigned long long int n, char *str, size_t size)
+static char	*ptoa_extract(unsigned long long int n, char *str, size_t size)
 {
 	int	i;
 
@@ -55,7 +55,8 @@ size_t	ft_ptoa(unsigned long long int n, size_t *print_length)
 	str = (char *)ft_calloc(sizeof(char), size);
 	if (!str)
 		return (-1);
-	str = itoa_extract(n, str, size);
+	str = ptoa_extract(n, str, size);
 	*print_length += ft_putstr_fd(str, 1);
+	free (str);
 	return (0);
 }

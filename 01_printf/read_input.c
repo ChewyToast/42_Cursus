@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_ft_read_input.c                                 :+:      :+:    :+:   */
+/*   read_input.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 02:55:37 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/03 01:07:26 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/04 01:31:57 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ int	extra_read_input(const char *str, va_list args, size_t *print_length)
 		rslt = ft_int(va_arg(args, int), 0, 1, print_length);
 	else if (*str == 'u')
 		rslt = ft_int(0, va_arg(args, unsigned int), 2, print_length);
+	else if (*str == 'x')
+		*print_length += ft_16to10(va_arg(args, int), 0);
+	else if (*str == 'X')
+		*print_length += ft_16to10(va_arg(args, int), 1);
 	else if (*str == '%')
 		*print_length += ft_putchar_fd(*str, 1);
 	return (rslt);
