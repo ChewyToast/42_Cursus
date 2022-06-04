@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   00_ft_printf.c                                     :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 11:24:56 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/03 01:22:02 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/04 02:02:18 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -38,6 +38,7 @@ int	main(void)
 			(123456789),
 			(123456789));
 	rslt += ft_printf("MY OWN RESULT: %p\n", pst);
+	rslt += ft_printf("This num in hexa (x): %x\n", -123123);
 	ft_printf("NUMBER OF CHARS: %d\n", rslt);
 	printf("\n-----------------\n");
 	printf("\n*ORIGINAL PRINTF*\n\n");
@@ -46,6 +47,7 @@ int	main(void)
 			(123456789),
 			(123456789));
 	ori_rslt += printf("ORIGINAL RESULT: %p\n", pst);
+	ori_rslt += printf("This num in hexa (x): %x\n", -123123);
 	printf("NUMBER OF CHARS: %d\n", rslt);
 	return (0);
 }
