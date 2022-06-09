@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 01:00:34 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/03 22:23:24 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/08 09:43:06 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ size_t	ft_ptoa(unsigned long long int n, size_t *print_length)
 	if (!str)
 		return (-1);
 	str = ptoa_extract(n, str, size);
-	*print_length += ft_putstr_fd(str, 1);
-	free (str);
+	*print_length += ft_putstr_fd(str, 1) + 2;
+	free(str);
 	return (0);
 }

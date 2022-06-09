@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 11:26:12 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/04 01:30:56 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/08 00:12:54 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_PRINTF_H
@@ -32,7 +32,7 @@ int			extra_read_input(const char *str,
 // --FT INT--
 size_t		ft_int(int n, unsigned int n2, int method, size_t *print_length);
 size_t		ft_ptoa(unsigned long long int n, size_t *print_length);
-size_t		ft_16to10(int n, int mode);
+int			ft_16to10(unsigned int n, int mode, size_t *print_length);
 
 // --LIBFT FUNCTIONS
 size_t		ft_putchar_fd(char c, int fd);
