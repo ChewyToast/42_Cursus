@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 00:24:43 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/05/23 10:36:43 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/08 00:28:00 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -15,6 +15,8 @@ size_t	ft_putstr_fd(const char *str, int fd)
 {
 	size_t	size;
 
+	if (!str)
+		return (0);
 	size = ft_strlen(str);
 	write(fd, str, size);
 	return (size);
