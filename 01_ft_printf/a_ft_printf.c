@@ -3,16 +3,12 @@
 int	ft_printf(const char *inp_str, ...)
 {
 	va_list	args;
-	size_t	ln;
 	ssize_t	rslt;
 
-	ln = 0;
 	va_start(args, inp_str);
-	rslt = ft_read(inp_str, args, &ln);
+	rslt = ft_read(inp_str, args);
 	va_end(args);
-	if (rslt < 0)
-		return (rslt);
-	return (ln);
+	return (rslt);
 }
 
 int	main(void)
@@ -21,6 +17,7 @@ int	main(void)
 	int		result;
 	int		oresult;
 
+	printf("\n--FT_PRINTF--							--PRINTF--\n");
 	result = ft_printf("\nchar: -%c-", 'c');
 	printf("							");
 	oresult = printf("char: -%c-\n", 'c');
@@ -30,5 +27,14 @@ int	main(void)
 	result += ft_printf("pointer: -%p-", p);
 	printf("					");
 	oresult += printf("pointer: -%p-\n", p);
+	result += ft_printf("decimal: -%d-", 12345678);
+	printf("						");
+	oresult += printf("decimal: -%d-\n", 12345678);
+	result += ft_printf("decimal: -%d-", -12345678);
+	printf("						");
+	oresult += printf("decimal: -%d-\n", -12345678);
+	result += ft_printf("decimal: -%d-", 0);
+	printf("							");
+	oresult += printf("decimal: -%d-\n", 0);
 	printf("RETURN: %d							RETURN: %d\n", result, oresult);
 }
