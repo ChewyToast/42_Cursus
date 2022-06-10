@@ -21,12 +21,13 @@
 # include <string.h>
 
 int		ft_printf(const char *inp_str, ...);
-ssize_t	ft_read(const char *str, va_list args, size_t *ln);
+ssize_t	ft_read(const char *str, va_list args);
 
-ssize_t	ft_ptoa(unsigned long long int n, size_t *ln);
+ssize_t	ft_ptoa(unsigned long long int n);
+ssize_t	ft_itoa(int n);
 
-ssize_t	ft_putchar(char c, size_t *ln);
-ssize_t	ft_putstr(const char *str, size_t *ln);
+ssize_t	ft_putchar(char c);
+ssize_t	ft_putstr(const char *str);
 int		ft_strlen(const char *s);
 
 #endif

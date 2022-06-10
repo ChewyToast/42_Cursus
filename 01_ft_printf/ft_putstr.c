@@ -11,15 +11,19 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-ssize_t	ft_putstr(const char *str, size_t *ln)
+ssize_t	ft_putstr(const char *str)
 {
-	size_t	size;
+	ssize_t	size;
+	ssize_t	tmp;
 
+	size = 0;
 	while (str && *str)
 	{
-		if (ft_putchar(*str, ln) < 0)
+		tmp = ft_putchar(*str);
+		if (tmp < 0)
 			return (-1);
 		str++;
+		size += tmp;
 	}
-	return (0);
+	return (size);
 }

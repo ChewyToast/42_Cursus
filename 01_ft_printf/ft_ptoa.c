@@ -46,18 +46,18 @@ static char	*ptoa_extract(unsigned long long int n, char *str, size_t size)
 	return (str);
 }
 
-ssize_t	ft_ptoa(unsigned long long int n, size_t *ln)
+ssize_t	ft_ptoa(unsigned long long int n)
 {
 	char	*str;
 	int		size;
 
 	size = sizeofint(n);
 	str = malloc(sizeof(char) * size);
+	str[size] = '\0';
 	if (!str)
 		return (-1);
 	str = ptoa_extract(n, str, size);
-	ft_putstr(str, ln);
-	*ln += 2;
+	size = ft_putstr(str);
 	free(str);
-	return (0);
+	return (size);
 }
