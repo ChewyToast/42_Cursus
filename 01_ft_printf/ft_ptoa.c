@@ -6,7 +6,7 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 01:00:34 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/08 09:43:06 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/10 10:45:51 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,11 @@ ssize_t	ft_ptoa(unsigned long long int n, size_t *ln)
 
 	size = sizeofint(n);
 	str = malloc(sizeof(char) * size);
-	str[size - 1] = '\0';
 	if (!str)
 		return (-1);
 	str = ptoa_extract(n, str, size);
 	ft_putstr(str, ln);
-	ln += 2;
+	*ln += 2;
 	free(str);
 	return (0);
 }
