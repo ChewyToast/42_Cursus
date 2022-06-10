@@ -17,17 +17,16 @@ int	ft_printf(const char *inp_str, ...)
 
 int	main(void)
 {
-	void	*p;
+	char	*p = "HELLO";
 	int		result;
 	int		oresult;
 
-	printf("\n---MY RESULTS---						---ORIGINAL RESULTS---\n");
 	result = ft_printf("\nchar: -%c-", 'c');
 	printf("							");
 	oresult = printf("char: -%c-\n", 'c');
 	result += ft_printf("string: -%s-", "Hello World");
 	printf("						");
-	oresult += printf("string: -%-s\n", "Hello World");
+	oresult += printf("string: -%-s-\n", "Hello World");
 	result += ft_printf("pointer: -%p-", p);
 	printf("					");
 	oresult += printf("pointer: -%p-\n", p);
