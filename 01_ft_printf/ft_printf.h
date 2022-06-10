@@ -21,7 +21,7 @@
 # include <string.h>
 
 int		ft_printf(const char *inp_str, ...);
-ssize_t	ft_read(char *str, va_list args, size_t *ln);
+ssize_t	ft_read(const char *str, va_list args, size_t *ln);
 
 ssize_t	ft_ptoa(unsigned long long int n, size_t *ln);
 
