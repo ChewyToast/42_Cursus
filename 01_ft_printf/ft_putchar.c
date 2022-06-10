@@ -15,9 +15,9 @@ ssize_t	ft_putchar(char c, size_t *ln)
 {
 	ssize_t	rslt;
 
-	rslt = write(fd, &c, 1);
+	rslt = write(1, &c, 1);
 	if (!rslt)
 		return (-1);
-	ln += 1;
+	*ln += 1;
 	return (0);
 }

@@ -52,7 +52,8 @@ ssize_t	ft_ptoa(unsigned long long int n, size_t *ln)
 	int		size;
 
 	size = sizeofint(n);
-	str = (char *)ft_calloc(sizeof(char), size);
+	str = malloc(sizeof(char) * size);
+	str[size - 1] = '\0';
 	if (!str)
 		return (-1);
 	str = ptoa_extract(n, str, size);
