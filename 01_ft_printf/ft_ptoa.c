@@ -57,7 +57,7 @@ ssize_t	ft_ptoa(unsigned long long int n)
 	if (!str)
 		return (-1);
 	str = ptoa_extract(n, str, size);
-	size = ft_putstr(str);
+	size = ft_putstr(str) + 2;
 	free(str);
 	return (size);
 }
