@@ -13,10 +13,8 @@
 
 static int	sizeofint(long int n)
 {
-	long int	indx;
 	int			size;
 
-	indx = 1;
 	size = 0;
 	if (n < 0)
 		n *= -1;
@@ -48,8 +46,8 @@ static char	*itoa_extract(long int n, char *str, ssize_t size)
 
 ssize_t	ft_itoa(int n)
 {
-	char			*str;
-	long int		size;
+	char		*str;
+	long int	size;
 
 	if (n == 0)
 		return (ft_putchar('0'));
@@ -58,5 +56,7 @@ ssize_t	ft_itoa(int n)
 	if (!str)
 		return (-1);
 	str[size - 1] = '\0';
+	if (n < 0)
+		return ((ft_putstr(itoa_extract((long int)n, str, size)) + 1));
 	return (ft_putstr(itoa_extract((long int)n, str, size)));
 }
