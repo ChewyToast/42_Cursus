@@ -25,6 +25,8 @@ ssize_t	ft_read(const char *str, va_list args);
 
 ssize_t	ft_ptoa(unsigned long long int n);
 ssize_t	ft_itoa(int n);
+ssize_t	ft_uitoa(unsigned int n);
+ssize_t	ft_10to16(unsigned int n, int mode);
 
 ssize_t	ft_putchar(char c);
 ssize_t	ft_putstr(const char *str);

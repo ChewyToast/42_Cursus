@@ -11,61 +11,43 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static int	sizeofint(long int n)
+static ssize_t	sizeofint(unsigned int n)
 {
-	long int	indx;
-	int			size;
+	ssize_t	size;
 
-	indx = 1;
 	size = 0;
-	if (n <= 0)
+	while (n > 0)
 	{
-		indx *= 10;
-		size++;
-		n *= -1;
-	}
-	while (n >= indx)
-	{
-		indx *= 10;
+		n /= 10;
 		size++;
 	}
-	size++;
 	return (size);
 }
 
-static char	*itoa_extract(long int n, char *str, size_t size)
+static char	*itoa_extract(long int n, char *str, ssize_t size)
 {
-	int	i;
-
-	i = size - 2;
-	size--;
-	if (n < 0)
+	while (--size != -1)
 	{
-		n *= -1;
-		*str = '-';
-		i++;
-	}
-	while (size)
-	{
-		str[i] = (n % 10) + 48;
+		str[size] = (n % 10) + 48;
 		n /= 10;
-		size--;
-		i--;
 	}
 	return (str);
 }
 
-char	*ft_itoa(int n)
+ssize_t	ft_uitoa(unsigned int n)
 {
-	char			*str;
-	long int		size;
+	char		*str;
+	ssize_t		size;
+	ssize_t		rtrn;
 
-	size = sizeofint((long int)n);
-	if (n < 0)
-		str = (char *)ft_calloc(sizeof(char), size + 1);
-	else
-		str = (char *)ft_calloc(sizeof(char), size);
+	if (n == 0)
+		return (ft_putchar('0'));
+	size = sizeofint(n);
+	str = malloc(sizeof(char) * (size + 1));
 	if (!str)
-		return (0);
-	return (itoa_extract((long int)n, str, size));
+		return (-1);
+	str[size] = '\0';
+	rtrn = ft_putstr(itoa_extract((long int)n, str, size));
+	free(str);
+	return (rtrn);
 }

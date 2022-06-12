@@ -17,6 +17,8 @@ ssize_t	ft_putstr(const char *str)
 	ssize_t	tmp;
 
 	size = 0;
+	if (!str)
+		return (ft_putstr("(null)"));
 	while (str && *str)
 	{
 		tmp = ft_putchar(*str);

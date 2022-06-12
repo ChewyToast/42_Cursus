@@ -9,39 +9,29 @@
 /*   Updated: 2022/06/10 10:45:51 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_printf.h"
 
-static int	sizeofint(unsigned long long int n)
+static ssize_t	sizeofint(unsigned long long int n)
 {
-	int				size;
+	int	size;
 
 	size = 0;
-	if (n == 0)
-		size++;
 	while (n > 0)
 	{
-		n /= 10;
+		n /= 16;
 		size++;
 	}
-	size++;
 	return (size);
 }
 
-static char	*ptoa_extract(unsigned long long int n, char *str, size_t size)
+static char	*ptoa_extract(unsigned long long int n, char *str, ssize_t size)
 {
-	int	i;
-
-	i = size - 2;
-	size -= 3;
-	str[0] = '0';
-	str[1] = 'x';
-	while (size)
+	ft_putchar('0');
+	ft_putchar('x');
+	while (--size >= 0)
 	{
-		str[i] = ("0123456789abcdef"[n % 16]);
+		str[size] = ("0123456789abcdef"[n % 16]);
 		n /= 16;
-		size--;
-		i--;
 	}
 	return (str);
 }
@@ -49,13 +39,15 @@ static char	*ptoa_extract(unsigned long long int n, char *str, size_t size)
 ssize_t	ft_ptoa(unsigned long long int n)
 {
 	char	*str;
-	int		size;
+	ssize_t	size;
 
+	if (n == 0)
+		return (ft_putstr("(nil)"));
 	size = sizeofint(n);
-	str = malloc(sizeof(char) * size);
-	str[size] = '\0';
+	str = malloc(sizeof(char) * (size + 1));
 	if (!str)
 		return (-1);
+	str[size] = '\0';
 	str = ptoa_extract(n, str, size);
 	size = ft_putstr(str) + 2;
 	free(str);

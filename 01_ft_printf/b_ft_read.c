@@ -35,9 +35,13 @@ static ssize_t	check_conversion(va_list args, char compare)
 		rslt = ft_ptoa(va_arg(args, unsigned long long int));
 	else if (compare == 'd' || compare == 'i')
 		rslt = ft_itoa(va_arg(args, int));
-/*	else if (compare == 'u')
+	else if (compare == 'u')
+		rslt = ft_uitoa(va_arg(args, unsigned int));
 	else if (compare == 'x')
+		rslt = ft_10to16(va_arg(args, unsigned int), 0);
 	else if (compare == 'X')
-	else if (compare == '%')*/
+		rslt = ft_10to16(va_arg(args, unsigned int), 1);
+	else if (compare == '%')
+		rslt = ft_putchar('%');
 	return (rslt);
 }
