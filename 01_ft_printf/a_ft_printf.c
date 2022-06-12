@@ -10,42 +10,80 @@ int	ft_printf(const char *inp_str, ...)
 	va_end(args);
 	return (rslt);
 }
-
+/*
 int	main(void)
 {
+	char	*NUll = NULL;
+	char	*N;
 	char	*p = "HELLO";
 	int		result;
 	int		oresult;
 
 	printf("\n--FT_PRINTF--							--PRINTF--\n\n");
-	result = ft_printf("char: -%c-", 'c');
+	result = ft_printf("char:	 -%c-", 'c');
 	printf("							");
-	oresult = printf("char: -%c-", 'c');
+	oresult = printf("char:	 -%c-", 'c');
 	printf("\n");
-	printf("RETURN: %d							RETURN: %d\n", result, oresult);
-	result += ft_printf("string: -%s-", "Hello World");
+
+	result += ft_printf("string:  -%s-", "Hello World");
 	printf("						");
-	oresult += printf("string: -%-s-", "Hello World");
+	oresult += printf("string:  -%-s-", "Hello World");
 	printf("\n");
-	printf("RETURN: %d							RETURN: %d\n", result, oresult);
+	result += ft_printf("strNULL: -%s-", NUll);
+	printf("						");
+	oresult += printf("strNULL: -%s-", NUll);
+	printf("\n");
+
 	result += ft_printf("pointer: -%p-", p);
 	printf("					");
 	oresult += printf("pointer: -%p-", p);
 	printf("\n");
-	printf("RETURN: %d							RETURN: %d\n", result, oresult);
+	N = (char *)-1;
+	result += ft_printf("pointer: -1 -%p-", N);
+	printf("				");
+	oresult += printf("pointer: -1 -%p-", N);
+	printf("\n");
+	N = (char *)0;
+	result += ft_printf("pointer: 0  -%p-", N);
+	printf("						");
+	oresult += printf("pointer: 0  -%p-", N);
+	printf("\n");
+	N = (char *)1;
+	result += ft_printf("pointer: 1  -%p-", N);
+	printf("						");
+	oresult += printf("pointer: 1  -%p-", N);
+	printf("\n");
+	N = (char *)15;
+	result += ft_printf("pointer: 15 -%p-", N);
+	printf("						");
+	oresult += printf("pointer: 15 -%p-", N);
+	printf("\n");
+
 	result += ft_printf("decimal: -%d-", 12345678);
 	printf("						");
 	oresult += printf("decimal: -%d-", 12345678);
 	printf("\n");
-	printf("RETURN: %d							RETURN: %d\n", result, oresult);
 	result += ft_printf("decimal: -%d-", -12345678);
 	printf("						");
 	oresult += printf("decimal: -%d-", -12345678);
 	printf("\n");
-	printf("RETURN: %d							RETURN: %d\n", result, oresult);
 	result += ft_printf("decimal: -%d-", 0);
 	printf("							");
 	oresult += printf("decimal: -%d-", 0);
 	printf("\n");
+
+	result += ft_printf("unsigned: -%u-", -1);
+	printf("						");
+	oresult += printf("unsigned: -%u-", -1);
+	printf("\n");
+	result += ft_printf("unsigned: -%u-", 0);
+	printf("							");
+	oresult += printf("unsigned: -%u-", 0);
+	printf("\n");
+	result += ft_printf("unsigned: -%u-", 4003001);
+	printf("						");
+	oresult += printf("unsigned: -%u-", 4003001);
+	printf("\n");
 	printf("RETURN: %d							RETURN: %d\n", result, oresult);
 }
+*/

@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-static int	sizeofint(long int n)
+static ssize_t	sizeofint(long int n)
 {
-	int			size;
+	ssize_t	size;
 
 	size = 0;
 	if (n < 0)
@@ -23,23 +23,20 @@ static int	sizeofint(long int n)
 		n /= 10;
 		size++;
 	}
-	size++;
 	return (size);
 }
 
 static char	*itoa_extract(long int n, char *str, ssize_t size)
 {
-	size -= 2;
 	if (n < 0)
 	{
 		n *= -1;
 		ft_putchar('-');
 	}
-	while (size != -1)
+	while (--size != -1)
 	{
 		str[size] = (n % 10) + 48;
 		n /= 10;
-		size--;
 	}
 	return (str);
 }
@@ -47,16 +44,19 @@ static char	*itoa_extract(long int n, char *str, ssize_t size)
 ssize_t	ft_itoa(int n)
 {
 	char		*str;
-	long int	size;
+	ssize_t		size;
+	ssize_t		rtrn;
 
 	if (n == 0)
 		return (ft_putchar('0'));
 	size = sizeofint((long int)n);
-	str = malloc(sizeof(char) * size);
+	str = malloc(sizeof(char) * (size + 1));
 	if (!str)
 		return (-1);
-	str[size - 1] = '\0';
+	str[size] = '\0';
+	rtrn = ft_putstr(itoa_extract((long int)n, str, size));
+	free(str);
 	if (n < 0)
-		return ((ft_putstr(itoa_extract((long int)n, str, size)) + 1));
-	return (ft_putstr(itoa_extract((long int)n, str, size)));
+		return (rtrn + 1);
+	return (rtrn);
 }
