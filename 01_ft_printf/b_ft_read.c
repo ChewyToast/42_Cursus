@@ -38,6 +38,7 @@ static ssize_t	check_conversion(va_list args, char compare)
 {
 	ssize_t	rslt;
 
+	rslt = 0;
 	if (compare == 'c')
 		rslt = ft_putchar(va_arg(args, int));
 	else if (compare == 's')
