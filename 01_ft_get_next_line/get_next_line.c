@@ -4,18 +4,22 @@ int	main(void)
 {
 	int		fd;
 	char	*st;
+	char	forst;
 	int		cnt;
 
-	cnt = 3;
-	st = "";
+	cnt = 1;
+	forst = '1';
+	st = &forst;
 	fd = open("prueba.txt", O_RDONLY);
-	while (cnt > 0)
+	write(1, "\nHI\n", 4);
+	while (cnt)
 	{
 		st = get_next_line(fd);
+		if (st == NULL)
+			break ;
 		printf("\nRESULT\n");
 		printf("%s", st);
 		free(st);
-		cnt--;
 	}
 	close(fd);
 }
@@ -26,7 +30,8 @@ char	*get_next_line(const int fd)
 	char		*rtrn_buff;
 	static char	*saved_buff;
 
-	if (BUFFER_SIZE <= 0 || !fd)
+	write(1, "\nHI\n", 4);
+	if (BUFFER_SIZE < 1 || !fd)
 		return (NULL);
 	if (!saved_buff || !check_nl(saved_buff))
 	{
@@ -39,7 +44,7 @@ char	*get_next_line(const int fd)
 	else
 	{
 		rtrn_buff = copy_line(saved_buff);
-		saved_buff = ft_substr(saved_buff, check_nl(saved_buff), (ft_strlen(saved_buff) - check_nl(saved_buff)));
+		saved_buff = ft_substr(saved_buff, check_nl(saved_buff) + 1, (ft_strlen(saved_buff) - (check_nl(saved_buff) + 1)));
 	}
 	return (rtrn_buff);
 }
