@@ -20,10 +20,10 @@ int	main(void)
 
 char	*get_next_line(const int fd)
 {
-	char		*rtrn_buff;
+	char		*rtrn_buff = "";
 	static char	*total_buff;
 
-	if (BUFFER_SIZE < 1 || fd <= 0)
+	if (BUFFER_SIZE < 1 || fd < 0)
 		return (NULL);
 	if (!total_buff || !check_nl(total_buff))
 	{
@@ -31,9 +31,8 @@ char	*get_next_line(const int fd)
 		if (!total_buff)
 			return (NULL);
 	}
-	printf("\nstr: %s\n", total_buff);
 	rtrn_buff = copy_line(total_buff);
-	if (rtrn_buff)
+	if (!rtrn_buff)
 		return (NULL);
 	total_buff = ft_substr(total_buff, ft_strlen(rtrn_buff), (ft_strlen(total_buff) - ft_strlen(rtrn_buff)));
 	if (!total_buff)
@@ -71,15 +70,13 @@ char	*ft_read(const int fd, char *total_buff)
 	tmp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!tmp)
 		return (NULL);
-	while (chk < 1 && !check_nl(total_buff))
+	while (chk > 0 && !check_nl(total_buff))
 	{
 		chk = read(fd, tmp, BUFFER_SIZE);
 		if (chk > 0)
 		{
-			printf("\nhi\n");
 			tmp[chk] = '\0';
 			total_buff = ft_strjoin(total_buff, tmp);
-			printf("\nstr: %s\n", total_buff);
 		}
 	}
 	free(tmp);

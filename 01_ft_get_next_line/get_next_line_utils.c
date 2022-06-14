@@ -2,7 +2,34 @@
 
 char	*ft_strjoin(char *read_buff, char *tmp)
 {
-	char	*str;
+	char	*mall;
+	size_t	i;
+	size_t	size_s1;
+	size_t	size_s2;
+
+	i = 0;
+	if (!read_buff)
+	{
+		read_buff = malloc(sizeof(char *) * 1);
+		if (!read_buff)
+			return (NULL);
+		*read_buff = '\0';
+	}
+	size_s1 = ft_strlen(read_buff);
+	size_s2 = ft_strlen(tmp);
+	mall = (char *)malloc(sizeof(char) * (size_s1 + size_s2 + 1));
+	if (mall == NULL)
+		return (NULL);
+	while (i++ < size_s1)
+		mall[i - 1] = read_buff[i - 1];
+	i = 0;
+	while (i++ < size_s2)
+		mall[size_s1 + i - 1] = tmp[i - 1];
+	mall[size_s1 + i - 1] = '\0';
+	free(read_buff);
+	return (mall);
+/*
+	char	*str = "";
 	size_t	size;
 	size_t	i;
 
@@ -12,17 +39,24 @@ char	*ft_strjoin(char *read_buff, char *tmp)
 		read_buff = malloc(sizeof(char) * 1);
 		if (!read_buff)
 			return (NULL);
+		*read_buff = '\0';
 	}
+	printf("\n00tmp:%s\ntotal:%s\n", tmp, read_buff);
 	size = ft_strlen(read_buff) + ft_strlen(tmp);
 	str = malloc(sizeof(char) * (size + 1));
 	if (str == NULL)
 		return (0);
-	while (i++ < size && read_buff[i])
-		str[i - 1] = read_buff[i - 1];
+	while (i <= size && read_buff[i])
+	{
+		str[i] = read_buff[i];
+		i++;
+	}
 	str[i] = '\0';
 	free(read_buff);
+	printf("11tmp:%s\ntotal:%s\n", tmp, str);
 	ft_strlcat(str, tmp, 0xffffffff);
-	return (str);
+	printf("22tmp:%s\ntotal:%s\n", tmp, str);
+	return (str);*/
 }
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
