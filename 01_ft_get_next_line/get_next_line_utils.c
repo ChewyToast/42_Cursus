@@ -7,16 +7,18 @@ char	*ft_strjoin(char *read_buff, char *tmp)
 	size_t	i;
 
 	i = 0;
+	if (!read_buff)
+	{
+		read_buff = malloc(sizeof(char) * 1);
+		if (!read_buff)
+			return (NULL);
+	}
 	size = ft_strlen(read_buff) + ft_strlen(tmp);
 	str = malloc(sizeof(char) * (size + 1));
 	if (str == NULL)
 		return (0);
-	while (size && read_buff[i])
-	{
-		str[i] = read_buff[i];
-		i++;
-		size--;
-	}
+	while (i++ < size && read_buff[i])
+		str[i - 1] = read_buff[i - 1];
 	str[i] = '\0';
 	free(read_buff);
 	ft_strlcat(str, tmp, 0xffffffff);

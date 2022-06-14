@@ -4,119 +4,86 @@ int	main(void)
 {
 	int		fd;
 	char	*st;
-	char	forst;
 	int		cnt;
 
-	cnt = 1;
-	forst = '1';
-	st = &forst;
+	cnt = 5;
 	fd = open("prueba.txt", O_RDONLY);
-	write(1, "\nHI\n", 4);
-	while (cnt)
+	while (cnt > 1)
 	{
 		st = get_next_line(fd);
-		if (st == NULL)
-			break ;
-		printf("\nRESULT\n");
 		printf("%s", st);
 		free(st);
+		cnt--;
 	}
 	close(fd);
 }
 
 char	*get_next_line(const int fd)
 {
-	char		*total_buff;
 	char		*rtrn_buff;
-	static char	*saved_buff;
+	static char	*total_buff;
 
-	write(1, "\nHI\n", 4);
-	if (BUFFER_SIZE < 1 || !fd)
+	if (BUFFER_SIZE < 1 || fd <= 0)
 		return (NULL);
-	if (!saved_buff || !check_nl(saved_buff))
+	if (!total_buff || !check_nl(total_buff))
 	{
-		total_buff = ft_read(fd, saved_buff);
+		total_buff = ft_read(fd, total_buff);
 		if (!total_buff)
-			return (0);
-		rtrn_buff = copy_line(total_buff);
-		saved_buff = ft_substr(total_buff, check_nl(total_buff) + 1, (ft_strlen(total_buff) - check_nl(total_buff)));
+			return (NULL);
 	}
-	else
-	{
-		rtrn_buff = copy_line(saved_buff);
-		saved_buff = ft_substr(saved_buff, check_nl(saved_buff) + 1, (ft_strlen(saved_buff) - (check_nl(saved_buff) + 1)));
-	}
+	printf("\nstr: %s\n", total_buff);
+	rtrn_buff = copy_line(total_buff);
+	if (rtrn_buff)
+		return (NULL);
+	total_buff = ft_substr(total_buff, ft_strlen(rtrn_buff), (ft_strlen(total_buff) - ft_strlen(rtrn_buff)));
+	if (!total_buff)
+		return (NULL);
 	return (rtrn_buff);
 }
-char	*copy_line(char *buff)
+char	*copy_line(char *total_buff)
 {
 	char	*rtrn_buff;
 	size_t	size;
 
 	size = 0;
-	while (buff[size] && buff[size] != '\n')
+	while (total_buff[size] && total_buff[size] != '\n')
 		size++;
-	rtrn_buff = malloc(sizeof(char) * size + 2);
-	rtrn_buff[size + 1] = '\0';
+	rtrn_buff = malloc(sizeof(char) * (size + 2));
 	if (!rtrn_buff)
-		return (0);
+		return (NULL);
+	rtrn_buff[size + 1] = '\0';
 	size = 0;
-	while (buff[size] && buff[size] != '\n')
+	while (total_buff[size] && total_buff[size] != '\n')
 	{
-		rtrn_buff[size] = buff[size];
+		rtrn_buff[size] = total_buff[size];
 		size++;
 	}
-	rtrn_buff[size] = buff[size];
+	rtrn_buff[size] = total_buff[size];
 	return (rtrn_buff);
 }
 
-char	*ft_read(const int fd, char *saved_buff)
+char	*ft_read(const int fd, char *total_buff)
 {
-	char	*read_buff;
 	char	*tmp;
-	ssize_t	checker;
+	ssize_t	chk;
 
-	checker = ft_strlen(saved_buff);
-	read_buff = malloc(sizeof(char) * (checker + 1));
-	if (!read_buff)
-		return (0);
-	checker = 0;
-	if (saved_buff)
-	{
-		while (saved_buff[checker])
-		{
-			read_buff[checker] = saved_buff[checker];
-			checker++;
-		}
-	}
-	read_buff[checker] = 0;
+	chk = 1;
 	tmp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!tmp)
+		return (NULL);
+	while (chk < 1 && !check_nl(total_buff))
 	{
-		free(read_buff);
-		return (0);
-	}
-	tmp[BUFFER_SIZE] = '\0';
-	while (1)
-	{
-		checker = read(fd, tmp, BUFFER_SIZE);
-		if (checker == -1)
+		chk = read(fd, tmp, BUFFER_SIZE);
+		if (chk > 0)
 		{
-			free(read_buff);
-			free(tmp);
-			return (0);
+			printf("\nhi\n");
+			tmp[chk] = '\0';
+			total_buff = ft_strjoin(total_buff, tmp);
+			printf("\nstr: %s\n", total_buff);
 		}
-		else if (checker)
-		{
-			read_buff = ft_strjoin(read_buff, tmp);
-			if (!read_buff)
-				return (0);
-		}
-		if (check_nl(read_buff) || !checker)
-			break;
 	}
 	free(tmp);
-	if (saved_buff)
-		free(saved_buff);
-	return (read_buff);
+	if (chk == -1)
+		return (NULL);
+	return (total_buff);
 }
