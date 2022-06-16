@@ -11,7 +11,27 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+/*
+int	main(void)
+{
+	int		fd;
+	char	*st;
+	int		cnt;
 
+	cnt = 7;
+	st = "";
+	fd = open("prueba.txt", O_RDONLY);
+	while (cnt >= 0)
+	{
+		st = get_next_line(fd);
+		printf("RESULT");
+		printf("%s", st);
+		free(st);
+		cnt--;
+	}
+	close(fd);
+}
+*/
 char	*get_next_line(const int fd)
 {
 	char		*rtrn_buff;
@@ -20,17 +40,18 @@ char	*get_next_line(const int fd)
 	if (BUFFER_SIZE < 1 || fd < 0)
 		return (NULL);
 	if (!total_buff || !check_nl(total_buff))
-	{
 		total_buff = ft_read(fd, total_buff);
-		if (!total_buff)
-			return (NULL);
-	}
-	rtrn_buff = copy_line(total_buff);
-	if (!rtrn_buff)
-		return (NULL);
-	total_buff = cut_static(total_buff);
 	if (!total_buff)
 		return (NULL);
+	rtrn_buff = copy_line(total_buff);
+	if (!rtrn_buff)
+	{
+		free(total_buff);
+		return (NULL);
+	}
+	total_buff = cut_static(total_buff);
+	if (!total_buff)
+		free(total_buff);
 	return (rtrn_buff);
 }
 
@@ -82,8 +103,13 @@ char	*cut_static(char *total_buff)
 	indx = 0;
 	while (total_buff[indx] != '\n' && total_buff[indx] != '\0')
 		indx++;
-	indx++;
-	new_buff = ft_substr(total_buff, indx, ft_strlen(total_buff) - indx);
+	if (total_buff[indx] == '\n' && total_buff[indx + 1] != '\0')
+	{
+		indx++;
+		new_buff = ft_substr(total_buff, indx, ft_strlen(total_buff) - indx);
+	}
+	else
+		new_buff = NULL;
 	free (total_buff);
 	return (new_buff);
 }
