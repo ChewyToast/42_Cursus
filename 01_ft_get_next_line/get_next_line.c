@@ -11,27 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-/*
-int	main(void)
-{
-	int		fd;
-	char	*st;
-	int		cnt;
 
-	cnt = 7;
-	st = "";
-	fd = open("prueba.txt", O_RDONLY);
-	while (cnt >= 0)
-	{
-		st = get_next_line(fd);
-		printf("RESULT");
-		printf("%s", st);
-		free(st);
-		cnt--;
-	}
-	close(fd);
-}
-*/
 char	*get_next_line(const int fd)
 {
 	char		*rtrn_buff;
