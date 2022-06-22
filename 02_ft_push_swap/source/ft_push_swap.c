@@ -13,19 +13,12 @@
 
 int	main(int argc, char **argv)
 {
-	int	fd_a;
-	int	fd_b;
-
-	fd_a = open("../files/a.txt", O_RDWR);
-	fd_b = open("../files/b.txt", O_RDWR);
-	if (fd_a < 1)
-		return (ft_error());
 	if (argc > 1)
-		reader(fd_a, fd_b, argv);
+	{
+		if (check_input(argv))
+			printf("correct input\n");
+		else
+			printf("Wrong input\n");
+	}
+	return (0);
 }
-
-ssize_t	reader(int fd_a, int fd_b, char **input)
-{}
-
-ssize_t	ft_error(void)
-	return (ft_putstr_fd("Error\n", -2));
