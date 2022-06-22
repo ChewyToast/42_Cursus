@@ -11,12 +11,10 @@ static size_t	check_dobles(char **input)
 	x = 1;
 	while (input[x] != NULL)
 	{
-		x2 = 0;
-		printf("\nX: %ld, input[x]: %s\n", x, input[x]);
+		x2 = 1;
 		while (x - x2 > 0)
 		{
-			printf("\nX: %ld, x - x2 = %ld input[x]: %s\n", x, x -x2, input[x]);
-			if (!ft_strncmp(input[x], input[x - x2], 0xffffffff))
+			if (x > 1 && (!ft_strncmp(input[x], input[x - x2], 0xffffffff)))
 				return (0);
 			x2++;
 		}
