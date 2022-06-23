@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 11:19:28 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/21 11:20:13 by bmoll-pe         ###   ########.fr       */
+/*   Created: 2022/05/11 12:00:45 by marvin            #+#    #+#             */
+/*   Updated: 2022/06/12 11:47:41 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	main(int argc, char **argv)
+int	ft_strlen(const char *s)
 {
-	if (argc > 1)
-	{
-		if (check_input(argv))
-		{
-			printf("Correct input\n");
-		}
-		else
-			printf("Wrong input\n");
-	}
-	else
-		printf("Invalid input\n");
-	return (0);
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

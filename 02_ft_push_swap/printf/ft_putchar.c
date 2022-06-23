@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 11:19:28 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/21 11:20:13 by bmoll-pe         ###   ########.fr       */
+/*   Created: 2022/05/23 00:20:18 by bmoll-pe          #+#    #+#             */
+/*   Updated: 2022/06/12 11:48:09 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	main(int argc, char **argv)
+ssize_t	ft_putchar(char c)
 {
-	if (argc > 1)
-	{
-		if (check_input(argv))
-		{
-			printf("Correct input\n");
-		}
-		else
-			printf("Wrong input\n");
-	}
-	else
-		printf("Invalid input\n");
-	return (0);
+	ssize_t	rslt;
+
+	rslt = write(1, &c, 1);
+	if (rslt < 0)
+		return (-1);
+	return (1);
 }
