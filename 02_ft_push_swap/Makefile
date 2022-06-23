@@ -12,7 +12,7 @@
 
 NAME = push_swap
 
-SRCS =	libft/ft_atoi.c			libft/ft_memmove.c		libft/ft_strlcpy.c	\
+SRC =	libft/ft_atoi.c			libft/ft_memmove.c		libft/ft_strlcpy.c	\
 		libft/ft_bzero.c		libft/ft_memset.c		libft/ft_strlen.c	\
 		libft/ft_calloc.c		libft/ft_putchar_fd.c	libft/ft_strmapi.c	\
 		libft/ft_isalnum.c		libft/ft_putendl_fd.c	libft/ft_strncmp.c	\
@@ -26,21 +26,15 @@ SRCS =	libft/ft_atoi.c			libft/ft_memmove.c		libft/ft_strlcpy.c	\
 		libft/ft_memcpy.c		libft/ft_strlcat.c		libft/ft_toupper.c	\
 		source/ft_push_swap.c	source/ft_check_input.c
 
-OBJS =		$(SRCS:.c=.o)
-
-FLAGS =		-Werror -Wextra -Wall -c
+FLAGS =		-Werror -Wextra -Wall -o
 
 CC = 		gcc
 
-all:		$(NAME)
-
-%.o: %.c
-	$(CC) $(FLAGS) $< -o $@
-
-$(NAME):	$(OBJS) $(NAME)
+all:
+			$(CC) $(FLAGS) $(NAME) $(SRC)
 
 clean:
-			@rm -f	$(OBJS)
+			@rm -f	*.o
 
 fclean:		clean
 			@rm -f	$(NAME)

@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 11:19:28 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/21 11:20:13 by bmoll-pe         ###   ########.fr       */
+/*   Created: 2022/05/23 00:24:43 by bmoll-pe          #+#    #+#             */
+/*   Updated: 2022/06/12 11:47:15 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	main(int argc, char **argv)
+ssize_t	ft_putstr(const char *str)
 {
-	if (argc > 1)
+	ssize_t	size;
+	ssize_t	tmp;
+
+	size = 0;
+	if (!str)
+		return (ft_putstr("(null)"));
+	while (str && *str)
 	{
-		if (check_input(argv))
-		{
-			printf("Correct input\n");
-		}
-		else
-			printf("Wrong input\n");
+		tmp = ft_putchar(*str);
+		if (tmp < 0)
+			return (-1);
+		str++;
+		size += tmp;
 	}
-	else
-		printf("Invalid input\n");
-	return (0);
+	return (size);
 }
