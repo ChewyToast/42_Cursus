@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   stack_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:19:28 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/21 11:20:13 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/06/24 12:30:40 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+// FUNCTION CREATES A T_STACK WITH THE VALUE OF THE PARAMETER
+t_stack	*create_cont(int num)
 {
-	if (argc > 1)
-	{
-		if (check_input(argv))
-		{
-			printf("Correct input\n");
-		}
-		else
-			printf("Wrong input\n");
-	}
+	t_stack	*str;
+
+	str = malloc(sizeof(t_stack) * 1);
+	if (!str)
+		return (0);
+	str->content = num;
+	str->next = NULL;
+	return (str);
+}
+
+// FUNCTION ADDS AT THE END OF THE STACK, A NEW NUMBER
+void	add_num(t_stack **lst, t_stack *nlst)
+{
+	if (!(*lst))
+		(*lst) = nlst;
 	else
-		printf("Invalid input\n");
-	return (0);
+	{
+		while ((*lst)->next)
+			(*lst) = (*lst)->next;
+		(*lst)->next = nlst;
+	}
 }
