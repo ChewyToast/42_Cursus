@@ -24,7 +24,8 @@ SRC =	libft/ft_atoi.c			libft/ft_memmove.c		libft/ft_strlcpy.c	\
 		libft/ft_memchr.c		libft/ft_striteri.c		libft/ft_substr.c	\
 		libft/ft_memcmp.c		libft/ft_strjoin.c		libft/ft_tolower.c	\
 		libft/ft_memcpy.c		libft/ft_strlcat.c		libft/ft_toupper.c	\
-		source/ft_push_swap.c	source/ft_check_input.c
+		source/1ft_push_swap.c	source/2ft_check_input.c					\
+		source/3ft_fill_stack.c	source/4stack_functions.c
 
 FLAGS =		-Werror -Wextra -Wall -o
 

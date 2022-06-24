@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_push_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 00:24:43 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/12 11:47:15 by bmoll-pe         ###   ########.fr       */
+/*   Created: 2022/06/21 11:19:28 by bmoll-pe          #+#    #+#             */
+/*   Updated: 2022/06/24 12:30:21 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "push_swap.h"
 
-ssize_t	ft_putstr(const char *str)
+// MAIN FUNCTION, THERE WE SEE THE NUM OF ARGS AND START THE PROGRAM
+int	main(int argc, char **argv)
 {
-	ssize_t	size;
-	ssize_t	tmp;
+//	t_stack	stack_a;
+//	t_stack	stack_b;
 
-	size = 0;
-	if (!str)
-		return (ft_putstr("(null)"));
-	while (str && *str)
+	if (argc > 1)
 	{
-		tmp = ft_putchar(*str);
-		if (tmp < 0)
-			return (-1);
-		str++;
-		size += tmp;
+		if (check_input(argv))
+		{
+			printf("Correct input\n");
+		}
+		else
+			printf("Wrong input\n");
 	}
-	return (size);
+	else
+		printf("Invalid input\n");
+	return (0);
 }

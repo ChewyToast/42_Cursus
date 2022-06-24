@@ -1,22 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_fill_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/23 00:20:18 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/12 11:48:09 by bmoll-pe         ###   ########.fr       */
+/*   Created: 2022/06/21 11:19:28 by bmoll-pe          #+#    #+#             */
+/*   Updated: 2022/06/24 12:30:11 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
-
-ssize_t	ft_putchar(char c)
-{
-	ssize_t	rslt;
-
-	rslt = write(1, &c, 1);
-	if (rslt < 0)
-		return (-1);
-	return (1);
-}
+#include "push_swap.h"

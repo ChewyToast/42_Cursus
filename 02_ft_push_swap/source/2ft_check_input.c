@@ -1,9 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_check_input.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/24 12:29:59 by bmoll-pe          #+#    #+#             */
+/*   Updated: 2022/06/24 12:30:02 by bmoll-pe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "push_swap.h"
 
-//printf("\nX: %ld, Y: %ld, input[x][y]: %c\n", x, y, input[x][y]);
-//printf("\nX: %ld, input[x]: %s\n", x, input[x]);
-//printf("\ninput: %c -- %c :min_value\n", input[x][y],  min_value[y]);
-
+// EXTRA FUNCTION TO COMPARE THE MAX AND MIN INT NUMBER
 static size_t	extra_function(char *input, char *max_value, char *min_value)
 {
 	size_t	y;
