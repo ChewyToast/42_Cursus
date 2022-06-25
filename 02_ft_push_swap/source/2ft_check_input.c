@@ -19,7 +19,10 @@ static size_t	extra_function(char *input, char *max_value, char *min_value)
 	y = 0;
 	while (input[y])
 	{
-		if (((input[0] != '-') && (input[y] > max_value[y]))
+		if (((input[0] != '-') && (input[y] < max_value[y]))
+			|| ((input[0] == '-') && (input[y] < min_value[y])))
+			break ;
+		else if (((input[0] != '-') && (input[y] > max_value[y]))
 			|| ((input[0] == '-') && (input[y] > min_value[y])))
 			return (0);
 		y++;
