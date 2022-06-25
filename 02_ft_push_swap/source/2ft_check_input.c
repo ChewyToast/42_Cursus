@@ -48,7 +48,7 @@ static size_t	check_size(char **input)
 				|| (y < 11 && input[x][0] == '-'))
 			;
 		else
-			if (!extra_function(input[x], "2147483647", "-2147483647"))
+			if (!extra_function(input[x], "2147483647", "-2147483648"))
 				return (0);
 		x++;
 	}
