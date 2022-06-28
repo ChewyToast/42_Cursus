@@ -39,9 +39,13 @@ void	ft_free(t_stack **stack);
 void	show_stack(t_stack **stack);
 
 /*STACK_OPERATIONS*/
-// FUNCTION ADDS AT THE TOP OF THE STACK_DEST THE FIRST ITEM OF STACK_ORIGIN
+// function adds at the top of the stack_dest the first item of stack_origin
 void	ft_pab(t_stack **stack_dest, t_stack **stack_origin);
 // function swaps the two first elements of the stack
 void	ft_sab(t_stack **stack);
+// function to shift up all the elements of the stack
+void	ft_rab(t_stack **stack);
+// function to shift down all the elements of the stack
+void	ft_rrab(t_stack **stack);
 
 #endif

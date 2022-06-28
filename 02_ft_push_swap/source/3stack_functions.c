@@ -73,11 +73,14 @@ void	ft_free(t_stack **stack)
 // function to see the stack, just a checker for the programer
 void	show_stack(t_stack **stack)
 {
+	t_stack	*tmp;
+
+	tmp = *stack;
 	printf("\n------------------");
-	while ((*stack))
+	while (tmp)
 	{
-		printf("\nFINAL RESULT: %d", (*stack)->num);
-		*stack = (*stack)->next;
+		printf("\nFINAL RESULT: %d", tmp->num);
+		tmp = tmp->next;
 	}
 	printf("\n------------------");
 }
