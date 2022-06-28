@@ -39,7 +39,9 @@ void	ft_free(t_stack **stack);
 void	show_stack(t_stack **stack);
 
 /*STACK_OPERATIONS*/
-// function adds at the top of the stack the first item of other stack
-void	ft_pa(t_stack **stack_a, t_stack **stack_b);
+// FUNCTION ADDS AT THE TOP OF THE STACK_DEST THE FIRST ITEM OF STACK_ORIGIN
+void	ft_pab(t_stack **stack_dest, t_stack **stack_origin);
+// function swaps the two first elements of the stack
+void	ft_sab(t_stack **stack);
 
 #endif
