@@ -14,19 +14,28 @@
 // MAIN FUNCTION, THERE WE SEE THE NUM OF ARGS AND START THE PROGRAM
 int	main(int argc, char **argv)
 {
-//	t_stack	stack_a;
-//	t_stack	stack_b;
+	t_stack	*stack_a;
 
 	if (argc > 1)
 	{
 		if (check_input(argv))
 		{
-			printf("Correct input\n");
+			printf("Correct input");
+			if (!fill_stack(argv, &stack_a))
+				return (0);
+			show_stack(&stack_a);
+			ft_free(&stack_a);
 		}
 		else
 			printf("Wrong input\n");
 	}
 	else
 		printf("Invalid input\n");
+	return (0);
+}
+
+size_t	ft_error(void)
+{
+	printf("Error\n");
 	return (0);
 }

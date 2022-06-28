@@ -11,28 +11,13 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-// FUNCTION CREATES A T_STACK WITH THE VALUE OF THE PARAMETER
-t_stack	*create_cont(int num)
+// FUNCTION ADDS AT THE TOP OF THE STACK
+void	ft_pa(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*str;
+	t_stack	*tmp;
 
-	str = malloc(sizeof(t_stack) * 1);
-	if (!str)
-		return (0);
-	str->content = num;
-	str->next = NULL;
-	return (str);
-}
-
-// FUNCTION ADDS AT THE END OF THE STACK, A NEW NUMBER
-void	add_num(t_stack **lst, t_stack *nlst)
-{
-	if (!(*lst))
-		(*lst) = nlst;
-	else
-	{
-		while ((*lst)->next)
-			(*lst) = (*lst)->next;
-		(*lst)->next = nlst;
-	}
+	tmp = *stack_b;
+	*stack_b = tmp->next;
+	tmp->next = *stack_a;
+	*stack_a = tmp;
 }
