@@ -15,7 +15,10 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
+	t_stack	*stack_b;
 
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc > 1)
 	{
 		if (check_input(argv))
@@ -24,6 +27,12 @@ int	main(int argc, char **argv)
 			if (!fill_stack(argv, &stack_a))
 				return (0);
 			show_stack(&stack_a);
+			printf("\n*****************");
+			ft_pab(&stack_b, &stack_a);
+			printf("\n*****************");
+			show_stack(&stack_a);
+			show_stack(&stack_b);
+			printf("\n*****************");
 			ft_free(&stack_a);
 		}
 		else
