@@ -11,27 +11,71 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-// FUNCTION ADDS AT THE TOP OF THE STACK_DEST THE FIRST ITEM OF STACK_ORIGIN
-void	ft_pab(t_stack **stack_dest, t_stack **stack_origin)
-{
-	t_stack	*tmp;
-
-	tmp = *stack_origin;
-	(*stack_origin) = tmp->next;
-	tmp->next = *stack_dest;
-	*stack_dest = tmp;
-}
-
 // FUNCTION SWAPS THE TWO FIRST ELEMENTS OF THE STACK
 void	ft_sab(t_stack **stack)
 {
 	t_stack	*tmp;
 
-	if ((*stack)->next)
+	if ((*stack) && ((*stack)->next))
+	{
+		tmp = (*stack)->next;
+		(*stack)->next = tmp->next;
+		tmp->next = *(stack);
+		*stack = tmp;
+	}
+}
+
+// FUNCTION ADDS AT THE TOP OF THE STACK_DEST THE FIRST ITEM OF STACK_ORIGIN
+void	ft_pab(t_stack **stack_dest, t_stack **stack_origin)
+{
+	t_stack	*tmp;
+
+	if (*stack_origin && *stack_dest)
+	{
+		tmp = *stack_origin;
+		(*stack_origin) = (*stack_origin)->next;
+		tmp->next = *stack_dest;
+		*stack_dest = tmp;
+	}
+	else if (*stack_origin && !(*stack_dest))
+	{
+		*stack_dest = *stack_origin;
+		*stack_origin = (*stack_origin)->next;
+		(*stack_dest)->next = NULL;
+	}
+}
+
+// FUNCTION TO SHIFT UP ALL THE ELEMENTS OF THE STACK
+void	ft_rab(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (*stack && ((*stack)->next))
 	{
 		tmp = *stack;
 		*stack = (*stack)->next;
-		tmp->next = (*stack)->next;
-		(*stack)->next = tmp;
+		add_at_end(stack, tmp);
+		tmp->next = NULL;
+	}
+}
+
+// FUNCTION TO SHIFT DOWN ALL THE ELEMENTS OF THE STACK
+void	ft_rrab(t_stack **stack)
+{
+	t_stack	*tmp;
+	t_stack	*tmp2;
+
+	if (*stack && ((*stack)->next))
+	{
+		tmp = *stack;
+		tmp2 = tmp->next;
+		while (tmp2->next)
+		{
+			tmp = tmp->next;
+			tmp2 = tmp->next;
+		}
+		tmp->next = NULL;
+		tmp2->next = *stack;
+		*stack = tmp2;
 	}
 }

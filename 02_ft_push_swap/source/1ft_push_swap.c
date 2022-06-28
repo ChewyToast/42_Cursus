@@ -27,13 +27,8 @@ int	main(int argc, char **argv)
 			if (!fill_stack(argv, &stack_a))
 				return (0);
 			show_stack(&stack_a);
-			printf("\n*****************");
-			ft_pab(&stack_b, &stack_a);
-			printf("\n*****************");
-			show_stack(&stack_a);
-			show_stack(&stack_b);
-			printf("\n*****************");
 			ft_free(&stack_a);
+			ft_free(&stack_b);
 		}
 		else
 			printf("Wrong input\n");
@@ -43,6 +38,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+// FUNTION TO SHOW THE ERROR MSG AND RETURN 0
 size_t	ft_error(void)
 {
 	printf("Error\n");
