@@ -14,21 +14,12 @@
 // MAIN FUNCTION, THERE WE SEE THE NUM OF ARGS AND START THE PROGRAM
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-
-	stack_a = NULL;
-	stack_b = NULL;
 	if (argc > 1)
 	{
 		if (check_input(argv))
 		{
-			printf("Correct input");
-			if (!fill_stack(argv, &stack_a))
-				return (0);
-			show_stack(&stack_a);
-			ft_free(&stack_a);
-			ft_free(&stack_b);
+			if (!startup(argv))
+				return (ft_error());
 		}
 		else
 			printf("Wrong input\n");
@@ -38,9 +29,27 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-// FUNTION TO SHOW THE ERROR MSG AND RETURN 0
+// FUNCTION TO ORGANIZE PROGRAM PROCESSES
+ssize_t	startup(char **argv)
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	stack_a = NULL;
+	stack_b = NULL;
+	if (!fill_stack(argv, &stack_a))
+		return (0);
+	show_stack(&stack_a, &stack_b);
+	shorter(&stack_a, &stack_b);
+	show_stack(&stack_a, &stack_b);
+	ft_free(&stack_a);
+	ft_free(&stack_b);
+	return (1);
+}
+
+// FUNTION TO SHOW THE ERROR MSG AND RETURN -1
 size_t	ft_error(void)
 {
-	printf("Error\n");
-	return (0);
+	write(2, "Error\n", 6);
+	return (-1);
 }

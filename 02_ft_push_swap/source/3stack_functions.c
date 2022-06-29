@@ -56,6 +56,22 @@ size_t	add_at_end(t_stack **stack, t_stack *new_item)
 	return (1);
 }
 
+// FUNCTION TO RETURN THE SIZE OF THE STACK
+size_t	stack_len(t_stack **stack)
+{
+	t_stack	*tmp;
+	size_t	indx;
+
+	tmp = *stack;
+	indx = 0;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		indx++;
+	}
+	return (indx);
+}
+
 // FUNCTION TO FREE ALL THE STACK
 void	ft_free(t_stack **stack)
 {
@@ -71,16 +87,31 @@ void	ft_free(t_stack **stack)
 }
 
 // function to see the stack, just a checker for the programer
-void	show_stack(t_stack **stack)
+void	show_stack(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;
+	t_stack	*tmp2;
 
-	tmp = *stack;
+	tmp = *stack_a;
+	tmp2 = *stack_b;
 	printf("\n------------------");
-	while (tmp)
+	printf("\nSTACK A          STACK B");
+	while (tmp || tmp2)
 	{
-		printf("\nFINAL RESULT: %d", tmp->num);
-		tmp = tmp->next;
+		if (tmp)
+		{
+			printf("\n %d", tmp->num);
+			tmp = tmp->next;
+		}
+		else
+			printf("\n -");
+		if (tmp2)
+		{
+			printf("                 %d", tmp2->num);
+			tmp2 = tmp2->next;
+		}
+		else
+			printf("                 -");
 	}
 	printf("\n------------------");
 }
