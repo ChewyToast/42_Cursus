@@ -54,6 +54,9 @@ void	filling_stack_b(t_stack **stack_a, t_stack **stack_b)
 // FUNCTION TO PASS TO THE STACK_A, ALL THE ITEMS IN THE CORRECT ORDER
 void	refill_a(t_stack **stack_a, t_stack **stack_b)
 {
+	printf("\n\n\n******************************\n");
+	printf("******************************\n");
+	printf("REFILL STACK_A");
 	while (*stack_b)
 		ft_pab(stack_a, stack_b);
 }
