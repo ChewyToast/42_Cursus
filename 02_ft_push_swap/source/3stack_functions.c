@@ -94,8 +94,8 @@ void	show_stack(t_stack **stack_a, t_stack **stack_b)
 
 	tmp = *stack_a;
 	tmp2 = *stack_b;
-	printf("\n------------------");
-	printf("\nSTACK A          STACK B");
+	printf("\n------------------------------\n");
+	printf("\nSTACK A\t\t\tSTACK B");
 	while (tmp || tmp2)
 	{
 		if (tmp)
@@ -107,11 +107,11 @@ void	show_stack(t_stack **stack_a, t_stack **stack_b)
 			printf("\n -");
 		if (tmp2)
 		{
-			printf("                 %d", tmp2->num);
+			printf("\t\t\t%d", tmp2->num);
 			tmp2 = tmp2->next;
 		}
 		else
-			printf("                 -");
+			printf("\t\t\t-");
 	}
-	printf("\n------------------");
+	printf("\n\n------------------------------");
 }
