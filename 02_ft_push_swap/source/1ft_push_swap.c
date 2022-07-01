@@ -22,10 +22,10 @@ int	main(int argc, char **argv)
 				return (ft_error());
 		}
 		else
-			printf("Wrong input\n");
+			return (ft_error());
 	}
 	else
-		printf("Invalid input\n");
+		return (ft_error());
 	return (0);
 }
 
@@ -38,10 +38,9 @@ ssize_t	startup(char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (!fill_stack(argv, &stack_a))
-		return (0);
-	show_stack(&stack_a, &stack_b);
-	shorter(&stack_a, &stack_b);
-	show_stack(&stack_a, &stack_b);
+		return (ft_error());
+	if (!shorter(&stack_a, &stack_b))
+		return (ft_error());
 	ft_free(&stack_a);
 	ft_free(&stack_b);
 	return (1);

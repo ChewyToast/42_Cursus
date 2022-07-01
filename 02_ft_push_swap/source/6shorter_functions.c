@@ -14,7 +14,7 @@
 // FUNCTION TO FIND THE SMALLEST NUM OF THE STACK
 size_t	find_smallest(t_stack **stack)
 {
-	int n_to_compare;
+	int		n_to_compare;
 	size_t	indx;
 	size_t	rtrn;
 	t_stack	*tmp;
@@ -37,27 +37,40 @@ size_t	find_smallest(t_stack **stack)
 }
 
 // FUNCTION PASS THE STACK_A TO STACK_B IN DESCENDING ORDER
-void	filling_stack_b(t_stack **stack_a, t_stack **stack_b)
+int	filling_stack_b(t_stack **stack_a, t_stack **stack_b)
 {
 	size_t	indx;
 
 	indx = find_smallest(stack_a);
 	if (!indx)
+	{
 		ft_pab(stack_b, stack_a);
-	else if (indx < (stack_len(stack_a) / 2))
+		if (write(1, "pb\n", 4) < 1)
+			return (0);
+	}
+	else if (indx <= (stack_len(stack_a) / 2))
+	{
 		ft_rab(stack_a);
+		if (write(1, "ra\n", 4) < 1)
+			return (0);
+	}
 	else
+	{
 		ft_rrab(stack_a);
-	show_stack(stack_a, stack_b);
+		if (write(1, "rra\n", 4) < 1)
+			return (0);
+	}
+	return (1);
 }
 
 // FUNCTION TO PASS TO THE STACK_A, ALL THE ITEMS IN THE CORRECT ORDER
-void	refill_a(t_stack **stack_a, t_stack **stack_b)
+int	refill_a(t_stack **stack_a, t_stack **stack_b)
 {
-	printf("\n\n\n******************************\n");
-	printf("******************************\n");
-	printf("REFILL STACK_A");
 	while (*stack_b)
+	{
 		ft_pab(stack_a, stack_b);
+		if (write(1, "pa\n", 4) < 1)
+			return (0);
+	}
+	return (1);
 }
-

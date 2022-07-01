@@ -16,10 +16,16 @@ int	shorter(t_stack **stack_a, t_stack **stack_b)
 {
 	while ((!is_shorted(stack_a) || (*stack_b)))
 	{
-		if ((*stack_a)->next)
-			filling_stack_b(stack_a, stack_b);
+		if (stack_len(stack_a) > 1 && !is_shorted(stack_a))
+		{
+			if (!filling_stack_b(stack_a, stack_b))
+				return (0);
+		}
 		else
-			refill_a(stack_a, stack_b);
+		{
+			if (!refill_a(stack_a, stack_b))
+				return (0);
+		}
 	}
 	return (1);
 }
@@ -27,7 +33,7 @@ int	shorter(t_stack **stack_a, t_stack **stack_b)
 // FUNCTION TO CHECK IF THE STACK IS ALREADY SHORTED
 int	is_shorted(t_stack **stack)
 {
-	int indx;
+	int		indx;
 	t_stack	*tmp;
 
 	tmp = *stack;
