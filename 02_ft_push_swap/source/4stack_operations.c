@@ -14,7 +14,6 @@
 // FUNCTION SWAPS THE TWO FIRST ELEMENTS OF THE STACK
 void	ft_sab(t_stack **stack)
 {
-	printf("\n\nsab");
 	t_stack	*tmp;
 
 	if ((*stack) && ((*stack)->next))
@@ -29,7 +28,6 @@ void	ft_sab(t_stack **stack)
 // FUNCTION ADDS AT THE TOP OF THE STACK_DEST THE FIRST ITEM OF STACK_ORIGIN
 void	ft_pab(t_stack **stack_dest, t_stack **stack_origin)
 {
-	printf("\n\npab");
 	t_stack	*tmp;
 
 	if (*stack_origin && *stack_dest)
@@ -50,7 +48,6 @@ void	ft_pab(t_stack **stack_dest, t_stack **stack_origin)
 // FUNCTION TO SHIFT UP ALL THE ELEMENTS OF THE STACK
 void	ft_rab(t_stack **stack)
 {
-	printf("\n\nrab");
 	t_stack	*tmp;
 
 	if (*stack && ((*stack)->next))
@@ -65,7 +62,6 @@ void	ft_rab(t_stack **stack)
 // FUNCTION TO SHIFT DOWN ALL THE ELEMENTS OF THE STACK
 void	ft_rrab(t_stack **stack)
 {
-	printf("\n\nrrab");
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
