@@ -9,9 +9,9 @@
 /*   Updated: 2022/06/12 11:47:56 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-static ssize_t	check_conversion(va_list args, char compare);
+static ssize_t	check_conversion(va_list args, const char *str);
 static ssize_t	check_bonus(va_list args, const char *str);
 
 ssize_t	ft_read(const char *str, va_list args)
@@ -25,13 +25,9 @@ ssize_t	ft_read(const char *str, va_list args)
 		tmp = 0;
 		if (*str == '%')
 		{
-			if (str[1] != '#')
-				tmp = check_conversion(args, *(++str));
-			else if (str[1] == '#')
-			{
-				tmp = check_bonus(args, (++str));
+			tmp = check_conversion(args, (++str));
+			if (*str == '#' || *str == ' ' || *str == '+')
 				str++;
-			}
 		}
 		else
 			tmp = ft_putchar(*str);
@@ -43,27 +39,29 @@ ssize_t	ft_read(const char *str, va_list args)
 	return (rslt);
 }
 
-static ssize_t	check_conversion(va_list args, char compare)
+static ssize_t	check_conversion(va_list args, const char *str)
 {
 	ssize_t	rslt;
 
 	rslt = 0;
-	if (compare == 'c')
+	if (*str == 'c')
 		rslt = ft_putchar(va_arg(args, int));
-	else if (compare == 's')
+	else if (*str == 's')
 		rslt = ft_putstr(va_arg(args, char *));
-	else if (compare == 'p')
+	else if (*str == 'p')
 		rslt = ft_ptoa(va_arg(args, unsigned long long int));
-	else if (compare == 'd' || compare == 'i')
+	else if (*str == 'd' || *str == 'i')
 		rslt = ft_itoa(va_arg(args, int));
-	else if (compare == 'u')
+	else if (*str == 'u')
 		rslt = ft_uitoa(va_arg(args, unsigned int));
-	else if (compare == 'x')
+	else if (*str == 'x')
 		rslt = ft_10to16(va_arg(args, unsigned int), 0);
-	else if (compare == 'X')
+	else if (*str == 'X')
 		rslt = ft_10to16(va_arg(args, unsigned int), 1);
-	else if (compare == '%')
+	else if (*str == '%')
 		rslt = ft_putchar('%');
+	else if (*str == '#' || *str == ' ' || *str == '+')
+		rslt = check_bonus(args, str);
 	return (rslt);
 }
 
@@ -72,21 +70,15 @@ static ssize_t	check_bonus(va_list args, const char *str)
 	ssize_t	rslt;
 
 	rslt = 0;
-	if (*str == '#' && str[1] == 'x')
+	if (*str == '#')
 	{
-		rslt = ft_putstr("0x");
-		if (rslt < 0)
-			return (rslt);
-		rslt = ft_10to16(va_arg(args, unsigned int), 0);
-	}
-	else if (*str == '#' && str[1] == 'X')
-	{
-		rslt = ft_putstr("0X");
-		if (rslt < 0)
-			return (rslt);
-		rslt = ft_10to16(va_arg(args, unsigned int), 1);
-	}
-	if (rslt < 0)
-		return (rslt);
-	return (rslt + 2);
+		str++;
+		if (*str == 'x')
+			rslt = ft_putstr("0x") + ft_10to16(va_arg(args, unsigned int), 0);
+		else if (*str == 'X')
+			rslt = ft_putstr("0X") + ft_10to16(va_arg(args, unsigned int), 0);
+	}/*
+	else if (*str == ' ')
+	else if (*str == '+')*/
+	return (rslt);
 }
