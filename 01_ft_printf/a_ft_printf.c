@@ -21,7 +21,7 @@ int	ft_printf(const char *inp_str, ...)
 	va_end(args);
 	return (rslt);
 }
-/*
+
 int	main(void)
 {
 	char	*NUll = NULL;
@@ -147,5 +147,10 @@ int	main(void)
 	printf("							");
 	oresult += printf("#X: -%#X-", 1234);
 	printf("\n");
+
+	result += ft_printf("space: -% c-", 'I');
+	printf("						");
+	oresult += printf("space: -% c-", 'I');
+	printf("\n");
 	printf("RETURN: %d							RETURN: %d\n", result, oresult);
-}*/
+}
