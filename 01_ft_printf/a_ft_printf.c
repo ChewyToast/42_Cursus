@@ -95,5 +95,57 @@ int	main(void)
 	printf("						");
 	oresult += printf("unsigned: -%u-", 4003001);
 	printf("\n");
+
+	result += ft_printf("x: -%x-", -1234);
+	printf("							");
+	oresult += printf("x: -%x-", -1234);
+	printf("\n");
+	result += ft_printf("x: -%x-", 0);
+	printf("								");
+	oresult += printf("x: -%x-", 0);
+	printf("\n");
+	result += ft_printf("x: -%x-", 1234);
+	printf("							");
+	oresult += printf("x: -%x-", 1234);
+	printf("\n");
+
+	result += ft_printf("X: -%X-", -1234);
+	printf("							");
+	oresult += printf("X: -%X-", -1234);
+	printf("\n");
+	result += ft_printf("X: -%X-", 0);
+	printf("								");
+	oresult += printf("X: -%X-", 0);
+	printf("\n");
+	result += ft_printf("X: -%X-", 1234);
+	printf("							");
+	oresult += printf("X: -%X-", 1234);
+	printf("\n");
+	
+	printf("\n\t\t\t\t***BONUS***\n");
+	result += ft_printf("#x: -%#x-", -1234);
+	printf("						");
+	oresult += printf("#x: -%#x-", -1234);
+	printf("\n");
+	result += ft_printf("#x: -%#x-", 0);
+	printf("							");
+	oresult += printf("#x: -%#x-", 0);
+	printf("\n");
+	result += ft_printf("#x: -%#x-", 1234);
+	printf("							");
+	oresult += printf("#x: -%#x-", 1234);
+	printf("\n");
+	result += ft_printf("#X: -%#X-", -1234);
+	printf("						");
+	oresult += printf("#X: -%#X-", -1234);
+	printf("\n");
+	result += ft_printf("#X: -%#X-", 0);
+	printf("							");
+	oresult += printf("#X: -%#X-", 0);
+	printf("\n");
+	result += ft_printf("#X: -%#X-", 1234);
+	printf("							");
+	oresult += printf("#X: -%#X-", 1234);
+	printf("\n");
 	printf("RETURN: %d							RETURN: %d\n", result, oresult);
 }*/

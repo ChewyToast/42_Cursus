@@ -12,6 +12,7 @@
 #include "ft_printf.h"
 
 static ssize_t	check_conversion(va_list args, char compare);
+static ssize_t	check_bonus(va_list args, const char *str);
 
 ssize_t	ft_read(const char *str, va_list args)
 {
@@ -23,7 +24,15 @@ ssize_t	ft_read(const char *str, va_list args)
 	{
 		tmp = 0;
 		if (*str == '%')
-			tmp = check_conversion(args, *(++str));
+		{
+			if (str[1] != '#')
+				tmp = check_conversion(args, *(++str));
+			else if (str[1] == '#')
+			{
+				tmp = check_bonus(args, (++str));
+				str++;
+			}
+		}
 		else
 			tmp = ft_putchar(*str);
 		if (tmp < 0)
@@ -56,4 +65,28 @@ static ssize_t	check_conversion(va_list args, char compare)
 	else if (compare == '%')
 		rslt = ft_putchar('%');
 	return (rslt);
+}
+
+static ssize_t	check_bonus(va_list args, const char *str)
+{
+	ssize_t	rslt;
+
+	rslt = 0;
+	if (*str == '#' && str[1] == 'x')
+	{
+		rslt = ft_putstr("0x");
+		if (rslt < 0)
+			return (rslt);
+		rslt = ft_10to16(va_arg(args, unsigned int), 0);
+	}
+	else if (*str == '#' && str[1] == 'X')
+	{
+		rslt = ft_putstr("0X");
+		if (rslt < 0)
+			return (rslt);
+		rslt = ft_10to16(va_arg(args, unsigned int), 1);
+	}
+	if (rslt < 0)
+		return (rslt);
+	return (rslt + 2);
 }
