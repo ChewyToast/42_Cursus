@@ -25,7 +25,16 @@ static ssize_t	sizeofint(unsigned long long int n)
 	return (size);
 }
 
-ssize_t	ft_10to16(unsigned int n, int mode)
+static ssize_t	printer(char *num, int mode, int flag)
+{
+	if (!mode && flag)
+		return (ft_putstr("0x") + ft_putstr(num));
+	if (mode && flag)
+		return (ft_putstr("0X") + ft_putstr(num));
+	return (ft_putstr(num));
+}
+
+ssize_t	ft_10to16(unsigned int n, int mode, int flag)
 {
 	ssize_t	size;
 	char	*num;
@@ -45,7 +54,7 @@ ssize_t	ft_10to16(unsigned int n, int mode)
 			num[size--] = ("0123456789ABCDEF"[n % 16]);
 		n /= 16;
 	}
-	size = ft_putstr(num);
+	size = printer(num, mode, flag);
 	free(num);
 	return (size);
 }

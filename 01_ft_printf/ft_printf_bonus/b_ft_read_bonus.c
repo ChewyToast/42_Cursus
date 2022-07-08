@@ -26,7 +26,10 @@ ssize_t	ft_read(const char *str, va_list args)
 		if (*str == '%')
 		{
 			tmp = check_conversion(args, (++str));
-			if (*str == '#' || *str == ' ' || *str == '+')
+			if ((*str == ' ' && str[1] == '+')
+				|| (*str == '+' && str[1] == ' '))
+				str += 2;
+			else if (*str == '#' || *str == ' ' || *str == '+')
 				str++;
 		}
 		else
@@ -51,13 +54,13 @@ static ssize_t	check_conversion(va_list args, const char *str)
 	else if (*str == 'p')
 		rslt = ft_ptoa(va_arg(args, unsigned long long int));
 	else if (*str == 'd' || *str == 'i')
-		rslt = ft_itoa(va_arg(args, int));
+		rslt = ft_itoa(va_arg(args, int), 0, 0);
 	else if (*str == 'u')
 		rslt = ft_uitoa(va_arg(args, unsigned int));
 	else if (*str == 'x')
-		rslt = ft_10to16(va_arg(args, unsigned int), 0);
+		rslt = ft_10to16(va_arg(args, unsigned int), 0, 0);
 	else if (*str == 'X')
-		rslt = ft_10to16(va_arg(args, unsigned int), 1);
+		rslt = ft_10to16(va_arg(args, unsigned int), 1, 0);
 	else if (*str == '%')
 		rslt = ft_putchar('%');
 	else if (*str == '#' || *str == ' ' || *str == '+')
@@ -74,11 +77,15 @@ static ssize_t	check_bonus(va_list args, const char *str)
 	{
 		str++;
 		if (*str == 'x')
-			rslt = ft_putstr("0x") + ft_10to16(va_arg(args, unsigned int), 0);
+			rslt = ft_10to16(va_arg(args, unsigned int), 0, 1);
 		else if (*str == 'X')
-			rslt = ft_putstr("0X") + ft_10to16(va_arg(args, unsigned int), 0);
-	}/*
-	else if (*str == ' ')
-	else if (*str == '+')*/
+			rslt = ft_10to16(va_arg(args, unsigned int), 0, 1);
+	}
+	else if (*str == ' ' && str[1] != '+')
+		rslt = ft_itoa(va_arg(args, int), 1, 0);
+	else if (*str == ' ' && str[1] == '+')
+		rslt = ft_itoa(va_arg(args, int), 1, 1);
+	else if (*str == '+')
+		rslt = ft_itoa(va_arg(args, int), 0, 1);
 	return (rslt);
 }

@@ -21,7 +21,7 @@ int	ft_printf(const char *inp_str, ...)
 	va_end(args);
 	return (rslt);
 }
-
+/*
 int	main(void)
 {
 	char	*NUll = NULL;
@@ -30,6 +30,7 @@ int	main(void)
 	int		result;
 	int		oresult;
 
+	printf("\n\t\t\t     ***MANDATORY***\n");
 	printf("\n--FT_PRINTF--							--PRINTF--\n\n");
 	result = ft_printf("char:	 -%c-", 'c');
 	printf("							");
@@ -59,6 +60,7 @@ int	main(void)
 	printf("						");
 	oresult += printf("pointer: 0  -%p-", N);
 	printf("\n");
+	result += 2;
 	N = (char *)1;
 	result += ft_printf("pointer: 1  -%p-", N);
 	printf("						");
@@ -121,14 +123,16 @@ int	main(void)
 	printf("							");
 	oresult += printf("X: -%X-", 1234);
 	printf("\n");
+	printf("RETURN: %d							RETURN: %d\n", result, oresult);
 	
 	printf("\n\t\t\t\t***BONUS***\n");
+	printf("\n--FT_PRINTF--							--PRINTF--\n\n");
 	result += ft_printf("#x: -%#x-", -1234);
 	printf("						");
 	oresult += printf("#x: -%#x-", -1234);
 	printf("\n");
 	result += ft_printf("#x: -%#x-", 0);
-	printf("							");
+	printf("								");
 	oresult += printf("#x: -%#x-", 0);
 	printf("\n");
 	result += ft_printf("#x: -%#x-", 1234);
@@ -140,12 +144,43 @@ int	main(void)
 	oresult += printf("#X: -%#X-", -1234);
 	printf("\n");
 	result += ft_printf("#X: -%#X-", 0);
-	printf("							");
+	printf("								");
 	oresult += printf("#X: -%#X-", 0);
 	printf("\n");
 	result += ft_printf("#X: -%#X-", 1234);
 	printf("							");
 	oresult += printf("#X: -%#X-", 1234);
 	printf("\n");
+
+	result += ft_printf(" i: -% i-", 1234);
+	printf("							");
+	oresult += printf(" i: -% i-", 1234);
+	printf("\n");
+	result += ft_printf(" d: -% d-", 0);
+	printf("							");
+	oresult += printf(" d: -% d-", 0);
+	printf("\n");
+	result += ft_printf(" d: -% d-", -1234);
+	printf("							");
+	oresult += printf(" d: -% d-", -1234);
+	printf("\n");
+
+	result += ft_printf("+i: -%+i-", 1234);
+	printf("							");
+	oresult += printf("+i: -%+i-", 1234);
+	printf("\n");
+	result += ft_printf("+d: -%+d-", 0);
+	printf("							");
+	oresult += printf("+d: -%+d-", 0);
+	printf("\n");
+	result += ft_printf("+d: -%+d-", -1234);
+	printf("							");
+	oresult += printf("+d: -%+d-", -1234);
+	printf("\n");
+	result += ft_printf("+ d: -%+ d-", -1234);
+	printf("							");
+	oresult += printf("+ d: -%+ d-", -1234);
+	printf("\n");
+
 	printf("RETURN: %d							RETURN: %d\n", result, oresult);
-}
+}*/
