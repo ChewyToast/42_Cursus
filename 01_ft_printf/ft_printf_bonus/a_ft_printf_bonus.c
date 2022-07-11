@@ -21,7 +21,7 @@ int	ft_printf(const char *inp_str, ...)
 	va_end(args);
 	return (rslt);
 }
-/*
+
 int	main(void)
 {
 	char	*NUll = NULL;
@@ -47,7 +47,7 @@ int	main(void)
 	printf("\n");
 
 	result += ft_printf("pointer: -%p-", p);
-	printf("					");
+	printf("						");
 	oresult += printf("pointer: -%p-", p);
 	printf("\n");
 	N = (char *)-1;
@@ -183,4 +183,4 @@ int	main(void)
 	printf("\n");
 
 	printf("RETURN: %d							RETURN: %d\n", result, oresult);
-}*/
+}
