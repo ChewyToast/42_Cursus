@@ -35,6 +35,9 @@ CC = 		gcc
 all:
 			$(CC) $(FLAGS) $(NAME) $(SRC)
 
+push_swap:
+			$(CC) $(FLAGS) $(NAME) $(SRC)
+
 clean:
 			@rm -f	*.o
 

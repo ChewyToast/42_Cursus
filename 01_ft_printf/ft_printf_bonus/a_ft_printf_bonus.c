@@ -21,7 +21,7 @@ int	ft_printf(const char *inp_str, ...)
 	va_end(args);
 	return (rslt);
 }
-
+/*
 int	main(void)
 {
 	char	*NUll = NULL;
@@ -139,6 +139,14 @@ int	main(void)
 	printf("							");
 	oresult += printf("#x: -%#x-", 1234);
 	printf("\n");
+	result += ft_printf("#x: -%#x-", 1);
+	printf("							");
+	oresult += printf("#x: -%#x-", 1);
+	printf("\n");
+	result += ft_printf("#x: -%#x-", 9);
+	printf("							");
+	oresult += printf("#x: -%#x-", 9);
+	printf("\n");
 	result += ft_printf("#X: -%#X-", -1234);
 	printf("						");
 	oresult += printf("#X: -%#X-", -1234);
@@ -150,6 +158,14 @@ int	main(void)
 	result += ft_printf("#X: -%#X-", 1234);
 	printf("							");
 	oresult += printf("#X: -%#X-", 1234);
+	printf("\n");
+	result += ft_printf("#X: -%#X-", 1);
+	printf("							");
+	oresult += printf("#X: -%#X-", 1);
+	printf("\n");
+	result += ft_printf("#X: -%#X-", 9);
+	printf("							");
+	oresult += printf("#X: -%#X-", 9);
 	printf("\n");
 
 	result += ft_printf(" i: -% i-", 1234);
@@ -183,4 +199,4 @@ int	main(void)
 	printf("\n");
 
 	printf("RETURN: %d							RETURN: %d\n", result, oresult);
-}
+}*/
