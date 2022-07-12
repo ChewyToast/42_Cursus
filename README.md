@@ -1,5 +1,10 @@
 # 42_Cursus
 
+Hi there!
+
+This is my git repository where im gonna publish all the projects i will be doing at the 42 BornToCode school
+
+
 <table>
   
 <th align="center">
