@@ -79,7 +79,7 @@ static ssize_t	check_bonus(va_list args, const char *str)
 		if (*str == 'x')
 			rslt = ft_10to16(va_arg(args, unsigned int), 0, 1);
 		else if (*str == 'X')
-			rslt = ft_10to16(va_arg(args, unsigned int), 0, 1);
+			rslt = ft_10to16(va_arg(args, unsigned int), 1, 1);
 	}
 	else if (*str == ' ' && str[1] != '+' && (str[1] == 'd' || str[1] == 'i'))
 		rslt = ft_itoa(va_arg(args, int), 1, 0);
