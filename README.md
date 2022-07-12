@@ -36,4 +36,10 @@
 <td align="center"><a href=#><img width=40px src="https://github.com/ChewyToast/Images/blob/main/logo_c.jpg"><a/></td>
 <td align="center">This project is pretty straight forward. It is about recoding "printf". The main goal is to learn how to use variadic arguments.</td>
 </tr>
+
+<tr>
+<td align="center"><a href=https://github.com/ChewyToast/42_Cursus/tree/master/02_ft_push_swap><img src="https://github.com/ChewyToast/Images/blob/main/20_push_swap.png"><a/></td>
+<td align="center"><a href=#><img width=40px src="https://github.com/ChewyToast/Images/blob/main/logo_c.jpg"><a/></td>
+<td align="center">This project is pretty straight forward. It is about recoding "printf". The main goal is to learn how to use variadic arguments.</td>
+</tr>
 </table>
