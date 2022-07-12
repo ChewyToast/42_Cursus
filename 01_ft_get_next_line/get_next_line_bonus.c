@@ -56,7 +56,10 @@ char	*ft_read(const int fd, char *total_buff)
 	}
 	free(tmp);
 	if (chk == -1)
+	{
+		free(total_buff);
 		return (NULL);
+	}
 	return (total_buff);
 }
 
