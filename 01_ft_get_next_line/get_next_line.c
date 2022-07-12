@@ -6,10 +6,9 @@
 /*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 11:47:24 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/07/01 11:07:18 by bmoll-pe         ###   ########.fr       */
+/*   Updated: 2022/07/12 23:25:45 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "get_next_line.h"
 
 char	*get_next_line(const int fd)
