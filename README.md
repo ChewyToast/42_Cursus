@@ -27,13 +27,13 @@
 
 <tr>
 <td align="center"><a href=https://github.com/ChewyToast/42_Cursus/tree/master/01_ft_get_next_line><img src="https://github.com/ChewyToast/Images/blob/main/11_get_next_line.png"><a/></td>
-<td align="center"><a href=#><img width=40px src="Images/languages/c.png"><a/></td>
+<td align="center"><a href=#><img width=40px src="https://github.com/ChewyToast/Images/blob/main/logo_c.jpg"><a/></td>
 <td align="center">The aim of this project is to make a function that returns a line ending with a newline, read from a file descriptor.</td>
 </tr>
  
 <tr>
 <td align="center"><a href=https://github.com/ChewyToast/42_Cursus/tree/master/01_ft_printf><img src="https://github.com/ChewyToast/Images/blob/main/10_ft_printf.png"><a/></td>
-<td align="center"><a href=#><img width=40px src="Images/languages/c.png"><a/></td>
+<td align="center"><a href=#><img width=40px src="https://github.com/ChewyToast/Images/blob/main/logo_c.jpg"><a/></td>
 <td align="center">This project is pretty straight forward. It is about recoding "printf". The main goal is to learn how to use variadic arguments.</td>
 </tr>
 </table>
