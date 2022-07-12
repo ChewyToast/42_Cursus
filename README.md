@@ -21,7 +21,7 @@
   
 <tr>
 <td align="center"><a href=https://github.com/ChewyToast/Images/blob/main/00_libft.png> <img src="https://github.com/ChewyToast/Images/blob/main/00_libft.png"><a/> </td>
-<td align="center"><a href=#><img width=40px src="Images/languages/c.png"><a/></td>
+<td align="center"><a href=#><img width=40px src="https://github.com/ChewyToast/Images/blob/main/logo_c.jpg"><a/></td>
 <td align="center">The aim of this project is to code a C library regrouping common functions that are going to be used in other projects.</td>
 </tr>
 
