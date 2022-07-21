@@ -64,7 +64,7 @@ FUNCIONES INCLUIDAS:
 - strnstr:		char   |*ft_strnstr(const char *big, const char *little, size_t len)
 			Encuentra el segundo string dentro el primero sin buscar del primero mas de n bytes;
 
-- atoi:		int|   |ft_atoi(const char *nptr)
+- atoi:			int|   |ft_atoi(const char *nptr)
 			Si cumple con las condiciones transforma el numero en string a int;
 
 - calloc:		void   |*ft_calloc(size_t nmemb, size_t size)
@@ -105,13 +105,13 @@ FUNCIONES INCLUIDAS:
 - ft_putchar_fd:	void   |ft_putchar_fd(char c, int fd)
 			Envía el caracter ’c’ al file descriptor dado.
 
-- ft_putstr_fd:	void   |ft_putstr_fd(char *s, int fd)
+- ft_putstr_fd:		void   |ft_putstr_fd(char *s, int fd)
 			Escribe la string ’s’ en el file descriptor indicado.
 
 - ft_putendl_fd:	void   |ft_putendl_fd(char *s, int fd)
 			Escribe la string ’s’ en el file descriptor indicado, seguido de un salto de línea.
 
-- ft_putnbr_fd:	void   |ft_putnbr_fd(int n, int fd)
+- ft_putnbr_fd:		void   |ft_putnbr_fd(int n, int fd)
 			Escribe el número ’n’ al file descriptor dado.
 
 - ft_lstnew:		t_list *ft_lstnew(void *content)
@@ -127,7 +127,7 @@ FUNCIONES INCLUIDAS:
 - ft_lstlast:		t_list *ft_lstlast(t_list *lst)
 				Devuelve el último elemento de una lista.
 
-- ft_lstadd_back:		void ft_lstadd_back(t_list **lst, t_list *nlst)
+- ft_lstadd_back:	void ft_lstadd_back(t_list **lst, t_list *nlst)
 				Añade el elemento ’new’ al final de una lista.
 
 - ft_lstdelone:		void ft_lstdelone(t_list *lst, void (*del)(void*))
