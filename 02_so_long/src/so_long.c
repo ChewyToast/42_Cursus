@@ -14,8 +14,11 @@
 int	main(void)
 {
 	t_program	program;
+	t_image		image;
 
+	(void)image;
 	program.mlx_ptr = mlx_init();
 	program.mlx_win = mlx_new_window(program.mlx_ptr, 1000, 700, "new_window");
-	window_startup(&program);
+	image = window_image(&program);
+	window_startup(&program);	
 }

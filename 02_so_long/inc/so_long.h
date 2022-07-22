@@ -21,12 +21,14 @@ typedef struct	s_program
 // THIS STRUCT GONNA BE THE DATTA OF AN IMAGE
 typedef struct	s_image
  {
-	void	*img_ptr;
-	void	*size_x;
-	void	*size_y;
+	void	*ptr;
+	char	*pixls;
+	int		size_x;
+	int		size_y;
 }				t_image;
 
 
 // WINDOW_STARTUP FILE
 int		input_read(int keypress, t_program *program);
 int		window_startup(t_program *program);
+t_image window_image(t_program *program);
