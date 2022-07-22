@@ -42,4 +42,11 @@
 <td align="center"><a href=#><img width=40px src="https://github.com/ChewyToast/ChewyToast/blob/main/assets/logo_c.jpg"><a/></td>
 <td align="center">This project involves sorting data on a stack, with a limited set of instructions, and the smallest number of moves.</td>
 </tr>
+
+<tr>
+<td align="center"><a href=https://github.com/ChewyToast/42_Cursus/tree/master/02_so_long><img src="https://github.com/ChewyToast/ChewyToast/blob/main/assets/02_so_long.jpg"><a/></td>
+<td align="center"><a href=#><img width=40px src="https://github.com/ChewyToast/ChewyToast/blob/main/assets/logo_c.jpg"><a/></td>
+<td align="center">The goals of this project are similar to every other goal for this first year: being rigorous, level up in C programming, use basic algorithms, do some information research, and so forth.</td>
+</tr>
+
 </table>

@@ -13,14 +13,19 @@
 
 int window_startup(t_program *program)
 {
-    mlx_hook(program->mlx_win, 2, 1L<<0, end_prg, program);
+    mlx_hook(program->mlx_win, 2, 1L<<0, input_read, program);
 	mlx_loop(program->mlx_ptr);
     return (0);
 }
 
-int	end_prg(int keycode, t_program *program)
+int	input_read(int keypress, t_program *program)
 {
-    printf("KEYPRESSED: %c\n", keycode);
-	mlx_destroy_window(program->mlx_ptr, program->mlx_win);
-	return (0);
+    if (keypress == 65307)
+        mlx_destroy_window(program->mlx_ptr, program->mlx_win);
+    else
+        printf("Key: -%c-\n", keypress);
+    return (0);
 }
+
+int window_image(t_program *program, t_image)
+{}

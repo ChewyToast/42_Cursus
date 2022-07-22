@@ -11,13 +11,22 @@
 /* ************************************************************************** */
 # include "../inc/mlx/mlx.h"
 # include <stdio.h>
-
+// THERE WE SAVE THE PROGRAM AND WINDOW POINTERS
 typedef struct	s_program
  {
 	void	*mlx_ptr;
 	void	*mlx_win;
 }				t_program;
 
-int	end_prg(int keycode, t_program *program);
-int window_startup(t_program *program);
+// THIS STRUCT GONNA BE THE DATTA OF AN IMAGE
+typedef struct	s_image
+ {
+	void	*img_ptr;
+	void	*size_x;
+	void	*size_y;
+}				t_image;
 
+
+// WINDOW_STARTUP FILE
+int		input_read(int keypress, t_program *program);
+int		window_startup(t_program *program);
