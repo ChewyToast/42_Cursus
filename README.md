@@ -19,6 +19,12 @@
 </th>
  
   
+<th align="center">
+<img width="220.5">
+<p>Status</p>
+</th>
+ 
+  
 <tr>
 <td align="center"><a href=https://github.com/ChewyToast/42_Cursus/tree/master/00_ft_libft> <img src="https://github.com/ChewyToast/ChewyToast/blob/main/assets/00_libft.jpg"><a/> </td>
 <td align="center"><a href=#><img width=40px src="https://github.com/ChewyToast/ChewyToast/blob/main/assets/logo_c.jpg"><a/></td>
