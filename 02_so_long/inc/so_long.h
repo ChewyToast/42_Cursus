@@ -12,24 +12,21 @@
 # include "../inc/mlx/mlx.h"
 # include <stdio.h>
 // THERE WE SAVE THE PROGRAM AND WINDOW POINTERS
-typedef struct	s_program
+typedef struct	s_mlx
  {
-	void	*mlx_ptr;
-	void	*mlx_win;
-}				t_program;
+	void	*ptr;
+	void	*win;
+}				t_mlx;
 
 // THIS STRUCT GONNA BE THE DATTA OF AN IMAGE
-typedef struct	s_image
+typedef struct	s_img
  {
 	void	*ptr;
 	char	*pixls;
-	int		size_x;
-	int		size_y;
-}				t_image;
+	int		sizex;
+	int		sizey;
+}				t_img;
 
 # define PLAYER "ass/right.xpm"
+# define BACKGRND "ass/right.xpm"
 
-// WINDOW_STARTUP FILE
-int		input_read(int keypress, t_program *program);
-int		window_startup(t_program *program);
-t_image window_image(t_program *program);
