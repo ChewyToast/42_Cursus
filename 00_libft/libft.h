@@ -13,12 +13,14 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <strings.h>
-# include <stddef.h>
-# include <stdlib.h>
+// LIBRARY FOR WRITE()
 # include <unistd.h>
-# include <stdio.h>
-# include <string.h>
+
+// LIBRARY FOR SIZE_T
+# include <stddef.h>
+
+// LIBRARY FOR MALLOC()
+# include <stdlib.h>
 
 typedef struct s_list
 {
