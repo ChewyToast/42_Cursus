@@ -27,6 +27,7 @@ typedef struct	s_image
 	int		size_y;
 }				t_image;
 
+# define PLAYER "ass/right.xpm"
 
 // WINDOW_STARTUP FILE
 int		input_read(int keypress, t_program *program);

@@ -34,13 +34,14 @@ t_image window_image(t_program *program)
 	int		height;
 
     mlx_new_image(program->mlx_ptr, 150, 150);
-    image.ptr = mlx_xpm_file_to_image(program->mlx_ptr, "../ass/right.xpm", &width, &height);
+    image.ptr = mlx_xpm_file_to_image(program->mlx_ptr, PLAYER, &width, &height);
     if (!image.ptr)
         printf("\nERROR CREATING IMAGE\n");
     else
     {
         image.size_x = width;
         image.size_y = height;
+        mlx_put_image_to_window(program->mlx_ptr, program->mlx_win, image.ptr, 0, 0);
     }
     // mlx_put_image_to_window(program->mlx_ptr, program->mlx_win, image.ptr, 0 ,0);
     return (image); 
