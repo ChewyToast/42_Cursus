@@ -51,18 +51,34 @@ typedef struct	s_img
 // UTILITY STRUCT FOR THE CHECK MAP PROCESS
 typedef struct	s_mapdata
 {
-	size_t	len;
+	int8_t	fd;
+	char	buff;
+	size_t	ln;
+	size_t	nl;
 	int8_t	indx;
-	uint8_t	e;
-	uint8_t	p;
+	int16_t	e;
+	int16_t	p;
 	size_t  c;
 	size_t	empty;
 	size_t	walls;
+	size_t	width;
 }				t_mapdata;
 
 // 						~ MACROS ~
 
 
 // 						~ FUNCTIONS ~
+
+//		main.c
+int		main(int argc, char **argv);
+
+//		input_checker.c
+char	*map_reader(char *input);
+int		map_size(char *input, t_mapdata *data);
+int8_t	conditioner(t_mapdata *data);
+int8_t	check_surrounded(char *map, t_mapdata *data, size_t	width_counter);
+
+//		initializer.c
+t_mapdata   data_initialize(void);
 
 #endif

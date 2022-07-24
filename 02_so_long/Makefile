@@ -5,7 +5,9 @@ MLX			=	inc/mlx/Makefile.gen
 INC			=	-I ./inc/mlx
 LIB			=	-L ./inc/mlx -lmlx -lXext -lX11 -lm -lbsd
 OBJ			=	$(patsubst src%, obj%, $(SRC:.c=.o))
-SRC			=	src/main.c inc/libft/ft_strlen.c inc/libft/ft_strncmp.c
+SRC			=	src/main.c	src/input_checker.c	\
+				src/initializer.c	\
+				inc/libft/ft_strlen.c	inc/libft/ft_strncmp.c
 
 all:		$(MLX) obj $(NAME)
 
