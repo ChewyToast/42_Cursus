@@ -9,7 +9,7 @@
 /*   Updated: 2022/07/24 09:57:52 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-# include "../inc/so_long.h"
+#include"../inc/so_long.h"
 /*
 					~MAIN.C~
 
@@ -25,6 +25,7 @@ static int	wrong_input(int8_t mode);
 int	main(int argc, char **argv)
 {
 	char	*map;
+	t_mapdata	data;
 
 	if (argc != 2)
 		return (wrong_input(1));
@@ -32,9 +33,11 @@ int	main(int argc, char **argv)
 			, ".ber", ft_strlen(argv[1])))
 		return (wrong_input(2));
 	printf("Correct input\n");
-	map = map_reader(argv[1]);
+	map = map_reader(argv[1], &data);
 	if (!map)
 		return (wrong_input(3));
+	if (!game)
+		game(map);
 	printf("Correct map composition\n");
 	free(map);
 }

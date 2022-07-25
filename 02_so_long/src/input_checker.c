@@ -9,7 +9,7 @@
 /*   Updated: 2022/07/24 09:57:44 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-# include "../inc/so_long.h"
+#include "../inc/so_long.h"
 /*
 					~INPUT_CHECKER.C~
 
@@ -24,32 +24,31 @@
 
 // 2_ MAP READER AND CHECKER
 // There we fill the map string and check if is sorrounded by walls
-char	*map_reader(char *input)
+char	*map_reader(char *input, t_mapdata	*data)
 {
 	char		*map;
-	t_mapdata	data;
 
-	if (!map_size(input, &data))
+	if (!map_size(input, data))
 		return (0);
-	if ((data.ln < 15 || data.nl < 3 || data.e < 1 || data.p < 1 || data.c < 1))
+	if ((data->ln < 15 || data->nl < 3 || data->e < 1 || data->p < 1 || data->c < 1))
 		return (0);
-	map = malloc(sizeof(char) * data.ln);
+	map = malloc(sizeof(char) * data->ln);
 	if (!map)
 		return (0);
-	map[data.ln - 1] = '\0';
-	data.fd = open(input, O_RDONLY);
-	if (data.fd < 0)
+	map[data->ln - 1] = '\0';
+	data->fd = open(input, O_RDONLY);
+	if (data->fd < 0)
 		return (0);
-	data.indx = 1;
-	while (read(data.fd, &data.buff, 1))
-		*(map++) = data.buff;
-	map -= (data.ln - 1);
-	if (!check_surrounded(map, &data, 0))
+	data->indx = 1;
+	while (read(data->fd, &data->buff, 1))
+		*(map++) = data->buff;
+	map -= (data->ln - 1);
+	if (!check_surrounded(map, data, 0))
 	{
 		free (map);
 		return (0);
 	}
-	close(data.fd);
+	close(data->fd);
 	return (map);
 }
 

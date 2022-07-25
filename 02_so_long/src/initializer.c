@@ -9,7 +9,7 @@
 /*   Updated: 2022/07/24 09:58:46 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-# include "../inc/so_long.h"
+#include "../inc/so_long.h"
 
 t_mapdata	data_initialize(void)
 {

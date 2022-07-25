@@ -37,6 +37,7 @@ typedef struct	s_mlx
  {
 	void	*ptr;
 	void	*win;
+	void	*img_ptr;
 }				t_mlx;
 
 // THIS STRUCT GONNA BE THE DATTA OF AN IMAGE
@@ -51,7 +52,7 @@ typedef struct	s_img
 // UTILITY STRUCT FOR THE CHECK MAP PROCESS
 typedef struct	s_mapdata
 {
-	int8_t	fd;
+	int16_t	fd;
 	char	buff;
 	size_t	ln;
 	size_t	nl;
@@ -73,7 +74,7 @@ typedef struct	s_mapdata
 int		main(int argc, char **argv);
 
 //		input_checker.c
-char	*map_reader(char *input);
+char	*map_reader(char *input, t_mapdata	*data);
 int		map_size(char *input, t_mapdata *data);
 int8_t	conditioner(t_mapdata *data);
 int8_t	check_surrounded(char *map, t_mapdata *data, size_t	width_counter);
