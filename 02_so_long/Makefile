@@ -6,7 +6,7 @@ INC			=	-I ./inc/mlx
 LIB			=	-L ./inc/mlx -lmlx -lXext -lX11 -lm -lbsd
 OBJ			=	$(patsubst src%, obj%, $(SRC:.c=.o))
 SRC			=	src/main.c	src/input_checker.c	\
-				src/initializer.c	\
+				src/initializer.c	src/game.c\
 				inc/libft/ft_strlen.c	inc/libft/ft_strncmp.c
 
 all:		$(MLX) obj $(NAME)

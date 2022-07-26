@@ -40,14 +40,25 @@ typedef struct	s_mlx
 	void	*img_ptr;
 }				t_mlx;
 
-// THIS STRUCT GONNA BE THE DATTA OF AN IMAGE
+// THIS GONNA BE A LIST OF ALL THE IMG OF EVERY TYPE OF ASSET
 typedef struct	s_img
- {
+{
 	void	*ptr;
-	char	*pixls;
-	int		sizex;
-	int		sizey;
+	int		width;
+	int		height;
+	void	*next;
 }				t_img;
+
+// THIS STRUCT GONNA BE THE DATTA OF AN IMAGE
+typedef struct	s_ass
+ {
+	t_img	*player;
+	t_img	*wall;
+	t_img	*empty;
+	t_img	*collect;
+	t_img	*start;
+	t_img	*end;
+}				t_ass;
 
 // UTILITY STRUCT FOR THE CHECK MAP PROCESS
 typedef struct	s_mapdata
@@ -57,16 +68,18 @@ typedef struct	s_mapdata
 	size_t	ln;
 	size_t	nl;
 	int8_t	indx;
-	int16_t	e;
-	int16_t	p;
-	size_t  c;
-	size_t	empty;
 	size_t	walls;
+	int16_t	e;
+	size_t  c;
+	int16_t	p;
+	size_t	empty;
 	size_t	width;
 }				t_mapdata;
 
 // 						~ MACROS ~
 
+# define BACKGROUND "ass/white_background.xpm"
+# define KING "ass/king.xpm"
 
 // 						~ FUNCTIONS ~
 
@@ -78,6 +91,9 @@ char	*map_reader(char *input, t_mapdata	*data);
 int		map_size(char *input, t_mapdata *data);
 int8_t	conditioner(t_mapdata *data);
 int8_t	check_surrounded(char *map, t_mapdata *data, size_t	width_counter);
+
+// 		game.c
+int	game(char *map, t_mapdata *data);
 
 //		initializer.c
 t_mapdata   data_initialize(void);

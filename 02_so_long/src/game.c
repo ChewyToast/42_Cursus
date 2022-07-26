@@ -20,30 +20,80 @@
 
 */
 
-int	game(char *map, t_mapdata	*data)
-{
-	t_mlx	game;
-	int		width;
-	int		height;
+static int	init_game(t_mlx *game, t_mapdata *data);
+static int	init_assets(t_mlx *game, t_ass *assets, t_mapdata *data);
+static int	put_ass(t_mlx *game, t_ass *assets);
+static int	start_game(t_mlx *game);
+static int	input_read(int keypress, t_mlx *game);
 
-	game.ptr = mlx_init();
-	if (!game.ptr)
+
+int	game(char *map, t_mapdata *data)
+{
+	(void)map;
+	t_mlx	game;
+	t_ass	assets;
+
+	if (!init_game(&game, data))
 	{
-		printf("\nERROR INIT\n");
+		printf("ERROR INITING GAME\n");
 		return (0);
 	}
-	game.window = mlx_new_window(game.ptr, data->width, data->nl + 1, "game");
-	if (!game.ptr)
+	if (!init_assets(&game, &assets, data))
 	{
-		printf("\nERROR CREATING WINDOW\n");
+		printf("ERROR CREATING IMAGE\n");
 		return (0);
 	}
-	game.img_ptr = mlx_xpm_file_to_image(game.ptr, PLAYER, &width, &height);
-	if (!game.ptr)
+	if (!put_ass(&game, &assets))
 	{
-		printf("\nERROR CREATING IMAGE\n");
+		printf("ERROR PUTING IMAGES TO WINDOW\n");
 		return (0);
 	}
-	mlx_put_image_to_window(game.ptr, game.window, game.img_ptr, 0, 0);
+	start_game(&game);
 	return (1);
+}
+
+static int	init_game(t_mlx *game, t_mapdata *data)
+{
+	game->ptr = mlx_init();
+	if (!game->ptr)
+		return (0);
+	game->win = mlx_new_window(game->ptr, data->width * 128, (data->nl + 1) * 128, "game");
+	if (!game->ptr)
+		return (0);
+	return (1);
+}
+
+static int	init_assets(t_mlx *game, t_ass *assets, t_mapdata *data)
+{
+	t_img	tmp;
+	(void)data;
+
+	tmp.ptr = mlx_xpm_file_to_image(game->ptr, KING, &tmp.width, &tmp.height);
+	if (!tmp.ptr)
+		return (0);
+	assets->empty = &tmp;
+	return (1);
+}
+
+static int	put_ass(t_mlx *game, t_ass *assets)
+{
+	if (!mlx_put_image_to_window(game->ptr, game->win, assets->empty->ptr, 128, 128))
+		return (0);
+	return (1);
+}
+
+static int start_game(t_mlx *game)
+{
+    mlx_hook(game->win, 2, 1L<<0, input_read, game);
+	mlx_loop(game->ptr);
+    return (0);
+}
+
+static int	input_read(int keypress, t_mlx *game)
+{
+    if (keypress == 65307)
+        mlx_destroy_window(game->ptr, game->win);
+    else
+        printf("Key: -%c-\n", keypress);
+    return (0);
 }
