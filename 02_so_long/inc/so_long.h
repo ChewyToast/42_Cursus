@@ -56,7 +56,6 @@ typedef struct	s_ass
 	t_img	*wall;
 	t_img	*empty;
 	t_img	*collect;
-	t_img	*start;
 	t_img	*end;
 }				t_ass;
 
@@ -80,6 +79,9 @@ typedef struct	s_mapdata
 
 # define BACKGROUND "ass/white_background.xpm"
 # define KING "ass/king.xpm"
+# define QUEEN "ass/queen.xpm"
+# define COLLECT "ass/collector.xpm"
+# define ASS_SIZE 64
 
 // 						~ FUNCTIONS ~
 
@@ -94,8 +96,23 @@ int8_t	check_surrounded(char *map, t_mapdata *data, size_t	width_counter);
 
 // 		game.c
 int	game(char *map, t_mapdata *data);
+int start_game(t_mlx *game);
+int	put_map(t_mlx *game, char *map, t_ass *assets, t_mapdata *data);
+
+//		game_utilities.c
+int	init_game(t_mlx *game, t_mapdata *data);
+int	assets_selector(t_mlx *game, t_ass *assets, int8_t mode);
+int assets_init(t_img *ptr, char *str, t_mlx *game);
+int	put_ass(t_mlx *game, t_ass *assets);
 
 //		initializer.c
 t_mapdata   data_initialize(void);
+int	init_game(t_mlx *game, t_mapdata *data);
+int	assets_selector(t_mlx *game, t_ass *assets, int8_t mode);
+int assets_init(t_img *ptr, char *str, t_mlx *game);
+int	put_ass(t_mlx *game, t_ass *assets);
+
+//		hook_functions.c
+int	input_read(int keypress, t_mlx *game);
 
 #endif

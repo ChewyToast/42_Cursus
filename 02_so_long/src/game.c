@@ -20,80 +20,69 @@
 
 */
 
-static int	init_game(t_mlx *game, t_mapdata *data);
-static int	init_assets(t_mlx *game, t_ass *assets, t_mapdata *data);
-static int	put_ass(t_mlx *game, t_ass *assets);
-static int	start_game(t_mlx *game);
-static int	input_read(int keypress, t_mlx *game);
-
-
 int	game(char *map, t_mapdata *data)
 {
-	(void)map;
 	t_mlx	game;
 	t_ass	assets;
 
+	write(1, "\nAAAA\n", 6);
 	if (!init_game(&game, data))
 	{
 		printf("ERROR INITING GAME\n");
 		return (0);
 	}
-	if (!init_assets(&game, &assets, data))
+	write(1, "\nAAAA\n", 6);
+	if (!put_map(&game, map, &assets, data))
 	{
-		printf("ERROR CREATING IMAGE\n");
+		printf("ERROR INITING GAME\n");
 		return (0);
 	}
-	if (!put_ass(&game, &assets))
-	{
-		printf("ERROR PUTING IMAGES TO WINDOW\n");
-		return (0);
-	}
+	write(1, "\nAAAA\n", 6);
 	start_game(&game);
 	return (1);
 }
 
-static int	init_game(t_mlx *game, t_mapdata *data)
+int	put_map(t_mlx *game, char *map, t_ass *assets, t_mapdata *data)
 {
-	game->ptr = mlx_init();
-	if (!game->ptr)
-		return (0);
-	game->win = mlx_new_window(game->ptr, data->width * 128, (data->nl + 1) * 128, "game");
-	if (!game->ptr)
-		return (0);
+	int8_t	indx;
+
+	data->nl = 0;
+	data->width = 0;
+	while (*map)
+	{
+		if (*map == '0')
+			indx = 3;
+		else if (*map == '1')
+			indx = 2;
+		else if (*map == 'E')
+			indx = 0;
+		else if (*map == 'C')
+			indx = 1;
+		if (*map == '\n')
+		{
+			data->nl++;
+			data->width = 0;
+		}
+		else
+		{
+			if (indx != 3)
+			{
+				if (!assets_selector(game, assets, indx))
+					return (0);
+			}
+			if (!assets_selector(game, assets, indx))
+				return (0);
+		}
+		data->width++;
+		map++;
+	}
 	return (1);
 }
 
-static int	init_assets(t_mlx *game, t_ass *assets, t_mapdata *data)
+int	start_game(t_mlx *game)
 {
-	t_img	tmp;
-	(void)data;
-
-	tmp.ptr = mlx_xpm_file_to_image(game->ptr, KING, &tmp.width, &tmp.height);
-	if (!tmp.ptr)
-		return (0);
-	assets->empty = &tmp;
-	return (1);
-}
-
-static int	put_ass(t_mlx *game, t_ass *assets)
-{
-	if (!mlx_put_image_to_window(game->ptr, game->win, assets->empty->ptr, 128, 128))
-		return (0);
-	return (1);
-}
-
-static int start_game(t_mlx *game)
-{
-    mlx_hook(game->win, 2, 1L<<0, input_read, game);
+	mlx_hook(game->win, 2, 1L<<0, input_read, game);
 	mlx_loop(game->ptr);
-    return (0);
+	return (0);
 }
 
-static int	input_read(int keypress, t_mlx *game)
-{
-    if (keypress == 65307)
-        mlx_destroy_window(game->ptr, game->win);
-    else
-        printf("Key: -%c-\n", keypress);
-    return (0);
-}
