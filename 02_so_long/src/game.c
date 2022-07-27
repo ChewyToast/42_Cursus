@@ -20,34 +20,38 @@
 
 */
 
+//	MAIN FUNCTION OF THE GAME, THERE WE MANAGE ALL THE STARTUP PROCES 
 int	game(char *map, t_mapdata *data)
 {
 	t_mlx	game;
 	t_ass	assets;
 
-	write(1, "\nAAAA\n", 6);
+	write(1, "\nGAME\n", 6);
 	if (!init_game(&game, data))
 	{
 		printf("ERROR INITING GAME\n");
 		return (0);
 	}
-	write(1, "\nAAAA\n", 6);
+	write(1, "\nGAME\n", 6);
 	if (!put_map(&game, map, &assets, data))
 	{
 		printf("ERROR INITING GAME\n");
 		return (0);
 	}
-	write(1, "\nAAAA\n", 6);
+	write(1, "\nGAME\n", 6);
 	start_game(&game);
 	return (1);
 }
 
+//	HERE WE ANALYZE THE MAP AND CALL TO INITIALIZE ALL THE ASSETS
 int	put_map(t_mlx *game, char *map, t_ass *assets, t_mapdata *data)
 {
 	int8_t	indx;
 
 	data->nl = 0;
 	data->width = 0;
+	init_assets(assets);
+	write(1, "\naMAP\n", 6);
 	while (*map)
 	{
 		if (*map == '0')
@@ -65,22 +69,20 @@ int	put_map(t_mlx *game, char *map, t_ass *assets, t_mapdata *data)
 		}
 		else
 		{
-			if (indx != 3)
-			{
-				if (!assets_selector(game, assets, indx))
-					return (0);
-			}
-			if (!assets_selector(game, assets, indx))
+			write(1, "\nbMAP\n", 6);
+			if (!assets_selector(game, assets, indx, data))
 				return (0);
+			data->width++;
 		}
-		data->width++;
 		map++;
 	}
 	return (1);
 }
 
+//	FUNCTION IN CHARGE OF INITIALIZING THE POP-UP SCREEN
 int	start_game(t_mlx *game)
 {
+	write(1, "\nHIHI\n", 6);
 	mlx_hook(game->win, 2, 1L<<0, input_read, game);
 	mlx_loop(game->ptr);
 	return (0);

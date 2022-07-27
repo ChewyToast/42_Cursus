@@ -27,3 +27,40 @@ t_mapdata	data_initialize(void)
 	return (data);
 }
 
+void	init_assets(t_ass *assets)
+{
+	t_img	imag;
+
+	imag.ptr = NULL;
+	imag.width = 0;
+	imag.height = 0;
+	imag.next = NULL;
+
+	assets->player = imag;
+	assets->wall = imag;
+	assets->empty = imag;
+	assets->collect = imag;
+	assets->end = imag;
+
+	/* assets->player->ptr = NULL;
+	assets->player->width = 0;
+	assets->player->height = 0;
+	assets->player->next = NULL;
+	assets->wall->ptr = NULL;
+	assets->wall->width = 0;
+	assets->wall->height = 0;
+	assets->wall->next = NULL;
+	assets->empty->ptr = NULL;
+	assets->empty->width = 0;
+	assets->empty->height = 0;
+	assets->empty->next = NULL;
+	assets->collect->ptr = NULL;
+	assets->collect->width = 0;
+	assets->collect->height = 0;
+	assets->collect->next = NULL;
+	assets->end->ptr = NULL;
+	assets->end->width = 0;
+	assets->end->height = 0;
+	assets->end->next = NULL; */
+}
+

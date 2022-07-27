@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "../inc/so_long.h"
-				
+
+//	STARTUP OF MLX, INITING THE WINDOW 
 int	init_game(t_mlx *game, t_mapdata *data)
 {
 	game->ptr = mlx_init();
@@ -22,44 +23,58 @@ int	init_game(t_mlx *game, t_mapdata *data)
 	return (1);
 }
 
-int	assets_selector(t_mlx *game, t_ass *assets, int8_t mode)
+// THIS FUNCTION WITH THE PARAM MODE, CHOSE THE ASSET TO INIT
+int	assets_selector(t_mlx *game, t_ass *assets, int8_t mode, t_mapdata *data)
 {
 	if (mode == 0)
 	{
-		if (!assets_init(assets->end, KING, game))
+		if (!assets_init(&assets->end, KING, game, data))
+		{
+			printf("ERROR INITIN\n");
 			return (0);
+		}
 	}
 	else if (mode == 1)
 	{
-		if (!assets_init(assets->player, QUEEN, game))
+		if (!assets_init(&assets->player, QUEEN, game, data))
+		{
+			printf("ERROR INITIN\n");
 			return (0);
+		}
 	}
 	else if (mode == 2)
 	{
-		write(1, "\nAAAA\n", 6);
-		if (!assets_init(assets->collect, COLLECT, game))
+		if (!assets_init(&assets->collect, COLLECT, game, data))
+		{
+			printf("ERROR INITIN\n");
 			return (0);
-		write(1, "\nAAAA\n", 6);
+		}
 	}
 	else if (mode == 3)
 	{
-		if (!assets_init(assets->empty, BACKGROUND, game))
+		if (!assets_init(&assets->empty, BACKGROUND, game, data))
+		{
+			printf("ERROR INITIN\n");
 			return (0);
+		}
 	}
 	return (1);
 }
 
-int assets_init(t_img *ptr, char *str, t_mlx *game)
+//	FUNCTION THATINIT THE ASSET CALLED BY THE ASSETS_SELECTOR
+int assets_init(t_img *ptr, char *str, t_mlx *game, t_mapdata *data)
 {
 	t_img	*tmp;
 
 	tmp = ptr;
-	if (!*ptr)
+	if (tmp->ptr == NULL)
 	{
 		ptr->ptr = mlx_xpm_file_to_image(game->ptr, str, &ptr->width, &ptr->height);
 		if (!ptr->ptr)
 			return (0);
 		ptr->next = NULL;
+		if (!put_ass(game, ptr, data))
+			return (0);
 	}
 	else
 	{
@@ -69,13 +84,16 @@ int assets_init(t_img *ptr, char *str, t_mlx *game)
 		if (!tmp->ptr)
 			return (0);
 		tmp->next = NULL;
+		if (!put_ass(game, tmp, data))
+			return (0);
 	}
 	return (1);
 }
 
-int	put_ass(t_mlx *game, t_ass *assets)
+//	LAST STEP NECESSARY TO HAVE THE ASSETS ON MLX WINDOW
+int	put_ass(t_mlx *game, t_img *img, t_mapdata *data)
 {
-	if (!mlx_put_image_to_window(game->ptr, game->win, assets->empty->ptr, 128, 128))
+	if (!mlx_put_image_to_window(game->ptr, game->win, img->ptr, ASS_SIZE * data->width, ASS_SIZE * data->nl))
 		return (0);
 	return (1);
 }

@@ -52,11 +52,11 @@ typedef struct	s_img
 // THIS STRUCT GONNA BE THE DATTA OF AN IMAGE
 typedef struct	s_ass
  {
-	t_img	*player;
-	t_img	*wall;
-	t_img	*empty;
-	t_img	*collect;
-	t_img	*end;
+	t_img	player;
+	t_img	wall;
+	t_img	empty;
+	t_img	collect;
+	t_img	end;
 }				t_ass;
 
 // UTILITY STRUCT FOR THE CHECK MAP PROCESS
@@ -96,21 +96,18 @@ int8_t	check_surrounded(char *map, t_mapdata *data, size_t	width_counter);
 
 // 		game.c
 int	game(char *map, t_mapdata *data);
-int start_game(t_mlx *game);
 int	put_map(t_mlx *game, char *map, t_ass *assets, t_mapdata *data);
+int start_game(t_mlx *game);
 
 //		game_utilities.c
 int	init_game(t_mlx *game, t_mapdata *data);
-int	assets_selector(t_mlx *game, t_ass *assets, int8_t mode);
-int assets_init(t_img *ptr, char *str, t_mlx *game);
-int	put_ass(t_mlx *game, t_ass *assets);
+int	assets_selector(t_mlx *game, t_ass *assets, int8_t mode, t_mapdata *data);
+int assets_init(t_img *ptr, char *str, t_mlx *game, t_mapdata *data);
+int	put_ass(t_mlx *game, t_img *assets, t_mapdata *data);
 
 //		initializer.c
 t_mapdata   data_initialize(void);
-int	init_game(t_mlx *game, t_mapdata *data);
-int	assets_selector(t_mlx *game, t_ass *assets, int8_t mode);
-int assets_init(t_img *ptr, char *str, t_mlx *game);
-int	put_ass(t_mlx *game, t_ass *assets);
+void		init_assets(t_ass *assets);
 
 //		hook_functions.c
 int	input_read(int keypress, t_mlx *game);
