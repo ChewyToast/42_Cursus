@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   hook_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmoll-pe <bmoll-pe@student.42bcn>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 00:41:34 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/07/21 11:50:06 by bmoll-pe         ###   ########.fr       */
+/*   Created: 2022/07/27 02:07:46 by bmoll-pe          #+#    #+#             */
+/*   Updated: 2022/07/27 02:07:55 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-# include "../inc/so_long.h"
+#include "../inc/so_long.h"
 
-int	main(void)
+int	input_read(int keypress, t_mlx *game)
 {
-	t_program	program;
-	t_image		image;
-
-	(void)image;
-	program.mlx_ptr = mlx_init();
-	program.mlx_win = mlx_new_window(program.mlx_ptr, 1000, 700, "new_window");
-	image = window_image(&program);
-	window_startup(&program);	
+	if (keypress == 65307)
+		mlx_destroy_window(game->ptr, game->win);
+	else
+		printf("Key: -%c-\n", keypress);
+	return (0);
 }
+
+											
