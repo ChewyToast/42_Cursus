@@ -77,10 +77,11 @@ typedef struct	s_mapdata
 
 // 						~ MACROS ~
 
-# define BACKGROUND "ass/white_background.xpm"
-# define KING "ass/king.xpm"
-# define QUEEN "ass/queen.xpm"
-# define COLLECT "ass/collector.xpm"
+# define BACKGROUND "ass/background.xpm"
+# define PLAYER "ass/player.xpm"
+# define DOOR "ass/door.xpm"
+# define KEY "ass/SilverKey.xpm"
+# define COLLIDE "ass/collide.xpm"
 # define ASS_SIZE 64
 
 // 						~ FUNCTIONS ~

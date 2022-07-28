@@ -55,13 +55,15 @@ int	put_map(t_mlx *game, char *map, t_ass *assets, t_mapdata *data)
 	while (*map)
 	{
 		if (*map == '0')
-			indx = 3;
-		else if (*map == '1')
-			indx = 2;
-		else if (*map == 'E')
 			indx = 0;
-		else if (*map == 'C')
+		else if (*map == '1')
 			indx = 1;
+		else if (*map == 'E')
+			indx = 2;
+		else if (*map == 'C')
+			indx = 3;
+		else if (*map == 'P')
+			indx = 4;
 		if (*map == '\n')
 		{
 			data->nl++;
@@ -69,7 +71,6 @@ int	put_map(t_mlx *game, char *map, t_ass *assets, t_mapdata *data)
 		}
 		else
 		{
-			write(1, "\nbMAP\n", 6);
 			if (!assets_selector(game, assets, indx, data))
 				return (0);
 			data->width++;

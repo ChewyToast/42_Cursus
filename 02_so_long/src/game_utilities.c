@@ -28,7 +28,7 @@ int	assets_selector(t_mlx *game, t_ass *assets, int8_t mode, t_mapdata *data)
 {
 	if (mode == 0)
 	{
-		if (!assets_init(&assets->end, KING, game, data))
+		if (!assets_init(&assets->end, BACKGROUND, game, data))
 		{
 			printf("ERROR INITIN\n");
 			return (0);
@@ -36,7 +36,7 @@ int	assets_selector(t_mlx *game, t_ass *assets, int8_t mode, t_mapdata *data)
 	}
 	else if (mode == 1)
 	{
-		if (!assets_init(&assets->player, QUEEN, game, data))
+		if (!assets_init(&assets->player, COLLIDE, game, data))
 		{
 			printf("ERROR INITIN\n");
 			return (0);
@@ -44,7 +44,7 @@ int	assets_selector(t_mlx *game, t_ass *assets, int8_t mode, t_mapdata *data)
 	}
 	else if (mode == 2)
 	{
-		if (!assets_init(&assets->collect, COLLECT, game, data))
+		if (!assets_init(&assets->collect, DOOR, game, data))
 		{
 			printf("ERROR INITIN\n");
 			return (0);
@@ -52,7 +52,15 @@ int	assets_selector(t_mlx *game, t_ass *assets, int8_t mode, t_mapdata *data)
 	}
 	else if (mode == 3)
 	{
-		if (!assets_init(&assets->empty, BACKGROUND, game, data))
+		if (!assets_init(&assets->empty, KEY, game, data))
+		{
+			printf("ERROR INITIN\n");
+			return (0);
+		}
+	}
+	else if (mode == 4)
+	{
+		if (!assets_init(&assets->empty, PLAYER, game, data))
 		{
 			printf("ERROR INITIN\n");
 			return (0);
