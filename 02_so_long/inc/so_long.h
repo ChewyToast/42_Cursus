@@ -64,13 +64,13 @@ typedef struct	s_mapdata
 {
 	int16_t	fd;
 	char	buff;
-	size_t	ln;
+	size_t	len;
 	size_t	nl;
 	int8_t	indx;
 	size_t	walls;
-	int16_t	e;
-	size_t  c;
-	int16_t	p;
+	int16_t	exit;
+	size_t  collect;
+	int16_t	start;
 	size_t	empty;
 	size_t	width;
 }				t_mapdata;

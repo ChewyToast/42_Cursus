@@ -30,19 +30,20 @@ char	*map_reader(char *input, t_mapdata	*data)
 
 	if (!map_size(input, data))
 		return (0);
-	if ((data->ln < 15 || data->nl < 3 || data->e < 1 || data->p < 1 || data->c < 1))
+	if ((data->len < 15) || (data->nl < 3) || (data->exit < 1)
+		|| (data->start < 1) || (data->collect < 1))
 		return (0);
-	map = malloc(sizeof(char) * data->ln);
+	map = malloc(sizeof(char) * data->len);
 	if (!map)
 		return (0);
-	map[data->ln - 1] = '\0';
+	map[data->len - 1] = '\0';
 	data->fd = open(input, O_RDONLY);
 	if (data->fd < 0)
 		return (0);
 	data->indx = 1;
 	while (read(data->fd, &data->buff, 1))
 		*(map++) = data->buff;
-	map -= (data->ln - 1);
+	map -= (data->len - 1);
 	if (!check_surrounded(map, data, 0))
 	{
 		free (map);
@@ -65,7 +66,7 @@ int	map_size(char *input, t_mapdata *data)
 		data->indx = read(data->fd, &data->buff, 1);
 		if (!conditioner(data))
 			return (0);
-		data->ln++;
+		data->len++;
 	}
 	close(data->fd);
 	if (data->indx < 0)
@@ -81,11 +82,11 @@ int8_t	conditioner(t_mapdata *data)
 	else if (data->buff == '1')
 		data->walls++;
 	else if (data->buff == 'E')
-		data->e++;
+		data->exit++;
 	else if (data->buff == 'C')
-		data->c++;
+		data->collect++;
 	else if (data->buff == 'P')
-		data->p++;
+		data->start++;
 	else if (data->buff == '\n')
 		data->nl++;
 	else

@@ -20,25 +20,24 @@
 
 */
 
+static int	put_map_comparator(char map);
+
 //	MAIN FUNCTION OF THE GAME, THERE WE MANAGE ALL THE STARTUP PROCES 
 int	game(char *map, t_mapdata *data)
 {
 	t_mlx	game;
 	t_ass	assets;
 
-	write(1, "\nGAME\n", 6);
 	if (!init_game(&game, data))
 	{
 		printf("ERROR INITING GAME\n");
 		return (0);
 	}
-	write(1, "\nGAME\n", 6);
 	if (!put_map(&game, map, &assets, data))
 	{
 		printf("ERROR INITING GAME\n");
 		return (0);
 	}
-	write(1, "\nGAME\n", 6);
 	start_game(&game);
 	return (1);
 }
@@ -51,19 +50,9 @@ int	put_map(t_mlx *game, char *map, t_ass *assets, t_mapdata *data)
 	data->nl = 0;
 	data->width = 0;
 	init_assets(assets);
-	write(1, "\naMAP\n", 6);
 	while (*map)
 	{
-		if (*map == '0')
-			indx = 0;
-		else if (*map == '1')
-			indx = 1;
-		else if (*map == 'E')
-			indx = 2;
-		else if (*map == 'C')
-			indx = 3;
-		else if (*map == 'P')
-			indx = 4;
+		indx = put_map_comparator(*map);
 		if (*map == '\n')
 		{
 			data->nl++;
@@ -80,12 +69,26 @@ int	put_map(t_mlx *game, char *map, t_ass *assets, t_mapdata *data)
 	return (1);
 }
 
-//	FUNCTION IN CHARGE OF INITIALIZING THE POP-UP SCREEN
-int	start_game(t_mlx *game)
+//	JUST A SPACE SAVING FUNCTION
+static int	put_map_comparator(char map)
 {
-	write(1, "\nHIHI\n", 6);
-	mlx_hook(game->win, 2, 1L<<0, input_read, game);
-	mlx_loop(game->ptr);
+	if (map == '0')
+		return (0);
+	else if (map == '1')
+		return (1);
+	else if (map == 'E')
+		return (2);
+	else if (map == 'C')
+		return (3);
+	else if (map == 'P')
+		return (4);
 	return (0);
 }
 
+//	FUNCTION IN CHARGE OF INITIALIZING THE POP-UP SCREEN
+int	start_game(t_mlx *game)
+{
+	mlx_hook(game->win, 2, 1L << 0, input_read, game);
+	mlx_loop(game->ptr);
+	return (0);
+}

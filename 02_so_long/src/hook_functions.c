@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #include "../inc/so_long.h"
 
+// FUNCTION TO BE CALLED WHEN AN INPUT IS DETECTED BY KEYBOARD
 int	input_read(int keypress, t_mlx *game)
 {
 	if (keypress == 65307)
@@ -19,5 +20,4 @@ int	input_read(int keypress, t_mlx *game)
 		printf("Key: -%c-\n", keypress);
 	return (0);
 }
-
 											
