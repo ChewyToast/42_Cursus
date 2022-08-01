@@ -38,16 +38,25 @@ ssize_t	startup(char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (!fill_stack(argv, &stack_a))
-		return (ft_error());
-	if (!shorter(&stack_a, &stack_b))
-		return (ft_error());
+		return (ft_error_free(&stack_a, &stack_b));
+	if (!checker(&stack_a, &stack_b))
+		return (ft_error_free(&stack_a, &stack_b));
 	ft_free(&stack_a);
 	ft_free(&stack_b);
 	return (1);
 }
 
 // FUNTION TO SHOW THE ERROR MSG AND RETURN -1
-size_t	ft_error(void)
+size_t	ft_error_free(t_stack **stack_a, t_stack **stack_b)
+{
+	ft_free(stack_a);
+	ft_free(stack_b);
+	write(2, "Error\n", 6);
+	return (-1);
+}
+
+// FUNTION TO SHOW THE ERROR MSG AND RETURN -1
+size_t	ft_error()
 {
 	write(2, "Error\n", 6);
 	return (-1);
