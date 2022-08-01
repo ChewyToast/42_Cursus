@@ -1,15 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   1main.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoll-pe <bmoll-pe@student.42barcel>       +#+  +:+       +#+        */
+/*   By: bmoll-pe <bmoll-pe@student.42bcn>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 11:19:28 by bmoll-pe          #+#    #+#             */
-/*   Updated: 2022/06/24 12:30:21 by bmoll-pe         ###   ########.fr       */
+/*   Created: 2022/08/01 11:10:16 by bmoll-pe          #+#    #+#             */
+/*   Updated: 2022/08/01 11:10:43 by bmoll-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include 
 
 // MAIN FUNCTION, THERE WE SEE THE NUM OF ARGS AND START THE PROGRAM
 int	main(int argc, char **argv)
